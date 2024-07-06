@@ -1,0 +1,25 @@
+#STEP 1
+FROM maven:3.8.7-eclipse-temurin-8 AS builder
+
+VOLUME . /usr/src/mymaven
+
+VOLUME "$HOME/.m2" /root/.m2
+
+WORKDIR /usr/src/mymaven
+
+RUN mvn -B clean package
+
+#STEP 2
+FROM eclipse-temurin:8u372-b07-jre-centos7
+
+ADD ./target/eureka-server.jar /app/eureka-server.jar
+
+ADD runboot.sh /app/
+
+WORKDIR /app
+
+RUN chmod a+x runboot.sh
+
+CMD ["sh","-c","/app/runboot.sh"]
+
+EXPOSE 8080

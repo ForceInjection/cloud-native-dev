@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eurkea
+  labels:
+    app: eureka
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka
+  template:
+    metadata:
+      labels:
+        app: eureka
+    spec:
+      hostname: eureka
+      containers:
+      - name: eureka
+        image: eureka:2023
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 1
+            memory: 512Mi
+          limits:
+            cpu: 1
+            memory: 512Mi

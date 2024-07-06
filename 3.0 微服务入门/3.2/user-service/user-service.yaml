@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+  labels:
+    app: user-service
+spec:
+  type: NodePort
+  ports:
+    - port: 9090
+      targetPort: 9090
+  selector:
+    app: user-service

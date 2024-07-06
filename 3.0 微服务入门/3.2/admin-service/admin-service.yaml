@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-service
+  labels:
+    app: admin-service
+spec:
+  type: NodePort
+  ports:
+    - port: 10000
+      targetPort: 10000
+  selector:
+    app: admin-service
