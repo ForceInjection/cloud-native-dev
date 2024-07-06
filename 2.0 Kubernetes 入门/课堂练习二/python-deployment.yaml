@@ -5,7 +5,7 @@ metadata:
   labels:
     app: python
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: python
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: python
-        image: python-server:latest
+        image: python-server:v1
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
