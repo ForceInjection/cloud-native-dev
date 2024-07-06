@@ -6,6 +6,11 @@ metadata:
     app: python
 spec:
   replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   selector:
     matchLabels:
       app: python
@@ -16,7 +21,7 @@ spec:
     spec:
       containers:
       - name: python
-        image: python-server:v1
+        image: python-server:v2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
