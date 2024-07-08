@@ -12,6 +12,8 @@
 - [云原生技术（五）](https://meeting.tencent.com/v2/cloud-record/share?id=0f9b5f09-9107-4d56-bd5d-562c2c9fb601&from=3&is-single=false&record_type=2)
 - [云原生技术（六）](https://meeting.tencent.com/v2/cloud-record/share?id=62e5c139-122b-4a0b-82be-b0a83b84d605&from=3&is-single=false&record_type=2)
 - [云原生技术（七）](https://meeting.tencent.com/v2/cloud-record/share?id=cf92193c-23ce-40fa-8e9d-6c9f38091bb5&from=3&is-single=false&record_type=2)
+- [云原生技术（八）（1）](https://meeting.tencent.com/v2/cloud-record/share?id=2dd86b13-2bba-419e-a70d-9b83936496db&from=3&is-single=false&record_type=2)
+- [云原生技术（八）（2）](https://meeting.tencent.com/v2/cloud-record/share?id=c5c014fd-f58b-464a-9e6c-1782c16ae63d&from=3&is-single=false&record_type=2)
 
 ## 资料下载
 - [百度网盘](https://pan.baidu.com/s/1S3HaS0aU2RBoLIKbcHHk-A?pwd=kcbq) 
