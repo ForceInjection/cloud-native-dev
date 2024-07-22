@@ -3,8 +3,8 @@ package io.daocloud.adminservice.dto;
 import javax.validation.constraints.NotBlank;
 
 /**
- * Author: Garroshh
- * date: 2020/7/9 8:39 下午
+ * Author: Grissom
+ * Date: 2020/7/9 8:39 下午
  */
 public class UserDto {
     @NotBlank(message = "用户名不能为空")
