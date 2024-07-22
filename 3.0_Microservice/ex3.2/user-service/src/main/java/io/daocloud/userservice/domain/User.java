@@ -3,8 +3,8 @@ package io.daocloud.userservice.domain;
 import javax.persistence.*;
 
 /**
- * Author: Garroshh
- * date: 2020/7/9 8:17 下午
+ * Author: Grissom
+ * Date: 2020/7/9 8:17 下午
  */
 @Entity
 @Table(name="user")

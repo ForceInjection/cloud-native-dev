@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 /**
- * Author: Garroshh
- * date: 2020/7/16 5:32 下午
+ * Author: Grissom
+ * Date: 2020/7/16 5:32 下午
  */
 @Configuration
 public class CustomRule extends AbstractLoadBalancerRule {
