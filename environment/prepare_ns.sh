@@ -6,13 +6,11 @@ CONFIG_TEMPLATE="config"
 # 存储 namespace 信息的外部文件中
 NAMESPACE_FILE="namespaces.txt"
 
-
 # 检查文件是否存在
 if [[ ! -f "$NAMESPACE_FILE" ]]; then
   echo "文件 $NAMESPACE_FILE 不存在！"
   exit 1
 fi
-
 
 function print_red() {
   echo -e "\x1b[1;31m$1\x1b[0m"
@@ -25,8 +23,6 @@ function print_green() {
 function print_bold() {
   echo -e "\033[1;m$1\033[0m"
 }
-
-
 
 # 创建 namespaces，指定 resource quota 和 limit ranger
 create_namespace() {
