@@ -3,6 +3,31 @@
 # config template
 CONFIG_TEMPLATE="config"
 
+# 存储 namespace 信息的外部文件中
+NAMESPACE_FILE="namespaces.txt"
+
+
+# 检查文件是否存在
+if [[ ! -f "$NAMESPACE_FILE" ]]; then
+  echo "文件 $NAMESPACE_FILE 不存在！"
+  exit 1
+fi
+
+
+function print_red() {
+  echo -e "\x1b[1;31m$1\x1b[0m"
+}
+
+function print_green() {
+  echo -e "\x1b[1;32m$1\x1b[0m"
+}
+
+function print_bold() {
+  echo -e "\033[1;m$1\033[0m"
+}
+
+
+
 # 创建 namespaces，指定 resource quota 和 limit ranger
 create_namespace() {
   local namespace=$1
@@ -13,8 +38,13 @@ create_namespace() {
   local quota_cpu=$6
   local quota_memory=$7
 
-  # 创建 namespace
-  kubectl create namespace $namespace
+  # 检查命名空间是否存在
+  if kubectl get ns $namespace > /dev/null 2>&1; then
+    print_bold "命名空间 $namespace 已存在"
+  else
+    # 创建命名空间
+    kubectl create ns $namespace
+  fi
 
   # 创建 resource quota
   cat <<EOF | kubectl apply -f -
@@ -115,7 +145,7 @@ create_config() {
   # 获取 secret 名称
   SECRET_NAME=$(kubectl get sa $SERVICE_ACCOUNT_NAME -o jsonpath='{.secrets[0].name}' -n ${name})
 
-  echo "SECRET_NAME: $SECRET_NAME"
+  print_bold "SECRET_NAME: $SECRET_NAME"
 
   # 获取 token
   TOKEN=$(kubectl get secret $SECRET_NAME -o jsonpath='{.data.token}' -n ${name} | base64 --decode)
@@ -137,20 +167,21 @@ create_config() {
   sed -i "s|<token>|$TOKEN|g" $OUTPUT_KUBECONFIG
   sed -i "s|<name>|$name|g" $OUTPUT_KUBECONFIG
 
-  echo "Kubeconfig 文件已生成: $OUTPUT_KUBECONFIG"
+  print_green "Kubeconfig 文件已生成: $OUTPUT_KUBECONFIG"
 }
 
-# 示例数据，可以根据需要调整
-namespaces=(
-  "nju02 1000m 1000m 1000Mi 1000Mi 8 16Gi"
-)
+# 读取文件中的每行数据，来创建 namespace
+while IFS= read -r line; do
+  # 解析每行数据
+  IFS=' ' read -r namespace cpu_request cpu_limit memory_request memory_limit quota_cpu quota_memory <<< "$line"
 
-# 创建 namespaces
-for ns in "${namespaces[@]}"; do
-  IFS=' ' read -r namespace cpu_request cpu_limit memory_request memory_limit quota_cpu quota_memory <<< "$ns"
+  # 调用函数创建命名空间
+  print_bold "------创建命名空间 $namespace 相关资源------"
   create_namespace $namespace $cpu_request $cpu_limit $memory_request $memory_limit $quota_cpu $quota_memory
-  create_sa $namespace
-  create_config $namespace
-done
+  create_sa "$namespace"
+  create_config "$namespace"
+  print_bold "------命名空间 $namespace 相关资源创建完毕------"
 
-echo "所有 namespaces 准备完成!"
+done < "$NAMESPACE_FILE"
+
+print_green "所有 namespaces 准备完成!"
