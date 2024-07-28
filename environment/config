@@ -7,6 +7,7 @@ clusters:
 contexts:
 - context:
     cluster: <CLUSTER_NAME>
+    namespace: <name>
     user: <name>
   name: <name>-kubernetes
 current-context: <name>-kubernetes
