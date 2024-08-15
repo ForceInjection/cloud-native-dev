@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-no-probes
+  labels:
+    app: simple-no-probes
+    
+spec:
+  selector:
+    matchLabels:
+      app: simple-no-probes
+  template:
+    metadata:
+      labels:
+        app: simple-no-probes
+    spec:
+      containers:
+      - name: simple-no-probes 
+        image: k8s-probes-demo:2024
+        imagePullPolicy: Always
+
+        env:
+        - name: START_DELAY
+          value: "10" 
+          
+        ports:
+        - name: http 
+          containerPort: 80
+
+        resources:
+          limits:
+            cpu: 10m
+            memory: 20Mi
+          requests:
+            cpu: 5m
+            memory: 20Mi
+
