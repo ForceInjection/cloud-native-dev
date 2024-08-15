@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress-example
+  labels:
+    app: wordpress-example
+    
+spec:
+  selector:
+    matchLabels:
+      app: wordpress-example
+  template:
+    metadata:
+      labels:
+        app: wordpress-example
+    spec:
+      containers:
+       
+      - name: wordpress-example 
+        image: witline/wordpress:5.5.1-php-7.4-apache-2.4
+        imagePullPolicy: Always
+
+        env:
+        - name: START_DELAY
+          value: "1" 
+
+        ports:
+        - name: http 
+          containerPort: 80
+
+        resources:
+          requests:
+            cpu: 5m
+            memory: 32Mi
+          limits:
+            cpu: 10m
+            memory: 64Mi
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-example
+  labels:
+    app: wordpress-example
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: wordpress-example
+

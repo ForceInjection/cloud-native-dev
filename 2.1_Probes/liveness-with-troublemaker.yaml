@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: liveness-with-troublemaker
+  labels:
+    app: liveness-with-troublemaker
+    
+spec:
+  selector:
+    matchLabels:
+      app: liveness-with-troublemaker
+  template:
+    metadata:
+      labels:
+        app: liveness-with-troublemaker
+    spec:
+      containers:
+      - name: troublemaker # Name of container in the pod.
+        image: k8s-probes-demo:2024
+
+        # Notes: 
+        # * ENTRYPOINT in Docker = 'command' in k8s
+        # * CMD in Docker = 'args' in k8s 
+        # * If you provide "command", then you also need to provide "args".
+        #     For some reason the CMD defined in the container image is ignored,
+        #     when k8s "command" is specified.
+        command: ["/home/troublemaker.sh"]
+        args: ["nginx", "-g", "daemon off;"]
+
+        env:
+        # Double quotes for values of ENV variables are important.
+        - name: ROLE
+          #value: "NORMAL"
+          value: "TROUBLEMAKER"
+
+        volumeMounts:
+        - name: shared-directory
+          mountPath: /shared
+        
+        ports:
+        - name: alt-http
+          containerPort: 8888
+
+        resources:
+          limits:
+            cpu: 10m
+            memory: 20Mi
+          requests:
+            cpu: 5m
+            memory: 20Mi
+          
+      - name: liveness-with-troublemaker # Name of container in the pod.
+        image: k8s-probes-demo:2024
+
+        env:
+        - name: START_DELAY
+          value: "10" # Double quotes for ENV variables are important.
+
+        ports:
+        - name: http 
+          containerPort: 80
+
+        resources:
+          limits:
+            cpu: 10m
+            memory: 20Mi
+          requests:
+            cpu: 5m
+            memory: 20Mi
+       
+        # Liveliness probes are used while the container is up, 
+        #   to see if the service is "still" alive.
+        # If the service does not respond, then kubernetes kills the container/pod,
+        #   and restarts it.
+        # It is therefore important to have initialDelaySeconds for the "livenessProbe"
+        #   to be as late as possible.
+        # If it is a small number, and if for some reason container is not started yet,
+        #   (in case of slow application startup), then kubernetes will restart it.
+        # This means the pod will stuck in a crash loop, and will never start.
+        # Remember, livenessProbe does NOT start AFTER readiness probe.
+        #   In-fact, they both start at the same time.
+        # Liveness probe will vary from application to application. 
+        #   Some start fast, some start slow.
+        livenessProbe:
+          httpGet:
+            path: /livenesscheck.txt
+            port: 80
+          initialDelaySeconds: 15
+          # Retry the probe every X seconds (frequency):
+          periodSeconds: 30
+          # Number of times this probe can fail,
+          #   before kubernetes gives up and "restarts" the "container":
+          failureThreshold: 1
+        volumeMounts:
+        - name: shared-directory
+          mountPath: /usr/share/nginx/html
+
+      volumes:
+      - name: shared-directory
+        emptyDir: {}
