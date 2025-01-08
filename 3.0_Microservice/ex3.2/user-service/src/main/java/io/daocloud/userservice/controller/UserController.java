@@ -44,9 +44,13 @@ public class UserController {
 	@GetMapping(path = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
 	public UserVO get(@RequestParam("id") long id) {
 		try {
+			// 模拟延迟，随机睡眠，最多15秒
+			Thread.sleep((long) (Math.random() * 15000));
+			// 获取用户
 			User u = userService.get(id);
+			// 返回用户信息，如果不存在，则返回404状态码
 			return new UserVO(u.getId(), u.getName(), u.getPwd());
-		} catch (RuntimeException e) {
+		} catch (Exception e) {
 			System.out.println("User with id " + id + " not found");
 			// 返回 404 状态码和具体的错误信息。
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with id " + id + " not found", e);
