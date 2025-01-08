@@ -17,7 +17,7 @@ spec:
       hostname: eureka
       containers:
       - name: eureka
-        image: eureka:2023
+        image: eureka-service:2025
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080

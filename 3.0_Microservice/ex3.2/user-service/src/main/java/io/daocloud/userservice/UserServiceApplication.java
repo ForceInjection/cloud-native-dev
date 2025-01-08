@@ -1,6 +1,5 @@
 package io.daocloud.userservice;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,9 +17,8 @@ public class UserServiceApplication {
 	@Value("${server.port}")
 	private String port;
 
-
 	@GetMapping("/port")
-	public String port(){
+	public String port() {
 		return port;
 	}
 }

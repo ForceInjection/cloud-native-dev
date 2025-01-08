@@ -17,7 +17,7 @@ spec:
       hostname: admin-service
       containers:
       - name: admin-service
-        image: admin-service:2023
+        image: admin-service:2025
         imagePullPolicy: IfNotPresent
         env:
         - name: EUREKA_URL
