@@ -5,7 +5,7 @@ metadata:
   labels:
     app: user-service
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: user-service
@@ -15,27 +15,50 @@ spec:
         app: user-service
     spec:
       hostname: user-service
+      terminationGracePeriodSeconds: 25
       containers:
-      - name: user-service
-        image: user-service:2025
-        imagePullPolicy: IfNotPresent
-        env:
-        - name: EUREKA_URL
-          value: http://eureka:8080/eureka
-        ports:
-        - containerPort: 9090
-        lifecycle:
+        - name: user-service
+          image: user-service:2025
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: EUREKA_URL
+              value: http://eureka:8080/eureka
+          ports:
+            - containerPort: 9090
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8081
+            initialDelaySeconds: 15 # 应用启动后等待 10 秒开始检查
+            periodSeconds: 5 # 每 5 秒检查一次
+            failureThreshold: 30 # 允许的最大失败次数（30 * 5 = 150 秒）
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8081
+            initialDelaySeconds: 0
+            periodSeconds: 3
+            failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8081
+            initialDelaySeconds: 0
+            periodSeconds: 3
+            failureThreshold: 2
+          lifecycle:
             preStop:
               exec:
                 command:
-                  - "curl"
-                  - "-X"
-                  - "POST"
-                  - "http://localhost:8081/actuator/shutdown"
-        resources:
-          requests:
-            cpu: 1
-            memory: 512Mi
-          limits:
-            cpu: 1
-            memory: 512Mi
+                  [
+                    "sh",
+                    "-c",
+                    "curl -X POST http://localhost:8081/actuator/shutdown && sleep 5",
+                  ]
+          resources:
+            requests:
+              cpu: 1
+              memory: 512Mi
+            limits:
+              cpu: 2
+              memory: 1024Mi
