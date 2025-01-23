@@ -1,23 +1,25 @@
-# 使用 Spring AI 构建高效代理（第一部分）
+# 使用 Spring AI 构建高效 LLM 代理（第一部分）
 
-在最近的一篇研究论文中：[构建高效代理](https://www.anthropic.com/research/building-effective-agents)，Anthropic 分享了关于构建高效大型语言模型（LLM）代理的宝贵见解。这项研究特别有趣的地方在于它强调简单性和可组合性，而非复杂框架。让我们探讨如何利用 [Spring AI](https://docs.spring.io/spring-ai/reference/index.html) 将这些原则转化为实际实现。
+> **原文地址**：`https://spring.io/blog/2025/01/21/spring-ai-agentic-patterns`
+
+在最近的一篇研究论文中：[**构建高效代理**](https://www.anthropic.com/research/building-effective-agents)，`Anthropic` 分享了关于构建高效大型语言模型（`LLM`）代理的宝贵见解。这项研究特别有趣的地方在于它强调简单性和可组合性，而非复杂框架。让我们探讨如何利用 [`Spring AI`](https://docs.spring.io/spring-ai/reference/index.html) 将这些原则转化为实际实现。
 
 ![代理系统](https://raw.githubusercontent.com/spring-io/spring-io-static/refs/heads/main/blog/tzolov/spring-ai-agentic-systems.jpg)
 
-虽然模式描述和图解源自 Anthropic 的原始论文，但我们将重点放在如何使用 Spring AI 的模型可移植性和结构化输出功能来实现这些模式。我们建议先阅读原始论文。
+虽然模式描述和图解源自 `Anthropic` 的原始论文，但我们将重点放在如何使用 `Spring AI` 的模型可移植性和结构化输出功能来实现这些模式。我们建议先阅读原始论文。
 
-[agentic-patterns](https://github.com/spring-projects/spring-ai-examples/tree/main/agentic-patterns) 项目实现了下文讨论的模式。
+[`agentic-patterns`](https://github.com/spring-projects/spring-ai-examples/tree/main/agentic-patterns) 项目实现了下文讨论的模式。
 
 ## 代理系统
 
 该研究论文在架构上区分了两种类型的代理系统：
 
-1. **工作流**：通过预定义代码路径编排 LLM 和工具的系统（例如规定性系统）
-2. **代理**：LLM 动态指导自身过程和工具使用的系统
+1. **工作流**：通过预定义代码路径编排 `LLM` 和工具的系统（例如规定性系统）
+2. **代理**：`LLM` 动态指导自身过程和工具使用的系统
 
 关键洞见是，虽然完全自主的代理看似诱人，但对于明确定义的任务，工作流通常能提供更好的可预测性和一致性。这与企业需求完美契合，因为可靠性和可维护性至关重要。
 
-让我们通过五种基本模式来研究 Spring AI 如何实现这些概念，每种模式服务于特定用例：
+让我们通过五种基本模式来研究 `Spring AI` 如何实现这些概念，每种模式服务于特定用例：
 
 ### 1. [链式工作流](https://github.com/spring-projects/spring-ai-examples/tree/main/agentic-patterns/chain-workflow)
 
@@ -31,7 +33,7 @@
 * 当您愿意以延迟换取更高准确性时
 * 当每个步骤都基于前一步骤的输出构建时
 
-以下是 Spring AI 实现的一个实际示例：
+以下是 `Spring AI` 实现的一个实际示例：
 
 ```java
 public class ChainWorkflow {
@@ -61,7 +63,7 @@ public class ChainWorkflow {
 
 ### 2. [并行化工作流](https://github.com/spring-projects/spring-ai-examples/tree/main/agentic-patterns/parallelization-worflow)
 
-LLM 可以同时处理任务，并通过程序化方式聚合其输出。并行化工作流体现为两种关键变体：
+`LLM` 可以同时处理任务，并通过程序化方式聚合其输出。并行化工作流体现为两种关键变体：
 
 * **分段**：将任务分解为独立的子任务进行并行处理
 * **投票**：运行同一任务的多个实例以达成共识
@@ -74,7 +76,7 @@ LLM 可以同时处理任务，并通过程序化方式聚合其输出。并行�
 * 需要多个独立视角的任务
 * 当处理时间关键且任务可并行时
 
-并行化工作流模式展示了多个大型语言模型（LLM）操作的高效并发处理。此模式特别适用于需要并行执行 LLM 调用并自动聚合输出的场景。
+并行化工作流模式展示了多个大型语言模型（`LLM`）操作的高效并发处理。此模式特别适用于需要并行执行 LLM 调用并自动聚合输出的场景。
 
 以下是使用并行化工作流的基本示例：
 
@@ -100,7 +102,7 @@ List<String> parallelResponse = new ParallelizationWorkflow(chatClient)
 
 ![路由工作流](https://www.anthropic.com/_next/image?url=https%3A%2F%2Fwww-cdn.anthropic.com%2Fimages%2F4zrzovbb%2Fwebsite%2F5c0c0e9fe4def0b584c04d37849941da55e5e71c-2401x1000.png&w=3840&q=75)
 
-此模式专为复杂任务设计，其中不同类型的输入更适合由专门流程处理。它使用 LLM 分析输入内容，并将其路由到最合适的专门提示或处理程序。
+此模式专为复杂任务设计，其中不同类型的输入更适合由专门流程处理。它使用 `LLM` 分析输入内容，并将其路由到最合适的专门提示或处理程序。
 
 **适用场景：**
 
@@ -133,7 +135,7 @@ String response = workflow.route(input, routes);
 
 此模式展示了如何在保持控制的同时实现更复杂的类代理行为：
 
-* 中央 LLM 协调任务分解
+* 中央 `LLM` 协调任务分解
 * 专门工作者处理特定子任务
 * 清晰的边界保持系统可靠性
 
@@ -145,7 +147,7 @@ String response = workflow.route(input, routes);
 * 需要不同方法或视角的任务
 * 需要自适应问题解决的情况
 
-实现使用 Spring AI 的 ChatClient 进行 LLM 交互，包含：
+实现使用 `Spring AI` 的 `ChatClient` 进行 `LLM` 交互，包含：
 
 ```java
 public class OrchestratorWorkersWorkflow {
@@ -180,7 +182,7 @@ System.out.println("Worker Outputs: " + response.workerResponses());
 
 ### 5. [评估器-优化器](https://github.com/spring-projects/spring-ai-examples/tree/main/agentic-patterns/evaluator-optimizer-workflow)
 
-评估器-优化器模式实现了一个双 LLM 过程，其中一个模型生成响应，另一个在迭代循环中提供评估和反馈，类似于人类作者的改进过程。该模式包含两个主要组件：
+评估器-优化器模式实现了一个双 `LLM` 过程，其中一个模型生成响应，另一个在迭代循环中提供评估和反馈，类似于人类作者的改进过程。该模式包含两个主要组件：
 
 * **生成器 LLM**：生成初始响应并根据反馈改进
 * **评估器 LLM**：分析响应并提供改进的详细反馈
@@ -193,7 +195,7 @@ System.out.println("Worker Outputs: " + response.workerResponses());
 * 迭代改进提供可衡量的价值
 * 任务受益于多轮批评
 
-实现使用 Spring AI 的 ChatClient 进行 LLM 交互，包含：
+实现使用 `Spring AI` 的 `ChatClient` 进行 `LLM` 交互，包含：
 
 ```java
 public class EvaluatorOptimizerWorkflow {
@@ -229,7 +231,7 @@ System.out.println("Evolution: " + response.chainOfThought());
 ```
 
 ## Spring AI 的实现优势
-Spring AI 对这些模式的实现提供了与 Anthropic 建议一致的多个优势：
+`Spring AI` 对这些模式的实现提供了与 `Anthropic` 建议一致的多个优势：
 
 1. **[模型可移植性](https://docs.spring.io/spring-ai/reference/api/chat/comparison.html)**
 
@@ -264,11 +266,13 @@ EvaluationResponse response = chatClient.prompt(prompt)
     * 在添加复杂性之前从基本工作流入手
     * 使用满足需求的最简单模式
     * 仅在需要时增加复杂度
+
 * **为可靠性设计**
     
     * 实现清晰的错误处理
     * 尽可能使用类型安全响应
     * 在每个步骤中构建验证
+
 * **权衡考虑**
     
     * 平衡延迟与准确性
@@ -299,7 +303,6 @@ EvaluationResponse response = chatClient.prompt(prompt)
 敬请期待这些高级功能的详细实现和最佳实践。
 
 ## 结论
--------------------------
 
 `Anthropic` 的研究洞见与 `Spring AI` 的实践实现相结合，为构建高效的基于 `LLM` 的系统提供了强大框架。通过遵循这些模式和原则，开发者可以创建健壮、可维护且高效的 `AI` 应用，在避免不必要复杂性的同时提供实际价值。
 
