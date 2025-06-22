@@ -1,4 +1,4 @@
-From nginx:alpine
+FROM nginx:alpine
 
 RUN echo "ready"  > /usr/share/nginx/html/readinesscheck.txt \
  && echo "alive"  > /usr/share/nginx/html/livenesscheck.txt  \

@@ -53,10 +53,10 @@ spec:
         - containerPort: 8000
         resources:
           requests:
-            cpu: 0.5
+            cpu: 500m
             memory: 100Mi
           limits:
-            cpu: 0.5
+            cpu: 500m
             memory: 100Mi
       volumes:
       - name: python-program-volume
