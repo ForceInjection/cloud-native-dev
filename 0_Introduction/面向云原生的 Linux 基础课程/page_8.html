@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>内核空间与用户空间</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 886px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .space-box {
+            transition: transform 0.3s ease;
+        }
+
+        .space-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .arrow-down {
+            position: relative;
+            height: 40px;
+            width: 2px;
+            background-color: #f97316;
+            margin: 0 auto;
+        }
+
+        .arrow-down:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -9px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #f97316;
+        }
+
+        .arrow-up {
+            position: relative;
+            height: 40px;
+            width: 2px;
+            background-color: #3b82f6;
+            margin: 0 auto;
+        }
+
+        .arrow-up:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -9px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #3b82f6;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">内核空间与用户空间</h1>
+                <div class="text-sm text-gray-400">第 8 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-12 gap-4">
+            <!-- System Architecture Visualization -->
+            <div class="col-span-12 mb-4">
+                <div class="mx-auto" id="architecture-diagram" style="height: 220px;"></div>
+            </div>
+            <!-- Comparison Section -->
+            <div class="col-span-6">
+                <div class="space-box bg-blue-900 bg-opacity-30 border border-blue-700 rounded-lg p-6 h-full">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-blue-400">内核空间 (Kernel Space)</h3>
+                    </div>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>最高权限（Ring 0），可执行任何指令</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>直接硬件访问，控制CPU、内存、磁盘等</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>负责进程、内存、文件系统管理</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                            <span>提供系统服务，保障系统安全</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-span-6">
+                <div class="space-box bg-orange-900 bg-opacity-30 border border-orange-700 rounded-lg p-6 h-full">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-orange-400">用户空间 (User Space)</h3>
+                    </div>
+                    <ul class="space-y-3 text-lg">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i>
+                            <span>受限权限（Ring 3），不能执行特权指令</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i>
+                            <span>不能直接访问硬件，需通过系统调用</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i>
+                            <span>程序间相互隔离，提高系统稳定性</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i>
+                            <span>应用程序和系统库在此运行</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Interaction Example -->
+            <div class="col-span-12 mt-4">
+                <div class="bg-slate-800 rounded-lg p-4">
+                    <h3 class="text-xl font-semibold mb-3 text-center">空间交互：文件读取过程示例</h3>
+                    <div class="flex justify-between items-center">
+                        <div class="w-1/3 bg-orange-900 bg-opacity-30 p-3 rounded-lg">
+                            <p class="text-center text-orange-400 font-semibold">用户空间 (Ring 3)</p>
+                            <p class="text-sm mt-2">1. 应用程序调用 fopen(&#34;file.txt&#34;, &#34;r&#34;)</p>
+                            <p class="text-sm">2. glibc库将其转换为系统调用</p>
+                        </div>
+                        <div class="w-1/4 flex flex-col items-center">
+                            <div class="arrow-down"></div>
+                            <div class="bg-gray-700 px-4 py-1 rounded-full my-2 text-xs">系统调用接口</div>
+                            <div class="arrow-up"></div>
+                        </div>
+                        <div class="w-1/3 bg-blue-900 bg-opacity-30 p-3 rounded-lg">
+                            <p class="text-center text-blue-400 font-semibold">内核空间 (Ring 0)</p>
+                            <p class="text-sm mt-2">3. 内核检查文件权限</p>
+                            <p class="text-sm">4. 通过驱动程序读取磁盘数据</p>
+                            <p class="text-sm">5. 将数据复制到用户空间</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center mt-6 text-gray-500">
+            <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+        </footer>
+    </div>
+    <script>
+        // D3.js visualization for system architecture
+        document.addEventListener('DOMContentLoaded', function () {
+            const width = 800;
+            const height = 220;
+            const margin = { top: 10, right: 30, bottom: 10, left: 30 };
+
+            const svg = d3.select("#architecture-diagram")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+            // Define the layers
+            const layers = [
+                { name: "应用程序 (Applications)", color: "#fb923c", type: "user", height: 40 },
+                { name: "系统库 (System Libraries)", color: "#f97316", type: "user", height: 30 },
+                { name: "系统调用接口 (System Call Interface)", color: "#d1d5db", type: "interface", height: 20 },
+                { name: "进程管理 | 内存管理", color: "#3b82f6", type: "kernel", height: 30 },
+                { name: "文件系统 | 网络协议栈", color: "#2563eb", type: "kernel", height: 30 },
+                { name: "设备驱动", color: "#1d4ed8", type: "kernel", height: 30 },
+                { name: "硬件层 (Hardware)", color: "#64748b", type: "hardware", height: 20 }
+            ];
+
+            // Calculate positions
+            let y = 0;
+            layers.forEach(layer => {
+                layer.y = y;
+                y += layer.height;
+            });
+
+            // Draw the boxes
+            svg.selectAll(".layer")
+                .data(layers)
+                .enter()
+                .append("rect")
+                .attr("x", width / 2 - 300)
+                .attr("y", d => d.y)
+                .attr("width", 600)
+                .attr("height", d => d.height)
+                .attr("fill", d => d.color)
+                .attr("rx", 4)
+                .attr("ry", 4);
+
+            // Add the text labels
+            svg.selectAll(".label")
+                .data(layers)
+                .enter()
+                .append("text")
+                .attr("x", width / 2)
+                .attr("y", d => d.y + d.height / 2 + 5)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .text(d => d.name);
+
+            // Add the space labels
+            svg.append("text")
+                .attr("x", width / 2 - 420)
+                .attr("y", layers[0].y + 35)
+                .attr("fill", "#FFFFFF")
+                .attr("font-weight", "bold")
+                .text("用户空间 (User Space)");
+
+            svg.append("text")
+                .attr("x", width / 2 - 420)
+                .attr("y", layers[3].y + 45)
+                .attr("fill", "#FFFFFF")
+                .attr("font-weight", "bold")
+                .text("内核空间 (Kernel Space)");
+
+            // Add Ring labels
+            svg.append("text")
+                .attr("x", width / 2 + 360)
+                .attr("y", layers[0].y + 35)
+                .attr("text-anchor", "end")
+                .attr("fill", "#FFFFFF")
+                .attr("font-weight", "bold")
+                .text("Ring 3 权限");
+
+            svg.append("text")
+                .attr("x", width / 2 + 360)
+                .attr("y", layers[3].y + 45)
+                .attr("text-anchor", "end")
+                .attr("fill", "#FFFFFF")
+                .attr("font-weight", "bold")
+                .text("Ring 0 权限");
+        });
+    </script>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>为什么容器技术选择Linux？</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .feature-container {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gradient-border {
+            position: relative;
+            border: 4px solid transparent;
+            background-clip: padding-box;
+            border-radius: 14px;
+        }
+
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            bottom: -4px;
+            left: -4px;
+            background: linear-gradient(135deg, #3b82f6, #f97316);
+            border-radius: 14px;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">为什么容器技术选择Linux？</h1>
+                <div class="text-sm text-gray-400">第 6 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Introduction -->
+        <p class="text-xl text-center mb-8">Linux 系统具备四大核心优势，使其成为容器技术的理想平台</p>
+        <!-- Main Content - Four Quadrants -->
+        <div class="grid grid-cols-2 gap-8">
+            <!-- Kernel Features -->
+            <div class="feature-container gradient-border p-6">
+                <div class="flex items-start">
+                    <div class="feature-icon bg-blue-900 text-blue-400 mr-4">
+                        <i class="fas fa-microchip text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-400">内核特性支持</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span><strong>Namespaces</strong>：提供进程、网络、文件系统隔离</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span><strong>Cgroups</strong>：资源限制和监控</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span><strong>Union File Systems</strong>：分层文件系统支持</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Open Source Ecosystem -->
+            <div class="feature-container gradient-border p-6">
+                <div class="flex items-start">
+                    <div class="feature-icon bg-orange-900 text-orange-400 mr-4">
+                        <i class="fas fa-code-branch text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-orange-400">开源生态</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-orange-500 mr-2"></i>
+                                <span>完全开源，无许可费用</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-orange-500 mr-2"></i>
+                                <span>庞大的开发者社区</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-orange-500 mr-2"></i>
+                                <span>丰富的软件包生态系统</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Performance Advantages -->
+            <div class="feature-container gradient-border p-6">
+                <div class="flex items-start">
+                    <div class="feature-icon bg-blue-900 text-blue-400 mr-4">
+                        <i class="fas fa-tachometer-alt text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-400">性能优势</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span>轻量级内核设计</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span>高效的系统调用</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                                <span>优秀的网络和 I/O 性能</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Standardization -->
+            <div class="feature-container gradient-border p-6">
+                <div class="flex items-start">
+                    <div class="feature-icon bg-orange-900 text-orange-400 mr-4">
+                        <i class="fas fa-certificate text-3xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-3 text-orange-400">标准化</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-orange-500 mr-2"></i>
+                                <span>POSIX 兼容性</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-orange-500 mr-2"></i>
+                                <span>统一的系统接口</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-orange-500 mr-2"></i>
+                                <span>跨平台一致性</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Note -->
+        <div class="mt-8 text-center">
+            <p class="text-gray-400 italic">这些优势使Linux成为构建现代容器化基础设施的首选平台</p>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center mt-6 text-gray-500">
+            <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+        </footer>
+    </div>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>输入输出重定向</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background-color: rgba(30, 41, 59, 0.8);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            position: relative;
+        }
+
+        .code-comment {
+            color: #6b7280;
+        }
+
+        .stream-flow {
+            position: relative;
+            height: 120px;
+        }
+
+        .stream-arrow {
+            position: absolute;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #f97316);
+            animation: flowAnimation 3s infinite;
+        }
+
+        @keyframes flowAnimation {
+            0% {
+                width: 0;
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                width: 100%;
+                opacity: 0.3;
+            }
+        }
+
+        .command-box {
+            border-left: 3px solid;
+            transition: transform 0.2s;
+        }
+
+        .command-box:hover {
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">输入输出重定向</h1>
+                <div class="text-sm text-gray-400">第 14 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-6">
+            <!-- Left Column - Standard Streams -->
+            <div class="space-y-5">
+                <h2 class="text-2xl font-semibold text-orange-500">
+                    <i class="fas fa-stream mr-2"></i>标准输入输出错误
+                </h2>
+                <div class="bg-slate-800 rounded-lg p-4 shadow-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                            <span class="font-bold">0</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-xl">标准输入 (stdin)</h3>
+                            <p class="text-gray-300">程序从中读取输入的数据流，默认为键盘</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-3">
+                        <div class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center mr-3">
+                            <span class="font-bold">1</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-xl">标准输出 (stdout)</h3>
+                            <p class="text-gray-300">程序正常输出的数据流，默认为终端</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center mr-3">
+                            <span class="font-bold">2</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-xl">标准错误 (stderr)</h3>
+                            <p class="text-gray-300">程序错误信息的数据流，默认为终端</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Redirection Operators -->
+                <h2 class="text-2xl font-semibold text-orange-500 mt-6">
+                    <i class="fas fa-exchange-alt mr-2"></i>重定向操作符
+                </h2>
+                <div class="space-y-3">
+                    <div class="command-box border-blue-500 bg-slate-800 p-3 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <code class="text-blue-400 text-lg">&gt;</code>
+                            <span class="text-gray-300 text-sm">覆盖写入文件</span>
+                        </div>
+                    </div>
+                    <div class="command-box border-green-500 bg-slate-800 p-3 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <code class="text-green-400 text-lg">&gt;&gt;</code>
+                            <span class="text-gray-300 text-sm">追加到文件</span>
+                        </div>
+                    </div>
+                    <div class="command-box border-red-500 bg-slate-800 p-3 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <code class="text-red-400 text-lg">2&gt;</code>
+                            <span class="text-gray-300 text-sm">错误重定向</span>
+                        </div>
+                    </div>
+                    <div class="command-box border-purple-500 bg-slate-800 p-3 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <code class="text-purple-400 text-lg">&lt;</code>
+                            <span class="text-gray-300 text-sm">输入重定向</span>
+                        </div>
+                    </div>
+                    <div class="command-box border-yellow-500 bg-slate-800 p-3 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <code class="text-yellow-400 text-lg">|</code>
+                            <span class="text-gray-300 text-sm">管道</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Examples and Advanced Usage -->
+            <div class="space-y-5">
+                <h2 class="text-2xl font-semibold text-orange-500">
+                    <i class="fas fa-code mr-2"></i>实用示例
+                </h2>
+
+                <!-- Output Redirection Examples -->
+                <div class="bg-slate-800 rounded-lg p-4 shadow-lg">
+                    <h3 class="text-xl font-semibold text-blue-400 mb-3">
+                        <i class="fas fa-arrow-right mr-2"></i>输出重定向
+                    </h3>
+                    <div class="code-block mb-3">
+                        <pre><span class="text-green-400">ls &gt; filelist.txt</span>         <span class="code-comment"># 保存文件列表</span>
+<span class="text-green-400">date &gt;&gt; log.txt</span>           <span class="code-comment"># 追加日期到日志</span>
+<span class="text-green-400">command 2&gt; error.log</span>     <span class="code-comment"># 错误输出到文件</span>
+<span class="text-green-400">command &amp;&gt; all.log</span>       <span class="code-comment"># 所有输出到文件</span></pre>
+                    </div>
+                </div>
+
+                <!-- Input Redirection Examples -->
+                <div class="bg-slate-800 rounded-lg p-4 shadow-lg">
+                    <h3 class="text-xl font-semibold text-green-400 mb-3">
+                        <i class="fas fa-arrow-left mr-2"></i>输入重定向
+                    </h3>
+                    <div class="code-block mb-3">
+                        <pre><span class="text-green-400">sort &lt; data.txt</span>          <span class="code-comment"># 从文件读取排序</span>
+<span class="text-green-400">wc -l &lt; file.txt</span>         <span class="code-comment"># 统计文件行数</span>
+<span class="text-green-400">cat &lt;&lt; EOF</span>               <span class="code-comment"># Here Document</span>
+<span class="text-gray-400">多行文本输入</span>
+<span class="text-green-400">EOF</span></pre>
+                    </div>
+                </div>
+
+                <!-- Pipeline Examples -->
+                <div class="bg-slate-800 rounded-lg p-4 shadow-lg">
+                    <h3 class="text-xl font-semibold text-yellow-400 mb-3">
+                        <i class="fas fa-link mr-2"></i>管道组合
+                    </h3>
+                    <div class="code-block mb-3">
+                        <pre><span class="text-green-400">ps aux | grep firefox</span>   <span class="code-comment"># 查找进程</span>
+<span class="text-green-400">ls | wc -l</span>               <span class="code-comment"># 统计文件数</span>
+<span class="text-green-400">history | tail -10</span>       <span class="code-comment"># 最近10条命令</span>
+<span class="text-green-400">cat log | tee backup.log</span> <span class="code-comment"># T型管道</span></pre>
+                    </div>
+                </div>
+
+                <!-- Advanced Combinations -->
+                <div class="bg-slate-800 rounded-lg p-4 shadow-lg">
+                    <h3 class="text-xl font-semibold text-purple-400 mb-3">
+                        <i class="fas fa-magic mr-2"></i>高级组合
+                    </h3>
+                    <div class="code-block">
+                        <pre><span class="text-green-400">command1 &amp;&amp; command2</span>     <span class="code-comment"># 成功后执行</span>
+<span class="text-green-400">command1 || command2</span>     <span class="code-comment"># 失败后执行</span>
+<span class="text-green-400">command &gt; /dev/null</span>      <span class="code-comment"># 丢弃输出</span>
+<span class="text-green-400">(cmd1; cmd2) | cmd3</span>     <span class="code-comment"># 子shell组合</span></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

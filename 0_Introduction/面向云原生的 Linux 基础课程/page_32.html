@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>学习资源与发展路径</title>
+<link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script><style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .resource-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .resource-card:nth-child(even) {
+            border-left-color: #f97316;
+        }
+        
+        .learning-step {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .learning-step::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #3b82f6, #f97316);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+<div class="slide-container mx-auto p-8">
+<!-- Header Section -->
+<header class="mb-6">
+<div class="flex items-center justify-between">
+<h1 class="text-4xl font-bold text-blue-500">学习资源与发展路径</h1>
+<div class="text-sm text-gray-400">第 32 页 / 共 32 页</div>
+</div>
+<div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+</header>
+<!-- Main Content -->
+<div class="grid grid-cols-2 gap-6 mt-2">
+<!-- Left Column -->
+<div class="space-y-4">
+<!-- Books -->
+<div class="resource-card bg-slate-800 p-4 rounded-lg">
+<div class="flex items-center mb-3">
+<i class="fas fa-book text-blue-500 text-2xl mr-3"></i>
+<h2 class="text-xl font-semibold">推荐书籍</h2>
+</div>
+<ul class="space-y-1 pl-2 text-sm">
+<li class="flex items-start">
+<i class="fas fa-angle-right text-orange-500 mt-1 mr-2"></i>
+<span>《鸟哥的 Linux 私房菜》- 适合初学者的经典教材</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-orange-500 mt-1 mr-2"></i>
+<span>《Linux 命令行与 shell 脚本编程大全》</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-orange-500 mt-1 mr-2"></i>
+<span>《深入理解 Linux 内核》- 内核原理深度解析</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-angle-right text-blue-500 mt-1 mr-2"></i>
+<span>&#34;The Linux Command Line&#34; - William Shotts</span>
+</li>
+</ul>
+</div>
+<!-- Online Resources -->
+<div class="resource-card bg-slate-800 p-4 rounded-lg">
+<div class="flex items-center mb-3">
+<i class="fas fa-globe text-orange-500 text-2xl mr-3"></i>
+<h2 class="text-xl font-semibold">在线资源</h2>
+</div>
+<div class="grid grid-cols-2 gap-2 text-sm">
+<div class="flex items-start">
+<i class="fas fa-link text-blue-500 mt-1 mr-2"></i>
+<span>Linux 内核官方文档</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-link text-blue-500 mt-1 mr-2"></i>
+<span>Ubuntu 官方指南</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-link text-blue-500 mt-1 mr-2"></i>
+<span>Arch Linux Wiki</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-link text-blue-500 mt-1 mr-2"></i>
+<span>Linux Journey</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-link text-orange-500 mt-1 mr-2"></i>
+<span>Explain Shell</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-link text-orange-500 mt-1 mr-2"></i>
+<span>Linux Command Library</span>
+</div>
+</div>
+</div>
+<!-- Practice Platforms -->
+<div class="resource-card bg-slate-800 p-4 rounded-lg">
+<div class="flex items-center mb-3">
+<i class="fas fa-laptop-code text-blue-500 text-2xl mr-3"></i>
+<h2 class="text-xl font-semibold">练习平台</h2>
+</div>
+<div class="grid grid-cols-2 gap-2 text-sm">
+<div class="flex items-start">
+<i class="fas fa-server text-orange-500 mt-1 mr-2"></i>
+<span>Play with Docker</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-server text-orange-500 mt-1 mr-2"></i>
+<span>Katacoda</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-cloud text-blue-500 mt-1 mr-2"></i>
+<span>AWS Free Tier</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-cloud text-blue-500 mt-1 mr-2"></i>
+<span>Google Cloud Free Tier</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-cloud text-orange-500 mt-1 mr-2"></i>
+<span>Azure Free Account</span>
+</div>
+<div class="flex items-start">
+<i class="fas fa-cloud text-orange-500 mt-1 mr-2"></i>
+<span>Oracle Cloud Free Tier</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column -->
+<div class="space-y-4">
+<!-- Certifications -->
+<div class="resource-card bg-slate-800 p-4 rounded-lg">
+<div class="flex items-center mb-3">
+<i class="fas fa-certificate text-orange-500 text-2xl mr-3"></i>
+<h2 class="text-xl font-semibold">认证与职业发展</h2>
+</div>
+<div class="grid grid-cols-2 gap-2 text-sm">
+<div class="p-2 bg-slate-700 rounded">
+<div class="font-semibold text-blue-400 mb-1">Linux 认证</div>
+<ul class="space-y-1 pl-1">
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-1 text-xs"></i>
+<span>Linux Professional Institute (LPI)</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-1 text-xs"></i>
+<span>Red Hat Certified System Administrator</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-1 text-xs"></i>
+<span>CompTIA Linux+</span>
+</li>
+</ul>
+</div>
+<div class="p-2 bg-slate-700 rounded">
+<div class="font-semibold text-orange-400 mb-1">云原生认证</div>
+<ul class="space-y-1 pl-1">
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-1 text-xs"></i>
+<span>Certified Kubernetes Administrator</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-1 text-xs"></i>
+<span>Certified Kubernetes Application Developer</span>
+</li>
+<li class="flex items-start">
+<i class="fas fa-check-circle text-green-500 mt-1 mr-1 text-xs"></i>
+<span>AWS/GCP 云平台认证</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Learning Path -->
+<div class="resource-card bg-slate-800 p-4 rounded-lg">
+<div class="flex items-center mb-3">
+<i class="fas fa-road text-blue-500 text-2xl mr-3"></i>
+<h2 class="text-xl font-semibold">学习路径</h2>
+</div>
+<div class="space-y-3 pl-2">
+<div class="learning-step pl-4">
+<div class="font-semibold text-blue-400">基础阶段</div>
+<div class="text-sm text-gray-300">掌握基本命令和文件系统操作</div>
+</div>
+<div class="learning-step pl-4">
+<div class="font-semibold text-blue-400">进阶阶段</div>
+<div class="text-sm text-gray-300">学习系统管理、网络配置、安全设置</div>
+</div>
+<div class="learning-step pl-4">
+<div class="font-semibold text-blue-400">专业阶段</div>
+<div class="text-sm text-gray-300">深入内核、性能调优、自动化运维</div>
+</div>
+<div class="learning-step pl-4">
+<div class="font-semibold text-orange-400">云原生阶段</div>
+<div class="text-sm text-gray-300">容器化、微服务、Kubernetes 编排</div>
+</div>
+<div class="learning-step pl-4">
+<div class="font-semibold text-orange-400">DevOps 实践</div>
+<div class="text-sm text-gray-300">CI/CD、监控工具、配置管理</div>
+</div>
+</div>
+</div>
+<!-- Continuous Learning -->
+<div class="bg-gradient-to-r from-blue-900 to-slate-800 p-4 rounded-lg">
+<div class="flex items-center">
+<i class="fas fa-lightbulb text-yellow-400 text-3xl mr-4"></i>
+<div>
+<h2 class="text-xl font-semibold">持续学习建议</h2>
+<p class="text-gray-300 text-sm mt-1">Linux 生态系统不断发展，保持学习的好奇心，参与社区讨论，动手实践是掌握技能的关键。从基础开始，逐步构建知识体系，最终成为云原生技术专家。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="text-center mt-6 text-gray-500">
+<p>感谢参与 Linux基础课程 | 系统架构、操作和容器技术入门</p>
+</footer>
+</div>
+<script>
+        // 如果需要添加任何交互效果或动画，可以在这里添加JavaScript代码
+    </script>
+
+<script src="ppt-mode.js"></script>
+</body></html>

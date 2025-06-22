@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Linux基础课程</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        .typing-animation {
+
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end);
+        }
+
+        .terminal-box {
+            border: 1px solid #4b5563;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+
+        .terminal-header {
+            border-bottom: 1px solid #4b5563;
+            padding: 0.5rem 1rem;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .hexagon {
+            width: 60px;
+            height: 34.64px;
+            background-color: #3b82f6;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin: 10px;
+        }
+
+        .hexagon:before,
+        .hexagon:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+        }
+
+        .hexagon:before {
+            bottom: 100%;
+            border-bottom: 17.32px solid #3b82f6;
+        }
+
+        .hexagon:after {
+            top: 100%;
+            border-top: 17.32px solid #3b82f6;
+        }
+
+        .hexagon.orange {
+            background-color: #f97316;
+        }
+
+        .hexagon.orange:before {
+            border-bottom-color: #f97316;
+        }
+
+        .hexagon.orange:after {
+            border-top-color: #f97316;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white flex items-center justify-center min-h-screen"
+    style="max-width: 1280px; width: 100%; margin: 0 auto; padding: 20px; box-sizing: border-box;">
+    <div class="container mx-auto px-4 py-8">
+        <div class="terminal-box mx-auto max-w-5xl">
+            <div class="terminal-header flex items-center">
+                <span class="dot bg-red-500"></span>
+                <span class="dot bg-yellow-500"></span>
+                <span class="dot bg-green-500"></span>
+                <span class="ml-4 text-gray-400">bash - Linux基础课程</span>
+            </div>
+            <div class="p-8">
+                <div class="text-center mb-8">
+                    <div class="typing-animation mx-auto">
+                        <h1 class="text-5xl font-bold mb-4 text-blue-500">Linux基础课程</h1>
+                    </div>
+                    <h2 class="text-3xl font-semibold mb-12 text-orange-500">系统架构、操作和容器技术入门</h2>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mb-12 text-center">
+                    <div class="bg-slate-800 p-4 rounded-lg">
+                        <i class="fas fa-layer-group text-3xl mb-4 text-blue-500"></i>
+                        <p class="text-lg">系统架构</p>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg">
+                        <i class="fas fa-terminal text-3xl mb-4 text-blue-500"></i>
+                        <p class="text-lg">命令操作</p>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg">
+                        <i class="fas fa-cubes text-3xl mb-4 text-blue-500"></i>
+                        <p class="text-lg">容器技术</p>
+                    </div>
+                </div>
+                <div class="flex justify-center mb-8">
+                    <div class="hexagon"><i class="fas fa-server"></i></div>
+                    <div class="hexagon orange"><i class="fas fa-code"></i></div>
+                    <div class="hexagon"><i class="fas fa-network-wired"></i></div>
+                    <div class="hexagon orange"><i class="fas fa-shield-alt"></i></div>
+                    <div class="hexagon"><i class="fas fa-cloud"></i></div>
+                </div>
+                <div class="text-center mb-4">
+                    <p class="text-gray-400">为云原生开发打下坚实基础</p>
+                </div>
+                <div class="border-t border-gray-700 pt-6 mt-8 text-center">
+                    <div class="inline-block px-4 py-2 bg-slate-800 rounded-lg">
+                        <span class="text-blue-500">$</span> <span class="text-green-400">./start_course.sh</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-6 text-gray-500">
+            <p>© 2025 星环科技 | 课程导师：Grissom</p>
+        </div>
+    </div>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>文件权限和所有权</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 864px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .permission-bit {
+            width: 32px;
+            height: 32px;
+            margin: 0 2px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .permission-value {
+            font-family: monospace;
+            font-size: 1.1rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin: 0 2px;
+        }
+
+        .command-box {
+            font-family: monospace;
+            border-radius: 4px;
+            padding: 8px 16px;
+            margin: 4px 0;
+            background-color: rgba(30, 41, 59, 0.8);
+            border-left: 3px solid #3b82f6;
+        }
+
+        .special-perm {
+            border-left: 3px solid #f97316;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">文件权限和所有权</h1>
+                <div class="text-sm text-gray-400">第 22 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-6">
+            <!-- Left Column: Permission Structure -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-3 text-orange-400">
+                    <i class="fas fa-shield-alt mr-2"></i>权限表示方法
+                </h2>
+                <!-- Permission Structure Visualization -->
+                <div class="bg-slate-800 p-4 rounded-lg mb-4">
+                    <div class="text-center mb-2">
+                        <span class="text-gray-400">权限字符串示例：</span>
+                        <span class="text-xl font-mono font-bold">rwxr-xr--</span>
+                    </div>
+                    <div class="flex justify-center mb-3">
+                        <div class="text-center mx-2">
+                            <div class="text-blue-400">所有者</div>
+                            <div class="flex mt-1">
+                                <div class="permission-bit bg-blue-900 text-blue-300">r</div>
+                                <div class="permission-bit bg-blue-900 text-blue-300">w</div>
+                                <div class="permission-bit bg-blue-900 text-blue-300">x</div>
+                            </div>
+                            <div class="mt-1 text-center">
+                                <span class="permission-value bg-blue-900 text-blue-300">4+2+1=7</span>
+                            </div>
+                        </div>
+                        <div class="text-center mx-2">
+                            <div class="text-green-400">用户组</div>
+                            <div class="flex mt-1">
+                                <div class="permission-bit bg-green-900 text-green-300">r</div>
+                                <div class="permission-bit bg-green-900 text-green-300">-</div>
+                                <div class="permission-bit bg-green-900 text-green-300">x</div>
+                            </div>
+                            <div class="mt-1 text-center">
+                                <span class="permission-value bg-green-900 text-green-300">4+0+1=5</span>
+                            </div>
+                        </div>
+                        <div class="text-center mx-2">
+                            <div class="text-yellow-400">其他用户</div>
+                            <div class="flex mt-1">
+                                <div class="permission-bit bg-yellow-900 text-yellow-300">r</div>
+                                <div class="permission-bit bg-yellow-900 text-yellow-300">-</div>
+                                <div class="permission-bit bg-yellow-900 text-yellow-300">-</div>
+                            </div>
+                            <div class="mt-1 text-center">
+                                <span class="permission-value bg-yellow-900 text-yellow-300">4+0+0=4</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-gray-400">数字表示：</span>
+                        <span class="text-xl font-mono font-bold">754</span>
+                    </div>
+                </div>
+                <!-- Permission Types -->
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2">权限类型</h3>
+                    <div class="grid grid-cols-3 gap-2">
+                        <div class="text-center">
+                            <div class="text-2xl text-red-400 mb-1"><i class="fas fa-book"></i></div>
+                            <div class="font-bold">读取 (r)</div>
+                            <div class="text-sm text-gray-400">查看文件内容</div>
+                            <div class="text-sm text-gray-400">列出目录内容</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl text-green-400 mb-1"><i class="fas fa-edit"></i></div>
+                            <div class="font-bold">写入 (w)</div>
+                            <div class="text-sm text-gray-400">修改文件内容</div>
+                            <div class="text-sm text-gray-400">创建删除文件</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl text-blue-400 mb-1"><i class="fas fa-play"></i></div>
+                            <div class="font-bold">执行 (x)</div>
+                            <div class="text-sm text-gray-400">运行程序</div>
+                            <div class="text-sm text-gray-400">进入目录</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Commands and Special Permissions -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-3 text-orange-400">
+                    <i class="fas fa-terminal mr-2"></i>权限管理命令
+                </h2>
+                <!-- chmod Command -->
+                <div class="bg-slate-800 p-4 rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">chmod 命令</h3>
+                    <p class="mb-2 text-sm">修改文件或目录的访问权限</p>
+                    <div class="command-box">
+                        chmod 755 file.txt
+                        <span class="text-gray-400 ml-2"># 数字模式: rwxr-xr-x</span>
+                    </div>
+                    <div class="command-box">
+                        chmod u+x,g-w,o=r file.txt
+                        <span class="text-gray-400 ml-2"># 符号模式</span>
+                    </div>
+                    <div class="text-sm text-gray-400 mt-2">
+                        <span class="text-blue-400 font-bold">u</span>: 所有者 |
+                        <span class="text-green-400 font-bold">g</span>: 用户组 |
+                        <span class="text-yellow-400 font-bold">o</span>: 其他用户 |
+                        <span class="text-orange-400 font-bold">a</span>: 所有人
+                    </div>
+                </div>
+                <!-- chown and chgrp Commands -->
+                <div class="bg-slate-800 p-4 rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">chown 和 chgrp 命令</h3>
+                    <p class="mb-2 text-sm">修改文件或目录的所有者和用户组</p>
+                    <div class="command-box">
+                        chown user1 file.txt
+                        <span class="text-gray-400 ml-2"># 更改所有者</span>
+                    </div>
+                    <div class="command-box">
+                        chown user1:group1 file.txt
+                        <span class="text-gray-400 ml-2"># 同时更改所有者和组</span>
+                    </div>
+                    <div class="command-box">
+                        chgrp group1 file.txt
+                        <span class="text-gray-400 ml-2"># 只更改所属组</span>
+                    </div>
+                </div>
+                <!-- Special Permissions -->
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2">特殊权限</h3>
+                    <div class="command-box special-perm">
+                        <span class="font-bold">SetUID (4000)</span>
+                        <span class="text-gray-400 ml-2">执行时具有所有者权限</span>
+                    </div>
+                    <div class="command-box special-perm">
+                        <span class="font-bold">SetGID (2000)</span>
+                        <span class="text-gray-400 ml-2">执行时具有所属组权限</span>
+                    </div>
+                    <div class="command-box special-perm">
+                        <span class="font-bold">Sticky Bit (1000)</span>
+                        <span class="text-gray-400 ml-2">只有所有者才能删除文件</span>
+                    </div>
+                    <div class="text-center mt-2">
+                        <div class="command-box inline-block">
+                            chmod 4755 script.sh
+                            <span class="text-gray-400 ml-2"># 设置 SetUID</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500 pr-16">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script>
+        // Any additional D3.js visualization can be added here if needed
+    </script>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

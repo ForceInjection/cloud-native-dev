@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>网络基础与配置</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 764px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .command-box {
+            font-family: monospace;
+            background-color: rgba(30, 41, 59, 0.7);
+            border-left: 3px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+        .command-box:hover {
+            background-color: rgba(30, 41, 59, 0.9);
+            transform: translateX(5px);
+        }
+
+        .network-card {
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .network-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .network-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .connector {
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #f97316);
+        }
+
+        .connector-vertical {
+            width: 2px;
+            background: linear-gradient(180deg, #3b82f6, #f97316);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">网络基础与配置</h1>
+                <div class="text-sm text-gray-400">第 25 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-3 gap-6 mt-10">
+            <!-- Network Interface Management -->
+            <div class="network-card bg-slate-800 p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="network-icon bg-blue-500 bg-opacity-20 mr-3">
+                        <i class="fas fa-network-wired text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">网络接口管理</h3>
+                </div>
+                <p class="text-gray-300 mb-4">查看和管理网络接口的关键命令</p>
+                <div class="space-y-3">
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">ip addr show</span>
+                        <p class="text-sm text-gray-400 mt-1">显示所有网络接口详细信息</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">ip link set eth0 up</span>
+                        <p class="text-sm text-gray-400 mt-1">启用指定网络接口</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">ifconfig</span>
+                        <p class="text-sm text-gray-400 mt-1">传统网络接口配置工具</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">ip addr add 192.168.1.10/24
+                            dev eth0</span>
+                        <p class="text-sm text-gray-400 mt-1">为接口添加IP地址</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Network Connectivity Testing -->
+            <div class="network-card bg-slate-800 p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="network-icon bg-orange-500 bg-opacity-20 mr-3">
+                        <i class="fas fa-signal text-2xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">网络连通性测试</h3>
+                </div>
+                <p class="text-gray-300 mb-4">验证网络连接和诊断问题的工具</p>
+                <div class="space-y-3">
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">ping -c 4 192.168.1.1</span>
+                        <p class="text-sm text-gray-400 mt-1">测试到指定主机的连通性</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">traceroute google.com</span>
+                        <p class="text-sm text-gray-400 mt-1">显示数据包到目标的路径</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">nslookup example.com</span>
+                        <p class="text-sm text-gray-400 mt-1">查询域名的DNS记录</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">netstat -tuln</span>
+                        <p class="text-sm text-gray-400 mt-1">显示所有监听的TCP/UDP端口</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Network Configuration -->
+            <div class="network-card bg-slate-800 p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="network-icon bg-blue-500 bg-opacity-20 mr-3">
+                        <i class="fas fa-cogs text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">网络配置</h3>
+                </div>
+                <p class="text-gray-300 mb-4">管理网络路由和配置的命令</p>
+                <div class="space-y-3">
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">ip route show</span>
+                        <p class="text-sm text-gray-400 mt-1">显示路由表</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">ip route add default via
+                            192.168.1.1</span>
+                        <p class="text-sm text-gray-400 mt-1">添加默认网关</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">hostnamectl set-hostname
+                            server1</span>
+                        <p class="text-sm text-gray-400 mt-1">设置主机名</p>
+                    </div>
+                    <div class="command-box p-3">
+                        <span class="text-orange-500">$</span> <span class="text-green-400">systemctl restart
+                            networking</span>
+                        <p class="text-sm text-gray-400 mt-1">重启网络服务</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container Network Note -->
+        <div class="mt-8 bg-slate-800 bg-opacity-70 p-4 rounded-lg border-l-4 border-orange-500">
+            <div class="flex items-center">
+                <i class="fas fa-lightbulb text-orange-500 text-xl mr-3"></i>
+                <h4 class="text-xl font-semibold">容器网络基础</h4>
+            </div>
+            <p class="mt-2 text-gray-300">
+                掌握这些网络基础对于理解容器网络至关重要。容器技术使用网络命名空间（Network Namespaces）隔离容器网络环境，
+                通过虚拟以太网接口对（veth pairs）和网桥（bridge）实现容器间通信。Docker和Kubernetes都构建在这些Linux网络基础之上。
+            </p>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

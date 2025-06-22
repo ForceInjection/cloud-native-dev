@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kubernetes基础</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .k8s-card {
+            border-top: 3px solid;
+            transition: transform 0.2s;
+        }
+
+        .k8s-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .concept-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .bullet-point {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .bullet-point i {
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">Kubernetes核心概念</h1>
+                <div class="text-sm text-gray-400">第 30 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-6 mb-4">
+            <!-- Cluster Architecture -->
+            <div class="k8s-card bg-slate-800 p-5 rounded-lg shadow-lg border-blue-500">
+                <div class="flex items-center mb-4">
+                    <div class="concept-icon bg-blue-500 bg-opacity-20 mr-4">
+                        <i class="fas fa-server text-3xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">集群架构</h3>
+                </div>
+                <div class="ml-2">
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-blue-500"></i>
+                        <span>控制平面组件：API Server、调度器、控制器</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-blue-500"></i>
+                        <span>工作节点组件：Kubelet、容器运行时、kube-proxy</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-blue-500"></i>
+                        <span>声明式API：通过YAML定义期望状态</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-blue-500"></i>
+                        <span>自愈与扩展：自动恢复故障、水平扩展</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Network Model -->
+            <div class="k8s-card bg-slate-800 p-5 rounded-lg shadow-lg border-orange-500">
+                <div class="flex items-center mb-4">
+                    <div class="concept-icon bg-orange-500 bg-opacity-20 mr-4">
+                        <i class="fas fa-network-wired text-3xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">网络模型</h3>
+                </div>
+                <div class="ml-2">
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-orange-500"></i>
+                        <span>每个Pod拥有唯一IP地址</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-orange-500"></i>
+                        <span>Pod之间可以直接通信（无需NAT）</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-orange-500"></i>
+                        <span>节点和Pod之间可以直接通信</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-orange-500"></i>
+                        <span>CNI插件：Flannel、Calico、Weave、Cilium</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Storage Concepts -->
+            <div class="k8s-card bg-slate-800 p-5 rounded-lg shadow-lg border-blue-500">
+                <div class="flex items-center mb-4">
+                    <div class="concept-icon bg-blue-500 bg-opacity-20 mr-4">
+                        <i class="fas fa-database text-3xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">存储概念</h3>
+                </div>
+                <div class="ml-2">
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-blue-500"></i>
+                        <span>Volume：Pod内部的存储卷</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-blue-500"></i>
+                        <span>PersistentVolume (PV)：集群级持久存储资源</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-blue-500"></i>
+                        <span>PersistentVolumeClaim (PVC)：存储请求</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-blue-500"></i>
+                        <span>StorageClass：动态存储配置</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Service Discovery -->
+            <div class="k8s-card bg-slate-800 p-5 rounded-lg shadow-lg border-orange-500">
+                <div class="flex items-center mb-4">
+                    <div class="concept-icon bg-orange-500 bg-opacity-20 mr-4">
+                        <i class="fas fa-search-location text-3xl text-orange-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold">服务发现机制</h3>
+                </div>
+                <div class="ml-2">
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-orange-500"></i>
+                        <span>Service：稳定的网络访问点</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-orange-500"></i>
+                        <span>ClusterIP、NodePort、LoadBalancer服务类型</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-orange-500"></i>
+                        <span>CoreDNS：集群内DNS服务</span>
+                    </div>
+                    <div class="bullet-point">
+                        <i class="fas fa-check-circle text-orange-500"></i>
+                        <span>Ingress：HTTP/HTTPS路由和负载均衡</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Section - Architecture Visualization -->
+        <div class="bg-slate-800 p-4 rounded-lg mt-4">
+            <h3 class="text-xl font-semibold mb-2 text-center">Kubernetes集群通信示例</h3>
+            <div class="flex justify-center items-center h-32" id="k8s-network-diagram">
+                <!-- D3.js visualization will be rendered here -->
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script>
+        // Simple D3.js visualization of K8s network model
+        document.addEventListener("DOMContentLoaded", function () {
+            const width = 800;
+            const height = 120;
+
+            const svg = d3.select("#k8s-network-diagram")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            // Define the nodes
+            const nodes = [
+                { id: "node1", label: "Node1: 10.244.1.0/24", x: 150, y: 60 },
+                { id: "pod1", label: "Pod1: 10.244.1.10", x: 80, y: 30 },
+                { id: "pod2", label: "Pod2: 10.244.1.11", x: 150, y: 30 },
+                { id: "pod3", label: "Pod3: 10.244.1.12", x: 220, y: 30 },
+                { id: "node2", label: "Node2: 10.244.2.0/24", x: 500, y: 60 },
+                { id: "pod4", label: "Pod4: 10.244.2.10", x: 430, y: 30 },
+                { id: "pod5", label: "Pod5: 10.244.2.11", x: 500, y: 30 },
+                { id: "pod6", label: "Pod6: 10.244.2.12", x: 570, y: 30 },
+                { id: "service", label: "Service: 10.96.0.1", x: 325, y: 90 }
+            ];
+
+            // Define the links
+            const links = [
+                { source: "pod1", target: "node1" },
+                { source: "pod2", target: "node1" },
+                { source: "pod3", target: "node1" },
+                { source: "pod4", target: "node2" },
+                { source: "pod5", target: "node2" },
+                { source: "pod6", target: "node2" },
+                { source: "node1", target: "service" },
+                { source: "node2", target: "service" },
+                { source: "pod2", target: "pod5" }
+            ];
+
+            // Draw the links
+            svg.selectAll(".link")
+                .data(links)
+                .enter()
+                .append("line")
+                .attr("class", "link")
+                .attr("x1", d => nodes.find(n => n.id === d.source).x)
+                .attr("y1", d => nodes.find(n => n.id === d.source).y)
+                .attr("x2", d => nodes.find(n => n.id === d.target).x)
+                .attr("y2", d => nodes.find(n => n.id === d.target).y)
+                .style("stroke", "#4B5563")
+                .style("stroke-width", 1.5);
+
+            // Draw node circles
+            const nodeGroups = svg.selectAll(".node")
+                .data(nodes)
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${d.x},${d.y})`);
+
+            // Add circles
+            nodeGroups.append("circle")
+                .attr("r", d => d.id.startsWith("pod") ? 10 : 15)
+                .style("fill", d => {
+                    if (d.id.startsWith("pod")) return "#3B82F6";
+                    if (d.id.startsWith("node")) return "#F97316";
+                    return "#10B981";
+                })
+                .style("opacity", 0.8);
+
+            // Add labels
+            nodeGroups.append("text")
+                .attr("dy", d => d.id.startsWith("pod") ? -15 : 25)
+                .attr("text-anchor", "middle")
+                .text(d => d.label)
+                .style("fill", "#E5E7EB")
+                .style("font-size", "10px");
+        });
+    </script>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

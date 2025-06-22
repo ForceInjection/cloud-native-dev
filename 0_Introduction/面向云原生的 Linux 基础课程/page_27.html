@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Linux容器相关概念</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .concept-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .concept-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .namespace-color {
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+        }
+
+        .cgroups-color {
+            background: linear-gradient(135deg, #f97316, #c2410c);
+        }
+
+        .unionfs-color {
+            background: linear-gradient(135deg, #10b981, #047857);
+        }
+
+        .container-diagram {
+            height: 120px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">Linux容器相关概念</h1>
+                <div class="text-sm text-gray-400">第 27 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-3 gap-6 mb-6">
+            <!-- 命名空间 Namespaces -->
+            <div class="concept-card bg-slate-800 rounded-lg p-6 shadow-lg">
+                <div class="concept-icon namespace-color mb-4">
+                    <i class="fas fa-cubes text-4xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-center mb-3 text-blue-400">命名空间<br />(Namespaces)</h3>
+                <p class="text-gray-300 mb-4">Linux内核提供的资源<strong>隔离</strong>机制，让进程拥有独立的系统资源视图</p>
+                <ul class="text-gray-300 space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                        <span>PID命名空间：进程ID隔离</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                        <span>Network命名空间：网络隔离</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                        <span>Mount命名空间：文件系统隔离</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                        <span>UTS、IPC、User命名空间等</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- 控制组 Cgroups -->
+            <div class="concept-card bg-slate-800 rounded-lg p-6 shadow-lg">
+                <div class="concept-icon cgroups-color mb-4">
+                    <i class="fas fa-sliders-h text-4xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-center mb-3 text-orange-400">控制组<br />(Cgroups)</h3>
+                <p class="text-gray-300 mb-4">限制、记录和隔离进程组<strong>资源使用</strong>的机制，实现资源管理</p>
+                <ul class="text-gray-300 space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i>
+                        <span>CPU使用率和时间限制</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i>
+                        <span>内存使用限制</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i>
+                        <span>磁盘I/O带宽控制</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-orange-500 mt-1 mr-2"></i>
+                        <span>网络带宽和设备访问控制</span>
+                    </li>
+                </ul>
+            </div>
+            <!-- 联合文件系统 Union FS -->
+            <div class="concept-card bg-slate-800 rounded-lg p-6 shadow-lg">
+                <div class="concept-icon unionfs-color mb-4">
+                    <i class="fas fa-layer-group text-4xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-semibold text-center mb-3 text-green-400">联合文件系统<br />(Union FS)</h3>
+                <p class="text-gray-300 mb-4">分层的文件系统，将多个目录合并成一个<strong>统一</strong>的虚拟文件系统视图</p>
+                <ul class="text-gray-300 space-y-2">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>OverlayFS：Linux内核主线支持</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>AUFS：Docker早期使用</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>支持镜像分层和写时复制</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                        <span>实现容器高效存储和部署</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Container Architecture Visualization -->
+        <div class="bg-slate-800 rounded-lg p-4 shadow-lg">
+            <h4 class="text-xl font-semibold mb-2 text-center">容器技术三大核心组件协同工作</h4>
+            <div class="container-diagram" id="container-diagram"></div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script>
+        // D3.js visualization for container architecture
+        document.addEventListener('DOMContentLoaded', function () {
+            const width = 1200;
+            const height = 120;
+
+            const svg = d3.select("#container-diagram")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            // Create the container box
+            svg.append("rect")
+                .attr("x", 350)
+                .attr("y", 20)
+                .attr("width", 500)
+                .attr("height", 80)
+                .attr("rx", 10)
+                .attr("ry", 10)
+                .attr("fill", "none")
+                .attr("stroke", "#4b5563")
+                .attr("stroke-width", 2)
+                .attr("stroke-dasharray", "5,5");
+
+            // Add label
+            svg.append("text")
+                .attr("x", 600)
+                .attr("y", 15)
+                .attr("text-anchor", "middle")
+                .attr("fill", "#e5e7eb")
+                .text("容器运行环境");
+
+            // Create component circles
+            const components = [
+                { name: "命名空间", color: "#3b82f6", icon: "\uf085", x: 450 },
+                { name: "控制组", color: "#f97316", icon: "\uf1de", x: 600 },
+                { name: "联合文件系统", color: "#10b981", icon: "\uf5fd", x: 750 }
+            ];
+
+            // Add circles
+            svg.selectAll(".component-circle")
+                .data(components)
+                .enter()
+                .append("circle")
+                .attr("cx", d => d.x)
+                .attr("cy", 60)
+                .attr("r", 25)
+                .attr("fill", d => d.color);
+
+            // Add icons (using text elements with Font Awesome classes)
+            svg.selectAll(".component-icon")
+                .data(components)
+                .enter()
+                .append("text")
+                .attr("x", d => d.x)
+                .attr("y", 68)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-family", "FontAwesome")
+                .attr("font-size", "20px")
+                .text(d => d.icon);
+
+            // Add labels
+            svg.selectAll(".component-label")
+                .data(components)
+                .enter()
+                .append("text")
+                .attr("x", d => d.x)
+                .attr("y", 105)
+                .attr("text-anchor", "middle")
+                .attr("fill", d => d.color)
+                .text(d => d.name);
+
+            // Add connection lines
+            svg.append("line")
+                .attr("x1", 475)
+                .attr("y1", 60)
+                .attr("x2", 575)
+                .attr("y2", 60)
+                .attr("stroke", "#4b5563")
+                .attr("stroke-width", 2);
+
+            svg.append("line")
+                .attr("x1", 625)
+                .attr("y1", 60)
+                .attr("x2", 725)
+                .attr("y2", 60)
+                .attr("stroke", "#4b5563")
+                .attr("stroke-width", 2);
+        });
+    </script>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

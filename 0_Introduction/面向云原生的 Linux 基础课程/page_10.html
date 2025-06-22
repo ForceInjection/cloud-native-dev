@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>系统调用接口</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 875px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .syscall-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .syscall-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+            color: #e2e8f0;
+        }
+
+        .interface-arrow {
+            position: relative;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #f97316);
+        }
+
+        .interface-arrow::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 10px solid #f97316;
+        }
+
+        .interface-arrow::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-right: 10px solid #3b82f6;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">系统调用接口</h1>
+                <div class="text-sm text-gray-400">第 10 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Introduction -->
+        <div class="mb-6 text-center">
+            <p class="text-xl">系统调用是用户空间程序请求内核服务的<span class="text-orange-500 font-bold">唯一方式</span>，它提供了用户程序与内核之间的安全接口
+            </p>
+        </div>
+        <!-- System Call Interface Visualization -->
+        <div class="flex justify-center mb-8">
+            <div class="relative w-3/4">
+                <div class="bg-slate-800 p-4 rounded-t-lg border-b border-gray-600 text-center">
+                    <span class="text-xl font-semibold text-blue-400">用户空间 (User Space)</span>
+                    <div class="text-sm text-gray-400">应用程序、库、工具</div>
+                </div>
+                <div class="py-3 px-4 bg-gradient-to-r from-blue-900/50 to-orange-900/50 text-center relative">
+                    <span class="text-2xl font-bold text-white">系统调用接口</span>
+                    <div class="interface-arrow absolute w-full left-0 top-1/2"></div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-b-lg text-center">
+                    <span class="text-xl font-semibold text-orange-400">内核空间 (Kernel Space)</span>
+                    <div class="text-sm text-gray-400">进程管理、内存管理、文件系统、网络协议栈</div>
+                </div>
+            </div>
+        </div>
+        <!-- System Call Categories -->
+        <div class="grid grid-cols-2 gap-6">
+            <!-- File Operations -->
+            <div class="syscall-card bg-slate-800 p-4 rounded-lg border-l-blue-500">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-file-code text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">文件操作</h3>
+                </div>
+                <div class="code-block mb-2">
+                    <span class="text-blue-400">open()</span> <span class="text-gray-400">// 打开文件</span><br />
+                    <span class="text-blue-400">read()</span> <span class="text-gray-400">// 读取文件</span><br />
+                    <span class="text-blue-400">write()</span> <span class="text-gray-400">// 写入文件</span><br />
+                    <span class="text-blue-400">close()</span> <span class="text-gray-400">// 关闭文件</span>
+                </div>
+            </div>
+            <!-- Process Management -->
+            <div class="syscall-card bg-slate-800 p-4 rounded-lg border-l-orange-500">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-orange-500/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-project-diagram text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">进程管理</h3>
+                </div>
+                <div class="code-block mb-2">
+                    <span class="text-orange-400">fork()</span> <span class="text-gray-400">// 创建子进程</span><br />
+                    <span class="text-orange-400">exec()</span> <span class="text-gray-400">// 执行程序</span><br />
+                    <span class="text-orange-400">wait()</span> <span class="text-gray-400">// 等待子进程</span><br />
+                    <span class="text-orange-400">exit()</span> <span class="text-gray-400">// 退出进程</span>
+                </div>
+            </div>
+            <!-- Memory Management -->
+            <div class="syscall-card bg-slate-800 p-4 rounded-lg border-l-blue-500">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-memory text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">内存管理</h3>
+                </div>
+                <div class="code-block mb-2">
+                    <span class="text-blue-400">malloc()</span> <span class="text-gray-400">// 分配内存</span><br />
+                    <span class="text-blue-400">free()</span> <span class="text-gray-400">// 释放内存</span><br />
+                    <span class="text-blue-400">mmap()</span> <span class="text-gray-400">// 内存映射</span>
+                </div>
+            </div>
+            <!-- Network Communication -->
+            <div class="syscall-card bg-slate-800 p-4 rounded-lg border-l-orange-500">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 bg-orange-500/20 rounded-full flex items-center justify-center mr-3">
+                        <i class="fas fa-network-wired text-orange-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">网络通信</h3>
+                </div>
+                <div class="code-block mb-2">
+                    <span class="text-orange-400">socket()</span> <span class="text-gray-400">// 创建套接字</span><br />
+                    <span class="text-orange-400">bind()</span> <span class="text-gray-400">// 绑定地址</span><br />
+                    <span class="text-orange-400">listen()</span> <span class="text-gray-400">// 监听连接</span><br />
+                    <span class="text-orange-400">accept()</span> <span class="text-gray-400">// 接受连接</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

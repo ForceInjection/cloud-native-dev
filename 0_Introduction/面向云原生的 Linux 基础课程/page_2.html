@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>课程目标</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 744px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .objective-card {
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.3s ease;
+        }
+
+        .objective-card:hover {
+            transform: translateX(10px);
+        }
+
+        .objective-card:nth-child(even) {
+            border-left-color: #f97316;
+        }
+
+        .objective-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(249, 115, 22, 0.2));
+        }
+
+        .objective-number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-10">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">课程目标</h1>
+                <div class="text-sm text-gray-400">第 2 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="flex flex-col justify-center space-y-6 mx-auto max-w-4xl">
+            <!-- Intro Text -->
+            <p class="text-xl text-center mb-4">本课程旨在为学员提供全面的Linux基础知识，为云原生技术学习奠定基础</p>
+            <!-- Objectives -->
+            <div class="objective-card relative bg-slate-800 p-6 rounded-lg shadow-lg">
+                <div class="objective-number bg-blue-500">1</div>
+                <div class="flex items-center">
+                    <div class="objective-icon mr-6">
+                        <i class="fas fa-layer-group text-3xl text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2">理解 Linux 系统架构和文件系统</h3>
+                        <p class="text-gray-300">掌握内核与用户空间的关系、系统调用机制以及Linux特有的文件系统结构</p>
+                    </div>
+                </div>
+            </div>
+            <div class="objective-card relative bg-slate-800 p-6 rounded-lg shadow-lg">
+                <div class="objective-number bg-orange-500">2</div>
+                <div class="flex items-center">
+                    <div class="objective-icon mr-6">
+                        <i class="fas fa-terminal text-3xl text-orange-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2">掌握 Linux 基础操作和命令</h3>
+                        <p class="text-gray-300">熟练使用终端命令行，进行文件操作、权限管理、进程控制和网络配置</p>
+                    </div>
+                </div>
+            </div>
+            <div class="objective-card relative bg-slate-800 p-6 rounded-lg shadow-lg">
+                <div class="objective-number bg-blue-500">3</div>
+                <div class="flex items-center">
+                    <div class="objective-icon mr-6">
+                        <i class="fas fa-cubes text-3xl text-blue-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2">为后续 Docker/Kubernetes 学习打下坚实基础</h3>
+                        <p class="text-gray-300">了解命名空间、控制组等容器技术的核心概念，为容器技术学习做好准备</p>
+                    </div>
+                </div>
+            </div>
+            <div class="objective-card relative bg-slate-800 p-6 rounded-lg shadow-lg">
+                <div class="objective-number bg-orange-500">4</div>
+                <div class="flex items-center">
+                    <div class="objective-icon mr-6">
+                        <i class="fas fa-cloud text-3xl text-orange-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-2">培养云原生开发环境的使用能力</h3>
+                        <p class="text-gray-300">学习Shell脚本编程、自动化部署和系统监控，适应现代云原生开发环境</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center mt-6 text-gray-500">
+            <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+        </footer>
+    </div>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

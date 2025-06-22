@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Linux发行版介绍</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .distro-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-top: 4px solid transparent;
+        }
+
+        .distro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .debian-card {
+            border-top-color: #d70a53;
+        }
+
+        .redhat-card {
+            border-top-color: #ee0000;
+        }
+
+        .container-card {
+            border-top-color: #0db7ed;
+        }
+
+        .distro-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-icon {
+            margin-right: 0.5rem;
+            color: #3b82f6;
+        }
+
+        .use-case-tag {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-right: 0.25rem;
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">Linux发行版介绍</h1>
+                <div class="text-sm text-gray-400">第 4 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-3 gap-6 h-full">
+            <!-- Debian Series -->
+            <div class="distro-card debian-card bg-slate-800 rounded-lg p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="distro-icon bg-gradient-to-br from-slate-700 to-slate-900 mr-4">
+                        <i class="fab fa-ubuntu text-4xl text-orange-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold">Debian 系列</h3>
+                        <p class="text-gray-400">用户友好，社区活跃</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">主要发行版</h4>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-star text-orange-500"></i>
+                        <span><strong>Ubuntu</strong>：最受欢迎的桌面和服务器发行版</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-shield-alt text-blue-500"></i>
+                        <span><strong>Debian</strong>：稳定性极高的发行版</span>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">特点</h4>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-user-friends"></i>
+                        <span>用户友好的界面</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-users"></i>
+                        <span>强大的社区支持</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-clock"></i>
+                        <span>LTS版本提供长期稳定支持</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">应用场景</h4>
+                    <div>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">开发环境</span>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">Web服务器</span>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">容器基础镜像</span>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">生产服务器</span>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">关键业务系统</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Red Hat Series -->
+            <div class="distro-card redhat-card bg-slate-800 rounded-lg p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="distro-icon bg-gradient-to-br from-slate-700 to-slate-900 mr-4">
+                        <i class="fab fa-redhat text-4xl text-red-500"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold">Red Hat 系列</h3>
+                        <p class="text-gray-400">企业级，高可靠性</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">主要发行版</h4>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-building text-red-500"></i>
+                        <span><strong>RHEL</strong>：商业企业级发行版</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-server text-blue-500"></i>
+                        <span><strong>CentOS</strong>：企业级免费发行版（已停止维护）</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-sync text-green-500"></i>
+                        <span><strong>Rocky/AlmaLinux</strong>：CentOS的替代品</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-flask text-purple-500"></i>
+                        <span><strong>Fedora</strong>：前沿技术测试平台</span>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">特点</h4>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-lock"></i>
+                        <span>企业级安全性</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-business-time"></i>
+                        <span>长期商业支持</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-certificate"></i>
+                        <span>认证和合规性</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">应用场景</h4>
+                    <div>
+                        <span class="use-case-tag bg-red-900 text-red-300">企业数据中心</span>
+                        <span class="use-case-tag bg-red-900 text-red-300">金融机构</span>
+                        <span class="use-case-tag bg-red-900 text-red-300">政府部门</span>
+                        <span class="use-case-tag bg-red-900 text-red-300">大型IT基础设施</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Container-Optimized Distributions -->
+            <div class="distro-card container-card bg-slate-800 rounded-lg p-6 shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="distro-icon bg-gradient-to-br from-slate-700 to-slate-900 mr-4">
+                        <i class="fab fa-docker text-4xl text-blue-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold">容器优化发行版</h3>
+                        <p class="text-gray-400">轻量级，专为容器设计</p>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">主要发行版</h4>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-feather text-blue-400"></i>
+                        <span><strong>Alpine Linux</strong>：极简轻量级发行版</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-cubes text-blue-500"></i>
+                        <span><strong>CoreOS</strong>：专为容器设计的操作系统</span>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">特点</h4>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-compress-arrows-alt"></i>
+                        <span>体积小（Alpine约5MB）</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-tachometer-alt"></i>
+                        <span>启动速度快</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-shield-alt"></i>
+                        <span>安全性高</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="feature-icon fas fa-memory"></i>
+                        <span>内存占用低</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 text-orange-500">应用场景</h4>
+                    <div>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">Docker容器</span>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">微服务架构</span>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">CI/CD管道</span>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">嵌入式系统</span>
+                        <span class="use-case-tag bg-blue-900 text-blue-300">资源受限环境</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center mt-6 text-gray-500">
+            <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+        </footer>
+    </div>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

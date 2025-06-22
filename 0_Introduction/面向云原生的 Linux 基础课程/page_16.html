@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>进程与线程概念</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 934px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .concept-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .memory-box {
+            border: 1px solid #475569;
+            border-radius: 4px;
+        }
+
+        .memory-segment {
+            padding: 8px;
+            border-bottom: 1px solid #475569;
+        }
+
+        .memory-segment:last-child {
+            border-bottom: none;
+        }
+
+        .shared-resource {
+            color: #3b82f6;
+        }
+
+        .independent-resource {
+            color: #f97316;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">进程与线程概念</h1>
+                <div class="text-sm text-gray-400">第 16 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-8">
+            <!-- Process Section -->
+            <div class="concept-card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-500 bg-opacity-20 rounded-full p-3 mr-3">
+                        <i class="fas fa-cube text-2xl text-blue-500"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold">进程 (Process)</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="mb-2"><span class="font-semibold text-blue-400">定义：</span>正在执行的程序实例，是系统<span
+                            class="text-blue-300 font-bold">资源分配</span>的基本单位</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 text-gray-300">
+                        <li>拥有独立的内存空间和系统资源</li>
+                        <li>每个进程有唯一的 PID (Process ID)</li>
+                        <li>完整生命周期：从程序加载到执行结束</li>
+                    </ul>
+                </div>
+                <div class="memory-box">
+                    <div class="bg-slate-700 py-2 px-4 font-semibold">进程内存布局</div>
+                    <div class="memory-segment bg-slate-800 text-gray-200">
+                        <div>内核空间</div>
+                        <div class="text-xs text-gray-400">系统调用、中断处理</div>
+                    </div>
+                    <div class="memory-segment bg-slate-800 text-orange-400">
+                        <div>栈 (Stack)</div>
+                        <div class="text-xs text-gray-400">局部变量、函数参数（向下增长）</div>
+                    </div>
+                    <div class="memory-segment bg-slate-800 text-gray-400">
+                        <div>未使用空间</div>
+                    </div>
+                    <div class="memory-segment bg-slate-800 text-orange-400">
+                        <div>堆 (Heap)</div>
+                        <div class="text-xs text-gray-400">动态分配内存（向上增长）</div>
+                    </div>
+                    <div class="memory-segment bg-slate-800 text-blue-400">
+                        <div>数据段 (Data)</div>
+                        <div class="text-xs text-gray-400">全局变量、静态变量</div>
+                    </div>
+                    <div class="memory-segment bg-slate-800 text-blue-400">
+                        <div>代码段 (Text)</div>
+                        <div class="text-xs text-gray-400">程序指令</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Thread Section -->
+            <div class="concept-card p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-orange-500 bg-opacity-20 rounded-full p-3 mr-3">
+                        <i class="fas fa-code-branch text-2xl text-orange-500"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold">线程 (Thread)</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="mb-2"><span class="font-semibold text-orange-400">定义：</span>进程内的执行单元，是 <span
+                            class="text-orange-300 font-bold">CPU 调度</span>的基本单位</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 text-gray-300">
+                        <li>共享进程的内存空间和资源</li>
+                        <li>创建和切换开销小，便于并发编程</li>
+                        <li>相比进程，线程的创建和销毁更快</li>
+                    </ul>
+                </div>
+                <div class="memory-box">
+                    <div class="bg-slate-700 py-2 px-4 font-semibold">多线程内存模型</div>
+                    <div class="memory-segment bg-slate-800">
+                        <div class="shared-resource">代码段（共享）</div>
+                        <div class="text-xs text-gray-400">所有线程共享同一代码</div>
+                    </div>
+                    <div class="memory-segment bg-slate-800">
+                        <div class="shared-resource">数据段（共享）</div>
+                        <div class="text-xs text-gray-400">全局变量对所有线程可见</div>
+                    </div>
+                    <div class="memory-segment bg-slate-800">
+                        <div class="shared-resource">堆（共享）</div>
+                        <div class="text-xs text-gray-400">动态分配内存可被所有线程访问</div>
+                    </div>
+                    <div class="memory-segment bg-slate-800 flex justify-between">
+                        <div class="independent-resource">线程1栈<br /><span class="text-xs text-gray-400">（独立）</span>
+                        </div>
+                        <div class="independent-resource">线程2栈<br /><span class="text-xs text-gray-400">（独立）</span>
+                        </div>
+                        <div class="independent-resource">线程3栈<br /><span class="text-xs text-gray-400">（独立）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Section - Resource Comparison -->
+        <div class="mt-6">
+            <h3 class="text-xl font-semibold mb-3">资源共享情况比较</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-400 mb-2">线程共享的资源：</h4>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div><i class="fas fa-check-circle text-green-500 mr-2"></i>代码段、数据段、堆内存</div>
+                        <div><i class="fas fa-check-circle text-green-500 mr-2"></i>文件描述符、信号处理器</div>
+                        <div><i class="fas fa-check-circle text-green-500 mr-2"></i>进程 ID、工作目录</div>
+                        <div><i class="fas fa-check-circle text-green-500 mr-2"></i>打开文件和网络连接</div>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h4 class="font-semibold text-orange-400 mb-2">线程独有的资源：</h4>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div><i class="fas fa-user-tag text-yellow-500 mr-2"></i>线程 ID (TID)</div>
+                        <div><i class="fas fa-microchip text-yellow-500 mr-2"></i>程序计数器 (PC)</div>
+                        <div><i class="fas fa-database text-yellow-500 mr-2"></i>寄存器状态</div>
+                        <div><i class="fas fa-layer-group text-yellow-500 mr-2"></i>栈空间</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center mt-6 text-gray-500">
+            <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+        </footer>
+    </div>
+    <script>
+        // Any additional D3.js visualization can be added here if needed
+    </script>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

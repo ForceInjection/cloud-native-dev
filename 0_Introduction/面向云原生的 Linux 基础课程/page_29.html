@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Docker预备知识</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .feature-card {
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(5px);
+        }
+
+        .feature-card:nth-child(even) {
+            border-left-color: #f97316;
+        }
+
+        .code-block {
+            font-family: monospace;
+            background-color: rgba(30, 41, 59, 0.8);
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+        }
+
+        .layer-box {
+            height: 30px;
+            margin: 2px 0;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            position: relative;
+        }
+
+        .layer-box:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">Docker预备知识</h1>
+                <div class="text-sm text-gray-400">第 29 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-6">
+            <!-- Left Column -->
+            <div class="space-y-4">
+                <!-- Linux Kernel Features -->
+                <div class="feature-card bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="flex items-start">
+                        <div class="mr-4 mt-1">
+                            <i class="fas fa-microchip text-2xl text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Linux 内核特性</h3>
+                            <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                                <li>Namespaces：提供进程、网络、文件系统隔离</li>
+                                <li>Cgroups：资源限制和监控</li>
+                                <li>OverlayFS：分层文件系统支持</li>
+                                <li>Netfilter：网络数据包过滤和NAT</li>
+                                <li>Bridge：虚拟网桥实现容器间通信</li>
+                            </ul>
+                            <div class="code-block mt-2 text-xs text-green-400">
+                                <span class="text-gray-400"># 检查内核版本（Docker要求3.10+）</span><br />
+                                $ uname -r<br />
+                                <span class="text-blue-300">5.15.0-1035-azure</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Network Namespaces -->
+                <div class="feature-card bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="flex items-start">
+                        <div class="mr-4 mt-1">
+                            <i class="fas fa-network-wired text-2xl text-orange-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">网络命名空间</h3>
+                            <p class="text-gray-300 mb-2">独立的网络栈实现，提供容器间的网络隔离和通信</p>
+                            <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                                <li>每个容器拥有独立的网络接口和路由表</li>
+                                <li>Docker网络模式：bridge、host、none、container</li>
+                                <li>veth pair技术连接容器与宿主机网络</li>
+                            </ul>
+                            <div class="code-block mt-2 text-xs text-green-400">
+                                <span class="text-gray-400"># 创建网络命名空间</span><br />
+                                $ ip netns add container1<br />
+                                $ ip netns list<br />
+                                <span class="text-blue-300">container1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column -->
+            <div class="space-y-4">
+                <!-- Layered File Systems -->
+                <div class="feature-card bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="flex items-start">
+                        <div class="mr-4 mt-1">
+                            <i class="fas fa-layer-group text-2xl text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">分层文件系统</h3>
+                            <p class="text-gray-300 mb-2">Docker镜像由多个只读层叠加而成，容器运行时添加可写层</p>
+                            <div class="bg-slate-900 rounded p-2 mb-2">
+                                <div class="layer-box bg-blue-900 bg-opacity-40">
+                                    <i class="fas fa-pen-to-square mr-2"></i> 容器可写层
+                                </div>
+                                <div class="layer-box bg-orange-900 bg-opacity-30">
+                                    <i class="fas fa-code mr-2"></i> 应用层 (应用程序文件)
+                                </div>
+                                <div class="layer-box bg-orange-900 bg-opacity-20">
+                                    <i class="fas fa-cogs mr-2"></i> 配置层 (应用配置)
+                                </div>
+                                <div class="layer-box bg-blue-900 bg-opacity-20">
+                                    <i class="fas fa-box mr-2"></i> 基础系统层 (Alpine/Ubuntu)
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-1">优势：</p>
+                            <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                                <li>共享基础层，节省存储空间</li>
+                                <li>快速构建和部署</li>
+                                <li>增量更新和传输</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Process Isolation -->
+                <div class="feature-card bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="flex items-start">
+                        <div class="mr-4 mt-1">
+                            <i class="fas fa-tasks text-2xl text-orange-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">进程隔离机制</h3>
+                            <p class="text-gray-300 mb-2">容器技术通过PID命名空间实现进程隔离</p>
+                            <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                                <li>每个容器有独立的进程空间，PID从1开始</li>
+                                <li>容器内进程对宿主机和其他容器进程不可见</li>
+                                <li>资源限制通过cgroups实现，防止单个容器耗尽系统资源</li>
+                                <li>seccomp和capabilities提供安全隔离</li>
+                            </ul>
+                            <div class="code-block mt-2 text-xs text-green-400">
+                                <span class="text-gray-400"># 在新的PID命名空间中运行bash</span><br />
+                                $ sudo unshare --pid --fork --mount-proc bash<br />
+                                $ ps aux<br />
+                                <span class="text-blue-300">USER PID %CPU %MEM COMMAND</span><br />
+                                <span class="text-blue-300">root 1 0.0 0.0 bash</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

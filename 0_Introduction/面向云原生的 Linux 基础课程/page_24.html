@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>系统监控</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .command-box {
+            font-family: monospace;
+            background-color: rgba(15, 23, 42, 0.7);
+            border-radius: 4px;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .monitor-card {
+            transition: transform 0.2s;
+        }
+
+        .monitor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-tag {
+            background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .tool-tag.network {
+            background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+        }
+
+        .tool-tag.info {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">系统监控</h1>
+                <div class="text-sm text-gray-400">第 24 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <div class="grid grid-cols-1 gap-6">
+            <!-- Memory Monitoring -->
+            <div class="bg-slate-800 rounded-lg p-5 shadow-lg monitor-card">
+                <div class="flex items-center mb-4">
+                    <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full mr-3">
+                        <i class="fas fa-memory text-2xl text-blue-500"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold">内存监控 - free</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-semibold text-blue-400">基本用法</h3>
+                        <div class="space-y-2">
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">free</code>
+                                <span class="text-gray-400 ml-4"># 显示内存使用情况</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">free -h</code>
+                                <span class="text-gray-400 ml-4"># 人类可读格式</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">free -m</code>
+                                <span class="text-gray-400 ml-4"># 以MB为单位</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">free -s 2</code>
+                                <span class="text-gray-400 ml-4"># 每2秒更新一次</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-semibold text-orange-400">输出字段说明</h3>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-blue-300">total</span>
+                                <span class="text-gray-400">总内存</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-blue-300">used</span>
+                                <span class="text-gray-400">已使用内存</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-blue-300">free</span>
+                                <span class="text-gray-400">空闲内存</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-blue-300">shared</span>
+                                <span class="text-gray-400">共享内存</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-blue-300">buff/cache</span>
+                                <span class="text-gray-400">缓冲/缓存</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-blue-300">available</span>
+                                <span class="text-gray-400">可用内存</span>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h4 class="text-sm font-semibold text-green-400 mb-2">实时监控</h4>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">watch -n 1 free -h</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disk Space Monitoring -->
+            <div class="bg-slate-800 rounded-lg p-5 shadow-lg monitor-card">
+                <div class="flex items-center mb-4">
+                    <div class="bg-green-500 bg-opacity-20 p-3 rounded-full mr-3">
+                        <i class="fas fa-hdd text-2xl text-green-500"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold">磁盘空间监控 - df</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-semibold text-green-400">基本用法</h3>
+                        <div class="space-y-2">
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">df</code>
+                                <span class="text-gray-400 ml-4"># 显示文件系统磁盘使用情况</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">df -h</code>
+                                <span class="text-gray-400 ml-4"># 人类可读格式</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">df -T</code>
+                                <span class="text-gray-400 ml-4"># 显示文件系统类型</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">df -i</code>
+                                <span class="text-gray-400 ml-4"># 显示inode使用情况</span>
+                            </div>
+                        </div>
+                        <h4 class="text-sm font-semibold text-yellow-400 mt-3">指定文件系统</h4>
+                        <div class="space-y-1">
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">df /home</code>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">df .</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-semibold text-orange-400">输出字段说明</h3>
+                        <div class="space-y-1 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-green-300">Filesystem</span>
+                                <span class="text-gray-400">文件系统</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-green-300">Size</span>
+                                <span class="text-gray-400">总大小</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-green-300">Used</span>
+                                <span class="text-gray-400">已使用</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-green-300">Avail</span>
+                                <span class="text-gray-400">可用空间</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-green-300">Use%</span>
+                                <span class="text-gray-400">使用百分比</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-green-300">Mounted on</span>
+                                <span class="text-gray-400">挂载点</span>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <h4 class="text-sm font-semibold text-red-400 mb-2">查找大文件</h4>
+                            <div class="command-box p-2 text-xs">
+                                <code class="text-green-400">df -h | grep -E '(8[0-9]|9[0-9])%'</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Directory Usage Monitoring -->
+            <div class="bg-slate-800 rounded-lg p-5 shadow-lg monitor-card">
+                <div class="flex items-center mb-4">
+                    <div class="bg-purple-500 bg-opacity-20 p-3 rounded-full mr-3">
+                        <i class="fas fa-folder text-2xl text-purple-500"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold">目录空间监控 - du</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-semibold text-purple-400">基本用法</h3>
+                        <div class="space-y-2">
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">du</code>
+                                <span class="text-gray-400 ml-4"># 显示当前目录及子目录大小</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">du -h</code>
+                                <span class="text-gray-400 ml-4"># 人类可读格式</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">du -s</code>
+                                <span class="text-gray-400 ml-4"># 只显示总计</span>
+                            </div>
+                            <div class="command-box p-2 text-sm">
+                                <code class="text-green-400">du -a</code>
+                                <span class="text-gray-400 ml-4"># 显示所有文件和目录</span>
+                            </div>
+                        </div>
+                        <h4 class="text-sm font-semibold text-yellow-400 mt-3">排序和限制</h4>
+                        <div class="space-y-1">
+                            <div class="command-box p-2 text-xs">
+                                <code class="text-green-400">du -h | sort -hr</code>
+                            </div>
+                            <div class="command-box p-2 text-xs">
+                                <code class="text-green-400">du -h --max-depth=1</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-semibold text-orange-400">实用示例</h3>
+                        <div class="space-y-2">
+                            <div>
+                                <h4 class="text-sm font-semibold text-blue-400 mb-1">找出最大的目录</h4>
+                                <div class="command-box p-2 text-xs">
+                                    <code class="text-green-400">du -h /home | sort -hr | head -10</code>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-red-400 mb-1">找出大于100MB的目录</h4>
+                                <div class="command-box p-2 text-xs">
+                                    <code
+                                        class="text-green-400">du -h /var | awk '$1 ~ /[0-9]+G|[5-9][0-9][0-9]M/ {print}'</code>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-green-400 mb-1">监控目录大小变化</h4>
+                                <div class="command-box p-2 text-xs">
+                                    <code class="text-green-400">watch -n 10 'du -sh /var/log'</code>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-purple-400 mb-1">排除文件</h4>
+                                <div class="command-box p-2 text-xs">
+                                    <code class="text-green-400">du -h --exclude="*.log" /var</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

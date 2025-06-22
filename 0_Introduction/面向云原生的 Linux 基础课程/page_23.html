@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>软件包管理</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            border-radius: 0.375rem;
+            background-color: rgba(15, 23, 42, 0.9);
+            overflow-x: auto;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-button {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            background-color: #1e293b;
+        }
+
+        .tab-button.active::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+        }
+
+        .tab-button:nth-child(1).active::after {
+            background-color: #3b82f6;
+        }
+
+        .tab-button:nth-child(2).active::after {
+            background-color: #f97316;
+        }
+
+        .tab-button:nth-child(3).active::after {
+            background-color: #10b981;
+        }
+
+        .terminal-prompt {
+            color: #10b981;
+            user-select: none;
+        }
+
+        .command {
+            color: #e2e8f0;
+        }
+
+        .highlight {
+            color: #f97316;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">软件包管理</h1>
+                <div class="text-sm text-gray-400">第 23 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Tab Navigation -->
+        <div class="flex space-x-4 mb-6">
+            <button class="tab-button active px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+                onclick="showTab('apt')">
+                <i class="fab fa-ubuntu mr-2"></i> APT
+            </button>
+            <button class="tab-button px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+                onclick="showTab('dnf')">
+                <i class="fab fa-redhat mr-2"></i> YUM/DNF
+            </button>
+            <button class="tab-button px-6 py-3 bg-slate-700 hover:bg-slate-600 rounded-lg transition-colors"
+                onclick="showTab('source')">
+                <i class="fas fa-code mr-2"></i> 源码编译安装
+            </button>
+        </div>
+        <!-- Tab Content -->
+        <div class="tab-content active" id="apt">
+            <div class="flex flex-col space-y-4">
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-blue-400">
+                        <i class="fas fa-sync-alt mr-2"></i> 系统更新
+                    </h3>
+                    <div class="code-block p-3">
+                        <pre><span class="terminal-prompt">$ </span><span class="command">sudo apt <span class="highlight">update</span></span>                     # 更新软件包索引
+<span class="terminal-prompt">$ </span><span class="command">sudo apt <span class="highlight">upgrade</span></span>                    # 升级已安装的软件包
+<span class="terminal-prompt">$ </span><span class="command">sudo apt <span class="highlight">full-upgrade</span></span>               # 智能升级（可能会移除部分包）</pre>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-blue-400">
+                        <i class="fas fa-download mr-2"></i> 软件包安装与删除
+                    </h3>
+                    <div class="code-block p-3">
+                        <pre><span class="terminal-prompt">$ </span><span class="command">sudo apt <span class="highlight">install</span> package_name</span>      # 安装软件包
+<span class="terminal-prompt">$ </span><span class="command">sudo apt <span class="highlight">remove</span> package_name</span>       # 删除软件包（保留配置）
+<span class="terminal-prompt">$ </span><span class="command">sudo apt <span class="highlight">purge</span> package_name</span>        # 完全删除软件包及配置
+<span class="terminal-prompt">$ </span><span class="command">sudo apt <span class="highlight">autoremove</span></span>                # 清理不需要的依赖包</pre>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-blue-400">
+                        <i class="fas fa-search mr-2"></i> 软件包搜索与信息
+                    </h3>
+                    <div class="code-block p-3">
+                        <pre><span class="terminal-prompt">$ </span><span class="command">apt <span class="highlight">search</span> keyword</span>                # 搜索软件包
+<span class="terminal-prompt">$ </span><span class="command">apt <span class="highlight">show</span> package_name</span>              # 显示软件包信息
+<span class="terminal-prompt">$ </span><span class="command">apt <span class="highlight">list</span> --installed</span>               # 列出已安装的软件包</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="dnf">
+            <div class="flex flex-col space-y-4">
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-orange-400">
+                        <i class="fas fa-sync-alt mr-2"></i> 系统更新
+                    </h3>
+                    <div class="code-block p-3">
+                        <pre><span class="terminal-prompt">$ </span><span class="command">sudo dnf <span class="highlight">check-update</span></span>              # 检查可用更新
+<span class="terminal-prompt">$ </span><span class="command">sudo dnf <span class="highlight">update</span></span>                    # 更新所有软件包
+<span class="terminal-prompt">$ </span><span class="command">sudo dnf <span class="highlight">update</span> package_name</span>       # 更新特定包</pre>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-orange-400">
+                        <i class="fas fa-download mr-2"></i> 软件包安装与删除
+                    </h3>
+                    <div class="code-block p-3">
+                        <pre><span class="terminal-prompt">$ </span><span class="command">sudo dnf <span class="highlight">install</span> package_name</span>      # 安装软件包
+<span class="terminal-prompt">$ </span><span class="command">sudo dnf <span class="highlight">remove</span> package_name</span>       # 删除软件包
+<span class="terminal-prompt">$ </span><span class="command">sudo dnf <span class="highlight">autoremove</span></span>                # 删除孤立依赖
+<span class="terminal-prompt">$ </span><span class="command">sudo dnf <span class="highlight">groupinstall</span> &#34;Development Tools&#34;</span> # 安装包组</pre>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-orange-400">
+                        <i class="fas fa-history mr-2"></i> 历史和事务管理
+                    </h3>
+                    <div class="code-block p-3">
+                        <pre><span class="terminal-prompt">$ </span><span class="command">dnf <span class="highlight">history</span></span>                      # 查看操作历史
+<span class="terminal-prompt">$ </span><span class="command">dnf <span class="highlight">history info</span> ID</span>                # 查看特定操作详情
+<span class="terminal-prompt">$ </span><span class="command">sudo dnf <span class="highlight">history undo</span> ID</span>           # 撤销操作</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="source">
+            <div class="flex flex-col space-y-4">
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-green-400">
+                        <i class="fas fa-tools mr-2"></i> 编译环境准备
+                    </h3>
+                    <div class="code-block p-3">
+                        <pre><span class="terminal-prompt">$ </span><span class="command">sudo apt install <span class="highlight">build-essential</span></span>     # Ubuntu/Debian
+<span class="terminal-prompt">$ </span><span class="command">sudo dnf groupinstall <span class="highlight">&#34;Development Tools&#34;</span></span> # CentOS/RHEL/Fedora
+<span class="terminal-prompt">$ </span><span class="command">sudo apt install <span class="highlight">autoconf automake libtool pkg-config</span></span> # 自动构建工具</pre>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-green-400">
+                        <i class="fas fa-code-branch mr-2"></i> 典型编译安装流程
+                    </h3>
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="bg-slate-700 p-3 rounded-lg">
+                            <div class="text-center mb-2">
+                                <i class="fas fa-download text-2xl text-green-400"></i>
+                            </div>
+                            <p class="text-center text-sm">1. 下载源码</p>
+                            <div class="code-block p-2 mt-2">
+                                <pre><span class="terminal-prompt">$ </span><span class="command">wget URL</span>
+<span class="terminal-prompt">$ </span><span class="command">tar -xzf file.tar.gz</span>
+<span class="terminal-prompt">$ </span><span class="command">cd directory</span></pre>
+                            </div>
+                        </div>
+                        <div class="bg-slate-700 p-3 rounded-lg">
+                            <div class="text-center mb-2">
+                                <i class="fas fa-cog text-2xl text-green-400"></i>
+                            </div>
+                            <p class="text-center text-sm">2. 配置</p>
+                            <div class="code-block p-2 mt-2">
+                                <pre><span class="terminal-prompt">$ </span><span class="command">./configure</span>
+<span class="terminal-prompt">$ </span><span class="command">./configure --prefix=/usr/local</span>
+<span class="terminal-prompt">$ </span><span class="command">./configure --help</span></pre>
+                            </div>
+                        </div>
+                        <div class="bg-slate-700 p-3 rounded-lg">
+                            <div class="text-center mb-2">
+                                <i class="fas fa-hammer text-2xl text-green-400"></i>
+                            </div>
+                            <p class="text-center text-sm">3. 编译</p>
+                            <div class="code-block p-2 mt-2">
+                                <pre><span class="terminal-prompt">$ </span><span class="command">make</span>
+<span class="terminal-prompt">$ </span><span class="command">make -j$(nproc)</span>
+<span class="terminal-prompt">$ </span><span class="command">make test</span></pre>
+                            </div>
+                        </div>
+                        <div class="bg-slate-700 p-3 rounded-lg">
+                            <div class="text-center mb-2">
+                                <i class="fas fa-box-open text-2xl text-green-400"></i>
+                            </div>
+                            <p class="text-center text-sm">4. 安装</p>
+                            <div class="code-block p-2 mt-2">
+                                <pre><span class="terminal-prompt">$ </span><span class="command">sudo make install</span>
+<span class="terminal-prompt">$ </span><span class="command">sudo ldconfig</span>
+<span class="terminal-prompt">$ </span><span class="command">make clean</span></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2 text-green-400">
+                        <i class="fas fa-sliders-h mr-2"></i> 常用配置选项
+                    </h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <ul class="list-disc list-inside text-gray-300">
+                                <li><code class="bg-slate-700 px-2 py-1 rounded">--prefix=PATH</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+    <script>
+        function showTab(tabName) {
+            // 隐藏所有 tab 内容
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 移除所有按钮的 active 状态
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // 显示选中的 tab 内容
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // 激活对应的按钮
+            const clickedButton = event.target.closest('.tab-button');
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

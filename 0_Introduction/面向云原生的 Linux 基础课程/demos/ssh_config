@@ -1,0 +1,34 @@
+# 默认配置
+Host *
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    StrictHostKeyChecking ask
+    UserKnownHostsFile ~/.ssh/known_hosts
+
+# 生产服务器
+Host prod-server
+    HostName 192.168.1.100
+    User admin
+    Port 22
+    IdentityFile ~/.ssh/prod_key
+    ForwardAgent yes
+
+# 开发服务器
+Host dev-server
+    HostName dev.example.com
+    User developer
+    Port 2222
+    IdentityFile ~/.ssh/dev_key
+    LocalForward 8080 localhost:80
+
+# 跳板机配置
+Host jump-server
+    HostName jump.example.com
+    User jumpuser
+    IdentityFile ~/.ssh/jump_key
+
+Host internal-server
+    HostName 10.0.0.100
+    User internaluser
+    ProxyJump jump-server
+    IdentityFile ~/.ssh/internal_key

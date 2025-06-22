@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>进程管理</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 915px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .terminal {
+            background-color: #1e293b;
+            border-radius: 0.5rem;
+            font-family: monospace;
+        }
+
+        .command {
+            color: #10b981;
+        }
+
+        .output {
+            color: #e2e8f0;
+        }
+
+        .process-card {
+            transition: transform 0.2s;
+            border-left: 4px solid transparent;
+        }
+
+        .process-card:hover {
+            transform: translateX(5px);
+        }
+
+        .command-box {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            margin-right: 0.5rem;
+            background-color: #1e293b;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">进程管理</h1>
+                <div class="text-sm text-gray-400">第 19 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-3 gap-6 mb-4">
+            <!-- Process Monitoring Section -->
+            <div class="col-span-1">
+                <div class="bg-slate-800 rounded-lg p-5 h-full process-card border-blue-500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full mr-3">
+                            <i class="fas fa-search text-blue-500 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">进程监控命令</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xl text-blue-400 mb-2">ps - 进程快照</h3>
+                            <div class="terminal p-3 mb-2 text-sm">
+                                <span class="command">$ ps aux</span><br />
+                                <span class="output"># 显示所有进程详细信息</span>
+                            </div>
+                            <div class="terminal p-3 text-sm">
+                                <span class="command">$ ps -ef</span><br />
+                                <span class="output"># 显示进程层次关系</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl text-blue-400 mb-2">top - 实时监控</h3>
+                            <div class="terminal p-3 mb-2 text-sm">
+                                <span class="command">$ top</span><br />
+                                <span class="output"># 实时显示进程状态</span>
+                            </div>
+                            <div class="terminal p-3 text-sm">
+                                <span class="command">$ htop</span><br />
+                                <span class="output"># 更友好的进程监控工具</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Process Control Section -->
+            <div class="col-span-1">
+                <div class="bg-slate-800 rounded-lg p-5 h-full process-card border-orange-500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-orange-500 bg-opacity-20 p-3 rounded-full mr-3">
+                            <i class="fas fa-sliders-h text-orange-500 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">进程控制</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xl text-orange-400 mb-2">kill - 发送信号</h3>
+                            <div class="terminal p-3 mb-2 text-sm">
+                                <span class="command">$ kill -TERM 1234</span><br />
+                                <span class="output"># 发送终止信号</span>
+                            </div>
+                            <div class="terminal p-3 text-sm">
+                                <span class="command">$ kill -9 1234</span><br />
+                                <span class="output"># 强制终止进程</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl text-orange-400 mb-2">nice/renice - 优先级</h3>
+                            <div class="terminal p-3 mb-2 text-sm">
+                                <span class="command">$ nice -n 10 ./script.sh</span><br />
+                                <span class="output"># 以较低优先级运行</span>
+                            </div>
+                            <div class="terminal p-3 text-sm">
+                                <span class="command">$ renice -5 -p 1234</span><br />
+                                <span class="output"># 调整运行中进程优先级</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Background Process Section -->
+            <div class="col-span-1">
+                <div class="bg-slate-800 rounded-lg p-5 h-full process-card border-blue-500">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-500 bg-opacity-20 p-3 rounded-full mr-3">
+                            <i class="fas fa-layer-group text-blue-500 text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">后台进程操作</h2>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="text-xl text-blue-400 mb-2">后台运行</h3>
+                            <div class="terminal p-3 mb-2 text-sm">
+                                <span class="command">$ command &amp;</span><br />
+                                <span class="output"># 在后台启动命令</span>
+                            </div>
+                            <div class="terminal p-3 text-sm">
+                                <span class="command">$ nohup command &amp;</span><br />
+                                <span class="output"># 免疫挂断信号的后台运行</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl text-blue-400 mb-2">作业控制</h3>
+                            <div class="terminal p-3 mb-2 text-sm">
+                                <span class="command">$ jobs</span><br />
+                                <span class="output"># 查看后台作业</span>
+                            </div>
+                            <div class="terminal p-3 mb-1 text-sm">
+                                <span class="command">$ fg %1</span><br />
+                                <span class="output"># 将作业1调至前台</span>
+                            </div>
+                            <div class="terminal p-3 text-sm">
+                                <span class="command">$ bg %1</span><br />
+                                <span class="output"># 在后台继续作业1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Section - Common Process Commands -->
+        <div class="bg-slate-800 rounded-lg p-4 mt-4">
+            <h3 class="text-xl font-semibold mb-3">常用进程管理组合命令</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="flex items-center">
+                    <i class="fas fa-terminal text-orange-500 mr-3"></i>
+                    <div>
+                        <span class="command-box">ps -ef | grep nginx</span>
+                        <span class="text-sm text-gray-300">查找特定进程</span>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-terminal text-orange-500 mr-3"></i>
+                    <div>
+                        <span class="command-box">pstree -p</span>
+                        <span class="text-sm text-gray-300">显示进程树和PID</span>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-terminal text-orange-500 mr-3"></i>
+                    <div>
+                        <span class="command-box">killall nginx</span>
+                        <span class="text-sm text-gray-300">终止所有指定名称的进程</span>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-terminal text-orange-500 mr-3"></i>
+                    <div>
+                        <span class="command-box">top -c</span>
+                        <span class="text-sm text-gray-300">显示完整命令行</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Process State Visualization -->
+        <div class="mt-4 flex justify-center items-center" id="process-states">
+            <!-- D3.js visualization will be inserted here -->
+        </div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script>
+        // Simple D3.js visualization for process states
+        document.addEventListener('DOMContentLoaded', function () {
+            const width = 1200;
+            const height = 60;
+
+            const svg = d3.select("#process-states")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            const states = [
+                { id: 1, name: "创建 (New)", color: "#3b82f6" },
+                { id: 2, name: "就绪 (Ready)", color: "#10b981" },
+                { id: 3, name: "运行 (Running)", color: "#f97316" },
+                { id: 4, name: "等待 (Waiting)", color: "#6366f1" },
+                { id: 5, name: "终止 (Terminated)", color: "#ef4444" }
+            ];
+
+            const stateWidth = width / states.length;
+
+            // Add state boxes
+            svg.selectAll("rect")
+                .data(states)
+                .enter()
+                .append("rect")
+                .attr("x", (d, i) => i * stateWidth + 10)
+                .attr("y", 10)
+                .attr("width", stateWidth - 20)
+                .attr("height", 40)
+                .attr("rx", 5)
+                .attr("ry", 5)
+                .attr("fill", d => d.color)
+                .attr("opacity", 0.7);
+
+            // Add state labels
+            svg.selectAll("text")
+                .data(states)
+                .enter()
+                .append("text")
+                .attr("x", (d, i) => i * stateWidth + stateWidth / 2)
+                .attr("y", 35)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "14px")
+                .attr("font-weight", "bold")
+                .text(d => d.name);
+
+            // Add arrows between states
+            svg.selectAll(".arrow")
+                .data(states.slice(0, -1))
+                .enter()
+                .append("line")
+                .attr("x1", (d, i) => (i + 1) * stateWidth - 5)
+                .attr("y1", 30)
+                .attr("x2", (d, i) => (i + 1) * stateWidth + 5)
+                .attr("y2", 30)
+                .attr("stroke", "white")
+                .attr("stroke-width", 2)
+                .attr("marker-end", "url(#arrowhead)");
+        });
+    </script>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>
