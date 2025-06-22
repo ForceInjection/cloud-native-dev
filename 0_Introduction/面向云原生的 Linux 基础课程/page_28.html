@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>容器与虚拟机的区别</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .architecture-box {
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+
+        .comparison-item {
+            transition: all 0.3s ease;
+        }
+
+        .comparison-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .vm-color {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-left: 4px solid #3b82f6;
+        }
+
+        .container-color {
+            background-color: rgba(249, 115, 22, 0.2);
+            border-left: 4px solid #f97316;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">容器与虚拟机的区别</h1>
+                <div class="text-sm text-gray-400">第 28 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-8 mt-4">
+            <!-- Architecture Comparison -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-4 text-center">架构对比</h2>
+                <!-- VM Architecture -->
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium mb-2 text-blue-400"><i class="fas fa-server mr-2"></i>虚拟机架构</h3>
+                    <div class="flex flex-col">
+                        <div class="architecture-box bg-gray-700">
+                            <span>应用程序</span>
+                        </div>
+                        <div class="architecture-box bg-blue-900">
+                            <span>客户操作系统</span>
+                        </div>
+                        <div class="architecture-box bg-blue-800">
+                            <span>Hypervisor</span>
+                        </div>
+                        <div class="architecture-box bg-blue-700">
+                            <span>宿主操作系统</span>
+                        </div>
+                        <div class="architecture-box bg-gray-800">
+                            <span>物理硬件</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Container Architecture -->
+                <div>
+                    <h3 class="text-xl font-medium mb-2 text-orange-400"><i class="fas fa-box mr-2"></i>容器架构</h3>
+                    <div class="flex flex-col">
+                        <div class="architecture-box bg-gray-700">
+                            <span>应用程序</span>
+                        </div>
+                        <div class="architecture-box bg-orange-700">
+                            <span>容器运行时</span>
+                        </div>
+                        <div class="architecture-box bg-blue-700">
+                            <span>宿主操作系统</span>
+                        </div>
+                        <div class="architecture-box bg-gray-800">
+                            <span>物理硬件</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Performance and Features Comparison -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-4 text-center">特性对比</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- VM Features -->
+                    <div class="comparison-item vm-color p-4 rounded-lg">
+                        <h3 class="text-xl font-medium mb-3 text-blue-400">虚拟机</h3>
+                        <ul class="space-y-3">
+                            <li><i class="fas fa-hdd mr-2 text-blue-500"></i> 资源占用大</li>
+                            <li><i class="fas fa-shield-alt mr-2 text-blue-500"></i> 完全隔离，安全性高</li>
+                            <li><i class="fas fa-clock mr-2 text-blue-500"></i> 启动时间长（分钟级）</li>
+                            <li><i class="fas fa-weight-hanging mr-2 text-blue-500"></i> 系统开销大</li>
+                            <li><i class="fas fa-exchange-alt mr-2 text-blue-500"></i> 迁移复杂度高</li>
+                        </ul>
+                    </div>
+                    <!-- Container Features -->
+                    <div class="comparison-item container-color p-4 rounded-lg">
+                        <h3 class="text-xl font-medium mb-3 text-orange-400">容器</h3>
+                        <ul class="space-y-3">
+                            <li><i class="fas fa-feather mr-2 text-orange-500"></i> 资源占用小</li>
+                            <li><i class="fas fa-box-open mr-2 text-orange-500"></i> 进程级隔离</li>
+                            <li><i class="fas fa-bolt mr-2 text-orange-500"></i> 启动时间短（秒级）</li>
+                            <li><i class="fas fa-leaf mr-2 text-orange-500"></i> 系统开销小</li>
+                            <li><i class="fas fa-truck mr-2 text-orange-500"></i> 高便携性</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Use Cases Section -->
+        <div class="mt-6 grid grid-cols-2 gap-8">
+            <div class="bg-slate-800 p-4 rounded-lg">
+                <h3 class="text-xl font-medium mb-2 text-blue-400"><i class="fas fa-check-circle mr-2"></i>虚拟机适用场景</h3>
+                <ul class="ml-6 list-disc text-gray-300">
+                    <li>需要完整操作系统环境的应用</li>
+                    <li>对安全隔离要求极高的场景</li>
+                    <li>运行不同操作系统的应用</li>
+                    <li>传统单体应用架构</li>
+                </ul>
+            </div>
+            <div class="bg-slate-800 p-4 rounded-lg">
+                <h3 class="text-xl font-medium mb-2 text-orange-400"><i class="fas fa-check-circle mr-2"></i>容器适用场景</h3>
+                <ul class="ml-6 list-disc text-gray-300">
+                    <li>微服务架构</li>
+                    <li>DevOps 持续集成/部署流程</li>
+                    <li>需要快速扩缩容的应用</li>
+                    <li>云原生应用开发</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Key Takeaway -->
+        <div class="mt-6 bg-gradient-to-r from-blue-900 to-orange-900 p-4 rounded-lg text-center">
+            <p class="text-lg">容器提供了更轻量、更高效的应用打包和部署方式，而虚拟机提供了更强的隔离和安全性</p>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

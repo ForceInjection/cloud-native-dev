@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SSH远程连接</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background-color: rgba(15, 23, 42, 0.7);
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .section-card {
+            background: linear-gradient(to right bottom, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(249, 115, 22, 0.2));
+        }
+
+        .connection-line {
+            position: relative;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #f97316);
+            margin: 20px 0;
+        }
+
+        .connection-line::before,
+        .connection-line::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .connection-line::before {
+            left: 0;
+            top: -4px;
+            background-color: #3b82f6;
+        }
+
+        .connection-line::after {
+            right: 0;
+            top: -4px;
+            background-color: #f97316;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">SSH远程连接</h1>
+                <div class="text-sm text-gray-400">第 26 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 gap-6 mt-4">
+            <!-- SSH基础概念 -->
+            <div class="section-card p-6">
+                <div class="flex items-center mb-6">
+                    <div class="icon-container mr-4">
+                        <i class="fas fa-shield-alt text-2xl text-blue-500"></i>
+                    </div>
+                    <h2 class="text-3xl font-semibold">SSH基础概念</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-blue-400 mb-4">SSH协议特点</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-lock text-green-500 mt-1 mr-3"></i>
+                                <span><strong>加密传输：</strong>所有数据都经过加密</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-user-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>身份验证：</strong>支持密码和密钥认证</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-shield-check text-green-500 mt-1 mr-3"></i>
+                                <span><strong>完整性检查：</strong>防止数据被篡改</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-exchange-alt text-green-500 mt-1 mr-3"></i>
+                                <span><strong>端口转发：</strong>支持隧道功能</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-orange-400 mb-4">连接过程</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center">
+                                <span
+                                    class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3">1</span>
+                                <span>客户端连接服务器</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span
+                                    class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3">2</span>
+                                <span>服务器发送公钥</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span
+                                    class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3">3</span>
+                                <span>协商加密算法</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span
+                                    class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3">4</span>
+                                <span>建立加密通道</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span
+                                    class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3">5</span>
+                                <span>用户身份验证</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span
+                                    class="bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs mr-3">6</span>
+                                <span>建立会话</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-slate-700 rounded">
+                            <div class="text-sm text-gray-300">
+                                <strong>默认端口：</strong>22<br>
+                                <strong>当前版本：</strong>SSH-2（安全可靠）<br>
+                                <strong>配置文件：</strong>~/.ssh/config
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 connection-line"></div>
+                <div class="flex justify-center mt-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-laptop text-blue-500 mr-2"></i>
+                        <i class="fas fa-lock text-green-500 mx-2"></i>
+                        <i class="fas fa-long-arrow-alt-right text-orange-500 mx-2"></i>
+                        <i class="fas fa-server text-blue-500 ml-2"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SSH客户端使用 -->
+            <div class="section-card p-6">
+                <div class="flex items-center mb-6">
+                    <div class="icon-container mr-4">
+                        <i class="fas fa-terminal text-2xl text-orange-500"></i>
+                    </div>
+                    <h2 class="text-3xl font-semibold">SSH客户端使用</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-orange-400 mb-3">基本连接</h3>
+                            <div class="space-y-2">
+                                <div class="code-block">
+                                    <code class="text-green-400">ssh username@hostname</code>
+                                    <span class="text-gray-400 ml-4"># 连接到远程主机</span>
+                                </div>
+                                <div class="code-block">
+                                    <code class="text-green-400">ssh username@192.168.1.100</code>
+                                    <span class="text-gray-400 ml-4"># 使用IP地址连接</span>
+                                </div>
+                                <div class="code-block">
+                                    <code class="text-green-400">ssh -p 2222 username@hostname</code>
+                                    <span class="text-gray-400 ml-4"># 指定端口</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-400 mb-3">调试选项</h3>
+                            <div class="space-y-2">
+                                <div class="code-block">
+                                    <code class="text-green-400">ssh -v username@hostname</code>
+                                    <span class="text-gray-400 ml-4"># 详细输出</span>
+                                </div>
+                                <div class="code-block">
+                                    <code class="text-green-400">ssh -vv username@hostname</code>
+                                    <span class="text-gray-400 ml-4"># 更详细输出</span>
+                                </div>
+                                <div class="code-block">
+                                    <code class="text-green-400">ssh -vvv username@hostname</code>
+                                    <span class="text-gray-400 ml-4"># 最详细输出</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-purple-400 mb-3">执行远程命令</h3>
+                            <div class="space-y-2">
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh user@host 'ls -la'</code>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh user@host 'cd /var/log && tail -f syslog'</code>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh user@host < local_script.sh</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-green-400 mb-3">连接选项</h3>
+                            <div class="space-y-2">
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh -o ConnectTimeout=10 user@host</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 连接超时</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh -o StrictHostKeyChecking=no user@host</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 跳过主机密钥检查</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh -C username@hostname</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 启用压缩</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-yellow-400 mb-3">保持连接</h3>
+                            <div class="space-y-2">
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh -o ServerAliveInterval=60 user@host</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 每60秒发送保活包</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh -o ServerAliveCountMax=3 user@host</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 最多3次保活失败</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-red-400 mb-3">交互式会话</h3>
+                            <div class="space-y-2">
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh -t user@host 'top'</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 强制分配伪终端</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh -t user@host 'sudo vim /etc/hosts'</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 需要交互的命令</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SSH密钥认证 -->
+            <div class="section-card p-6">
+                <div class="flex items-center mb-6">
+                    <div class="icon-container mr-4">
+                        <i class="fas fa-key text-2xl text-purple-500"></i>
+                    </div>
+                    <h2 class="text-3xl font-semibold">SSH密钥认证</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-purple-400 mb-3">生成密钥对</h3>
+                            <div class="space-y-2">
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-keygen -t rsa -b 4096 -C "email@example.com"</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># RSA密钥（推荐4096位）</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-keygen -t ed25519 -C "email@example.com"</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># ED25519密钥（推荐）</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code
+                                        class="text-green-400">ssh-keygen -t ecdsa -b 521 -C "email@example.com"</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># ECDSA密钥</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-400 mb-3">查看密钥</h3>
+                            <div class="space-y-2">
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ls -la ~/.ssh/</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 查看生成的密钥</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">cat ~/.ssh/id_rsa.pub</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 查看公钥内容</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-keygen -lf ~/.ssh/id_rsa.pub</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 查看密钥指纹</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-green-400 mb-3">部署公钥</h3>
+                            <div class="space-y-2">
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-copy-id username@hostname</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 自动部署公钥（推荐）</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-copy-id -i ~/.ssh/my_key.pub user@host</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 指定公钥文件</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-copy-id -p 2222 username@hostname</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 指定端口</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-orange-400 mb-3">SSH Agent管理</h3>
+                            <div class="space-y-2">
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">eval $(ssh-agent -s)</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 启动ssh-agent</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-add ~/.ssh/id_rsa</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 添加私钥到agent</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-add -l</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 列出已加载的密钥</span>
+                                </div>
+                                <div class="code-block text-sm">
+                                    <code class="text-green-400">ssh-add -D</code>
+                                    <span class="text-gray-400 block text-xs mt-1"># 删除所有密钥</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-slate-700 rounded-lg">
+                    <h4 class="text-lg font-semibold text-yellow-400 mb-2">密钥文件说明</h4>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <span class="text-blue-300">id_rsa</span> - 私钥（保密，不可分享）
+                        </div>
+                        <div>
+                            <span class="text-green-300">id_rsa.pub</span> - 公钥（可以分享）
+                        </div>
+                        <div>
+                            <span class="text-purple-300">authorized_keys</span> - 服务器端授权公钥文件
+                        </div>
+                        <div>
+                            <span class="text-orange-300">known_hosts</span> - 已知主机指纹文件
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

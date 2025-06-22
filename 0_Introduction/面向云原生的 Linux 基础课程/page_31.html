@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>实践项目与最佳实践</title>
+<link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+<script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script><style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .practice-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-card {
+            border-left-color: #3b82f6;
+        }
+        
+        .best-practice-card {
+            border-left-color: #f97316;
+        }
+        
+        .icon-container {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+<div class="slide-container mx-auto p-8">
+<!-- Header Section -->
+<header class="mb-8">
+<div class="flex items-center justify-between">
+<h1 class="text-4xl font-bold text-blue-500">实践项目与最佳实践</h1>
+<div class="text-sm text-gray-400">第 31 页 / 共 32 页</div>
+</div>
+<div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+</header>
+<!-- Main Content -->
+<div class="grid grid-cols-2 gap-6">
+<!-- Left Column: Practical Projects -->
+<div>
+<h2 class="text-2xl font-semibold mb-4 text-blue-400 flex items-center">
+<i class="fas fa-project-diagram mr-2"></i> 实践项目
+                </h2>
+<div class="space-y-4">
+<!-- Web Server Project -->
+<div class="practice-card project-card bg-slate-800 p-4 rounded-lg">
+<div class="flex">
+<div class="icon-container bg-blue-900 mr-4">
+<i class="fas fa-server text-blue-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">Web 服务器搭建</h3>
+<ul class="list-disc list-inside text-gray-300 space-y-1">
+<li>Nginx 安装和配置</li>
+<li>静态网站部署</li>
+<li>日志分析</li>
+<li>性能监控</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Database Service -->
+<div class="practice-card project-card bg-slate-800 p-4 rounded-lg">
+<div class="flex">
+<div class="icon-container bg-blue-900 mr-4">
+<i class="fas fa-database text-blue-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">数据库服务</h3>
+<ul class="list-disc list-inside text-gray-300 space-y-1">
+<li>MySQL/PostgreSQL 安装</li>
+<li>数据库用户管理</li>
+<li>备份和恢复</li>
+<li>安全配置</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Comprehensive Project -->
+<div class="practice-card project-card bg-slate-800 p-4 rounded-lg">
+<div class="flex">
+<div class="icon-container bg-blue-900 mr-4">
+<i class="fas fa-laptop-code text-blue-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">综合项目</h3>
+<ul class="list-disc list-inside text-gray-300 space-y-1">
+<li>LAMP/LEMP 环境搭建</li>
+<li>应用部署和配置</li>
+<li>监控和日志管理</li>
+<li>自动化脚本编写</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Best Practices -->
+<div>
+<h2 class="text-2xl font-semibold mb-4 text-orange-400 flex items-center">
+<i class="fas fa-award mr-2"></i> 最佳实践
+                </h2>
+<div class="space-y-4">
+<!-- System Security -->
+<div class="practice-card best-practice-card bg-slate-800 p-4 rounded-lg">
+<div class="flex">
+<div class="icon-container bg-orange-900 mr-4">
+<i class="fas fa-shield-alt text-orange-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">系统安全</h3>
+<ul class="list-disc list-inside text-gray-300 space-y-1">
+<li>用户权限最小化原则</li>
+<li>定期安全更新</li>
+<li>日志审计</li>
+<li>入侵检测基础</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Performance Optimization -->
+<div class="practice-card best-practice-card bg-slate-800 p-4 rounded-lg">
+<div class="flex">
+<div class="icon-container bg-orange-900 mr-4">
+<i class="fas fa-tachometer-alt text-orange-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">性能优化</h3>
+<ul class="list-disc list-inside text-gray-300 space-y-1">
+<li>系统性能分析</li>
+<li>资源使用优化</li>
+<li>内核参数调优</li>
+<li>存储性能优化</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Troubleshooting -->
+<div class="practice-card best-practice-card bg-slate-800 p-4 rounded-lg">
+<div class="flex">
+<div class="icon-container bg-orange-900 mr-4">
+<i class="fas fa-tools text-orange-400 text-xl"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-2">故障排查</h3>
+<ul class="list-disc list-inside text-gray-300 space-y-1">
+<li>常见问题诊断</li>
+<li>日志分析技巧</li>
+<li>系统恢复方法</li>
+<li>预防性维护</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tips Section -->
+<div class="mt-6 bg-slate-800 p-4 rounded-lg border-t-2 border-blue-500">
+<div class="flex items-center">
+<i class="fas fa-lightbulb text-yellow-400 text-2xl mr-3"></i>
+<p class="text-gray-300"><span class="text-yellow-400 font-semibold">提示：</span> 通过实践项目巩固所学知识，并遵循最佳实践打造安全、高效的Linux环境。记录实践过程，建立个人知识库。</p>
+</div>
+</div>
+<!-- Footer -->
+<footer class="text-center mt-6 text-gray-500">
+<p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+</footer>
+</div>
+
+<script src="ppt-mode.js"></script>
+</body></html>

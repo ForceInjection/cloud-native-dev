@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>什么是Linux？</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .timeline-point {
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-point:hover {
+            transform: scale(1.05);
+        }
+
+        .definition-box {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9));
+            border-left: 4px solid #3b82f6;
+        }
+
+        .timeline-connector {
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #f97316);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">什么是Linux？</h1>
+                <div class="text-sm text-gray-400">第 3 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Definition Section -->
+        <div class="definition-box p-6 rounded-lg shadow-lg mb-8">
+            <div class="flex items-start">
+                <div class="mr-6 mt-1">
+                    <i class="fab fa-linux text-4xl text-orange-500"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-semibold mb-2">定义与起源</h2>
+                    <p class="text-gray-300 mb-3">Linux是一个<span
+                            class="text-orange-400">自由和开放源代码</span>的类UNIX操作系统内核，由芬兰计算机科学家<span
+                            class="text-blue-400">林纳斯·托瓦兹（Linus Torvalds）</span>于1991年首次发布。</p>
+                    <p class="text-gray-300">Linux以其<span class="text-orange-400">稳定性</span>、<span
+                            class="text-orange-400">安全性</span>和<span
+                            class="text-orange-400">灵活性</span>著称，已成为服务器、嵌入式系统和云计算基础设施的主要操作系统。</p>
+                </div>
+            </div>
+        </div>
+        <!-- Timeline Section -->
+        <h2 class="text-2xl font-semibold mb-4 text-center">Linux发展历程</h2>
+        <div class="timeline-container relative mb-4">
+            <div class="timeline-connector w-full absolute top-16"></div>
+            <div class="flex justify-between relative">
+                <!-- 1991 -->
+                <div class="timeline-point w-1/6 bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <div
+                            class="inline-block rounded-full bg-blue-500 w-8 h-8 flex items-center justify-center mb-2">
+                            <i class="fas fa-code text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">1991</h3>
+                        <p class="text-sm text-gray-300 mt-2">Linux 0.01</p>
+                        <p class="text-xs text-gray-400">仅10,239行代码</p>
+                        <p class="text-xs text-gray-400">只支持386处理器</p>
+                        <p class="text-xs text-gray-400">开源操作系统诞生</p>
+                    </div>
+                </div>
+                <!-- 1994 -->
+                <div class="timeline-point w-1/6 bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <div
+                            class="inline-block rounded-full bg-orange-500 w-8 h-8 flex items-center justify-center mb-2">
+                            <i class="fas fa-flag text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">1994</h3>
+                        <p class="text-sm text-gray-300 mt-2">Linux 1.0</p>
+                        <p class="text-xs text-gray-400">176,250行代码</p>
+                        <p class="text-xs text-gray-400">首个稳定生产版本</p>
+                        <p class="text-xs text-gray-400">开始支持网络功能</p>
+                    </div>
+                </div>
+                <!-- 1996 -->
+                <div class="timeline-point w-1/6 bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <div
+                            class="inline-block rounded-full bg-blue-500 w-8 h-8 flex items-center justify-center mb-2">
+                            <i class="fas fa-microchip text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">1996</h3>
+                        <p class="text-sm text-gray-300 mt-2">Linux 2.0</p>
+                        <p class="text-xs text-gray-400">对称多处理(SMP)</p>
+                        <p class="text-xs text-gray-400">多硬件架构支持</p>
+                        <p class="text-xs text-gray-400">内存管理改进</p>
+                    </div>
+                </div>
+                <!-- 2003 -->
+                <div class="timeline-point w-1/6 bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <div
+                            class="inline-block rounded-full bg-orange-500 w-8 h-8 flex items-center justify-center mb-2">
+                            <i class="fas fa-tachometer-alt text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">2003</h3>
+                        <p class="text-sm text-gray-300 mt-2">Linux 2.6</p>
+                        <p class="text-xs text-gray-400">O(1)调度器</p>
+                        <p class="text-xs text-gray-400">NUMA支持</p>
+                        <p class="text-xs text-gray-400">改进线程支持</p>
+                    </div>
+                </div>
+                <!-- 2011 -->
+                <div class="timeline-point w-1/6 bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <div
+                            class="inline-block rounded-full bg-blue-500 w-8 h-8 flex items-center justify-center mb-2">
+                            <i class="fas fa-code-branch text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">2011</h3>
+                        <p class="text-sm text-gray-300 mt-2">Linux 3.0</p>
+                        <p class="text-xs text-gray-400">纪念20周年</p>
+                        <p class="text-xs text-gray-400">新版本编号方案</p>
+                        <p class="text-xs text-gray-400">技术上与2.6.39相似</p>
+                    </div>
+                </div>
+                <!-- 2015-至今 -->
+                <div class="timeline-point w-1/6 bg-slate-800 p-4 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <div
+                            class="inline-block rounded-full bg-orange-500 w-8 h-8 flex items-center justify-center mb-2">
+                            <i class="fas fa-rocket text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">2015-至今</h3>
+                        <p class="text-sm text-gray-300 mt-2">Linux 4.x/5.x/6.x</p>
+                        <p class="text-xs text-gray-400">eBPF、容器增强</p>
+                        <p class="text-xs text-gray-400">io_uring、Rust支持</p>
+                        <p class="text-xs text-gray-400">云原生优化</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modern Linux Features Section -->
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Linux 4.x Features -->
+            <div class="bg-slate-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold mb-3 text-blue-400">Linux 4.x (2015-2019)</h3>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li><i class="fas fa-filter text-orange-500 mr-2"></i>引入eBPF（扩展的伯克利包过滤器）</li>
+                    <li><i class="fas fa-cube text-orange-500 mr-2"></i>容器技术支持增强（Namespaces、Cgroups v2）</li>
+                    <li><i class="fas fa-hdd text-orange-500 mr-2"></i>改进的文件系统（Btrfs、XFS增强）</li>
+                    <li><i class="fas fa-microchip text-orange-500 mr-2"></i>更好的硬件支持和电源管理</li>
+                </ul>
+            </div>
+            
+            <!-- Linux 5.x Features -->
+            <div class="bg-slate-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold mb-3 text-blue-400">Linux 5.x (2019-2022)</h3>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li><i class="fas fa-bolt text-orange-500 mr-2"></i>引入io_uring（高性能异步I/O）</li>
+                    <li><i class="fas fa-shield-alt text-orange-500 mr-2"></i>改进的容器安全性（seccomp、LSM）</li>
+                    <li><i class="fas fa-file text-orange-500 mr-2"></i>支持新的文件系统（exFAT）</li>
+                    <li><i class="fas fa-clock text-orange-500 mr-2"></i>增强的实时性能（PREEMPT_RT集成）</li>
+                </ul>
+            </div>
+            
+            <!-- Linux 6.x Features -->
+            <div class="bg-slate-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold mb-3 text-blue-400">Linux 6.x (2022至今)</h3>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li><i class="fas fa-cog text-orange-500 mr-2"></i>引入Rust语言支持（内核模块开发）</li>
+                    <li><i class="fas fa-tasks text-orange-500 mr-2"></i>改进的调度器（EEVDF调度器）</li>
+                    <li><i class="fas fa-lock text-orange-500 mr-2"></i>增强的安全特性（Landlock LSM）</li>
+                    <li><i class="fas fa-cloud text-orange-500 mr-2"></i>更好的云原生和容器支持</li>
+                </ul>
+            </div>
+            
+            <!-- Cloud Native Features -->
+            <div class="bg-slate-800 p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl font-semibold mb-3 text-blue-400">云原生时代的重要特性</h3>
+                <ul class="text-sm text-gray-300 space-y-2">
+                    <li><i class="fas fa-cubes text-orange-500 mr-2"></i>容器化支持：Namespaces、Cgroups、Union FS</li>
+                    <li><i class="fas fa-sitemap text-orange-500 mr-2"></i>微服务架构：容器隔离、服务网格</li>
+                    <li><i class="fas fa-expand-arrows-alt text-orange-500 mr-2"></i>云计算优化：虚拟化、资源隔离、弹性伸缩</li>
+                    <li><i class="fas fa-shield text-orange-500 mr-2"></i>安全增强：SELinux、AppArmor、seccomp</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Linux Today Section -->
+        <div class="mt-8 bg-slate-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold mb-3 text-blue-400">Linux今天</h2>
+            <div class="flex justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-server text-2xl text-orange-500 mr-3"></i>
+                    <p>服务器市场主导</p>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-mobile-alt text-2xl text-orange-500 mr-3"></i>
+                    <p>Android的基础</p>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-cloud text-2xl text-orange-500 mr-3"></i>
+                    <p>云计算基础设施</p>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-cubes text-2xl text-orange-500 mr-3"></i>
+                    <p>容器技术核心</p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="text-center mt-6 text-gray-500">
+            <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+        </footer>
+    </div>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

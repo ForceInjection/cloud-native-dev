@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Linux目录结构</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 744px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .directory-item {
+            transition: all 0.3s ease;
+        }
+
+        .directory-item:hover {
+            transform: translateX(5px);
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .directory-line {
+            border-left: 2px solid #4b5563;
+            margin-left: 12px;
+            padding-left: 20px;
+        }
+
+        .tree-connector {
+            position: absolute;
+            left: 12px;
+            width: 20px;
+            height: 2px;
+            background-color: #4b5563;
+            top: 18px;
+        }
+
+        .highlight-dir {
+            border-left-color: #3b82f6;
+        }
+
+        .highlight-dir.orange {
+            border-left-color: #f97316;
+        }
+
+        .dir-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">Linux目录结构</h1>
+                <div class="text-sm text-gray-400">第 20 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="flex">
+            <!-- Left side: Tree Structure -->
+            <div class="w-1/2 pr-4">
+                <div class="bg-slate-800 rounded-lg p-4 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-3 text-center">标准目录结构</h3>
+                    <!-- Root directory -->
+                    <div class="directory-item flex items-center p-2 rounded-md bg-slate-700">
+                        <div class="dir-icon text-blue-500">
+                            <i class="fas fa-folder-open"></i>
+                        </div>
+                        <span class="font-mono text-lg font-semibold">/</span>
+                        <span class="ml-2 text-gray-300">根目录</span>
+                    </div>
+                    <!-- First level directories -->
+                    <div class="directory-line ml-4 mt-1 relative">
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <span class="font-mono">/bin</span>
+                            <span class="ml-2 text-gray-400 text-sm">基本命令二进制文件</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-power-off"></i>
+                            </div>
+                            <span class="font-mono">/boot</span>
+                            <span class="ml-2 text-gray-400 text-sm">启动文件</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-hdd"></i>
+                            </div>
+                            <span class="font-mono">/dev</span>
+                            <span class="ml-2 text-gray-400 text-sm">设备文件</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md bg-slate-700 relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-orange-500">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <span class="font-mono">/etc</span>
+                            <span class="ml-2 text-orange-300 text-sm">系统配置文件</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <span class="font-mono">/home</span>
+                            <span class="ml-2 text-gray-400 text-sm">用户主目录</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <span class="font-mono">/lib</span>
+                            <span class="ml-2 text-gray-400 text-sm">共享库文件</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <span class="font-mono">/proc</span>
+                            <span class="ml-2 text-gray-400 text-sm">进程和内核信息</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <span class="font-mono">/root</span>
+                            <span class="ml-2 text-gray-400 text-sm">root用户主目录</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <span class="font-mono">/sys</span>
+                            <span class="ml-2 text-gray-400 text-sm">系统文件系统</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-blue-400">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <span class="font-mono">/tmp</span>
+                            <span class="ml-2 text-gray-400 text-sm">临时文件</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md bg-slate-700 relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-orange-500">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <span class="font-mono">/usr</span>
+                            <span class="ml-2 text-orange-300 text-sm">用户程序</span>
+                        </div>
+                        <div class="directory-item flex items-center p-1 rounded-md bg-slate-700 relative">
+                            <div class="tree-connector"></div>
+                            <div class="dir-icon text-orange-500">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span class="font-mono">/var</span>
+                            <span class="ml-2 text-orange-300 text-sm">变量数据</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right side: Detailed Descriptions -->
+            <div class="w-1/2 pl-4">
+                <div class="space-y-4">
+                    <!-- /etc directory details -->
+                    <div class="bg-slate-800 rounded-lg p-4 shadow-lg border-l-4 border-orange-500">
+                        <h3 class="text-xl font-semibold mb-2">
+                            <i class="fas fa-cog text-orange-500 mr-2"></i>/etc
+                        </h3>
+                        <p class="text-gray-300 mb-2">系统的&#34;控制中心&#34;，包含所有系统级配置文件</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-sm">
+                                <i class="fas fa-users text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/etc/passwd</span>
+                                <p class="text-xs text-gray-500">用户账户信息</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-network-wired text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/etc/hosts</span>
+                                <p class="text-xs text-gray-500">主机名解析</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-shield-alt text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/etc/sudoers</span>
+                                <p class="text-xs text-gray-500">sudo权限配置</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-calendar text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/etc/crontab</span>
+                                <p class="text-xs text-gray-500">系统定时任务</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /var directory details -->
+                    <div class="bg-slate-800 rounded-lg p-4 shadow-lg border-l-4 border-orange-500">
+                        <h3 class="text-xl font-semibold mb-2">
+                            <i class="fas fa-database text-orange-500 mr-2"></i>/var
+                        </h3>
+                        <p class="text-gray-300 mb-2">存储经常变化的数据，如日志、缓存、数据库等</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-sm">
+                                <i class="fas fa-file-alt text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/var/log</span>
+                                <p class="text-xs text-gray-500">系统日志目录</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-database text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/var/lib</span>
+                                <p class="text-xs text-gray-500">应用程序状态数据</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-globe text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/var/www</span>
+                                <p class="text-xs text-gray-500">Web服务器文档根目录</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-archive text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/var/cache</span>
+                                <p class="text-xs text-gray-500">应用程序缓存</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /usr directory details -->
+                    <div class="bg-slate-800 rounded-lg p-4 shadow-lg border-l-4 border-orange-500">
+                        <h3 class="text-xl font-semibold mb-2">
+                            <i class="fas fa-desktop text-orange-500 mr-2"></i>/usr
+                        </h3>
+                        <p class="text-gray-300 mb-2">系统的&#34;软件仓库&#34;，包含大部分用户程序和数据</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="text-sm">
+                                <i class="fas fa-terminal text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/usr/bin</span>
+                                <p class="text-xs text-gray-500">用户命令</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-tools text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/usr/sbin</span>
+                                <p class="text-xs text-gray-500">系统管理命令</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-book text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/usr/share</span>
+                                <p class="text-xs text-gray-500">共享数据</p>
+                            </div>
+                            <div class="text-sm">
+                                <i class="fas fa-code text-blue-400 mr-1"></i>
+                                <span class="text-gray-400">/usr/local</span>
+                                <p class="text-xs text-gray-500">本地安装的软件</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

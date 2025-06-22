@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>文件操作与文本处理</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 768px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .command-card {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .command-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .blue-accent {
+            border-color: #3b82f6;
+        }
+
+        .orange-accent {
+            border-color: #f97316;
+        }
+
+        .command-syntax {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: rgba(15, 23, 42, 0.7);
+            border-radius: 4px;
+            padding: 4px 8px;
+        }
+
+        .command-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">文件操作与文本处理</h1>
+                <div class="text-sm text-gray-400">第 15 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-6">
+            <!-- Left Column -->
+            <div class="space-y-6">
+                <!-- File Viewing Section -->
+                <div>
+                    <h2 class="text-2xl font-semibold text-orange-500 mb-3 flex items-center">
+                        <i class="fas fa-eye mr-2"></i>文件内容查看命令
+                    </h2>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="command-card blue-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-blue-900 text-blue-400 mr-3">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">cat</h3>
+                                    <p class="text-sm text-gray-300">显示整个文件内容</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">cat filename</div>
+                        </div>
+                        <div class="command-card orange-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-orange-900 text-orange-400 mr-3">
+                                    <i class="fas fa-angle-double-down"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">less</h3>
+                                    <p class="text-sm text-gray-300">分页浏览文件</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">less filename</div>
+                        </div>
+                        <div class="command-card orange-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-orange-900 text-orange-400 mr-3">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">head</h3>
+                                    <p class="text-sm text-gray-300">查看文件开头</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">head -n 10 filename</div>
+                        </div>
+                        <div class="command-card blue-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-blue-900 text-blue-400 mr-3">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">tail</h3>
+                                    <p class="text-sm text-gray-300">查看文件结尾</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">tail -n 10 filename</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Text Editors Section -->
+                <div>
+                    <h2 class="text-2xl font-semibold text-blue-500 mb-3 flex items-center">
+                        <i class="fas fa-edit mr-2"></i>文本编辑器
+                    </h2>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="command-card blue-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-blue-900 text-blue-400 mr-3">
+                                    <i class="fas fa-terminal"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">vim/vi</h3>
+                                    <p class="text-sm text-gray-300">功能强大但学习曲线陡峭</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">vim filename</div>
+                        </div>
+                        <div class="command-card orange-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-orange-900 text-orange-400 mr-3">
+                                    <i class="fas fa-file-code"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">nano</h3>
+                                    <p class="text-sm text-gray-300">简单易用的编辑器</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">nano filename</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- File Search Section -->
+                <div>
+                    <h2 class="text-2xl font-semibold text-orange-500 mb-3 flex items-center">
+                        <i class="fas fa-search mr-2"></i>文件搜索
+                    </h2>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="command-card blue-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-blue-900 text-blue-400 mr-3">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">find</h3>
+                                    <p class="text-sm text-gray-300">强大的文件查找工具</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">find /path -name &#34;*.txt&#34;</div>
+                        </div>
+                        <div class="command-card orange-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-orange-900 text-orange-400 mr-3">
+                                    <i class="fas fa-search-location"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">locate</h3>
+                                    <p class="text-sm text-gray-300">基于数据库的快速搜索</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">locate filename</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column - Text Processing Tools -->
+            <div>
+                <h2 class="text-2xl font-semibold text-blue-500 mb-3 flex items-center">
+                    <i class="fas fa-tools mr-2"></i>文本处理工具
+                </h2>
+                <div class="space-y-4">
+                    <div class="command-card blue-accent p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="command-icon bg-blue-900 text-blue-400 mr-3">
+                                <i class="fas fa-filter"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">grep</h3>
+                                <p class="text-gray-300">文本搜索工具，用于在文件中查找匹配模式的行</p>
+                            </div>
+                        </div>
+                        <div class="command-syntax mt-2">grep &#34;pattern&#34; filename</div>
+                        <p class="text-sm text-gray-400 mt-1">常用选项：-i（忽略大小写）, -r（递归搜索）</p>
+                    </div>
+                    <div class="command-card orange-accent p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="command-icon bg-orange-900 text-orange-400 mr-3">
+                                <i class="fas fa-stream"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">sed</h3>
+                                <p class="text-gray-300">流编辑器，用于文本替换、删除和插入操作</p>
+                            </div>
+                        </div>
+                        <div class="command-syntax mt-2">sed &#39;s/old/new/g&#39; filename</div>
+                        <p class="text-sm text-gray-400 mt-1">示例：替换文本中所有的&#34;old&#34;为&#34;new&#34;</p>
+                    </div>
+                    <div class="command-card blue-accent p-4 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="command-icon bg-blue-900 text-blue-400 mr-3">
+                                <i class="fas fa-table"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">awk</h3>
+                                <p class="text-gray-300">强大的文本处理语言，特别适合处理结构化数据</p>
+                            </div>
+                        </div>
+                        <div class="command-syntax mt-2">awk &#39;{print $1}&#39; filename</div>
+                        <p class="text-sm text-gray-400 mt-1">示例：打印每行的第一个字段</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="command-card orange-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-orange-900 text-orange-400 mr-3">
+                                    <i class="fas fa-sort-alpha-down"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">sort / uniq</h3>
+                                    <p class="text-sm text-gray-300">排序和去重</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">sort file | uniq</div>
+                        </div>
+                        <div class="command-card blue-accent p-3 rounded-lg">
+                            <div class="flex items-center">
+                                <div class="command-icon bg-blue-900 text-blue-400 mr-3">
+                                    <i class="fas fa-calculator"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">wc</h3>
+                                    <p class="text-sm text-gray-300">统计行数、字数和字节数</p>
+                                </div>
+                            </div>
+                            <div class="command-syntax mt-2 text-sm">wc -l filename</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

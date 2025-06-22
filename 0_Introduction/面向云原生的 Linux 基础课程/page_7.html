@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Linux系统架构概览</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <script src="ppt-mode.js"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 886px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .architecture-layer {
+            transition: transform 0.3s ease;
+        }
+
+        .architecture-layer:hover {
+            transform: translateX(10px);
+        }
+
+        .layer-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">Linux系统架构概览</h1>
+                <div class="text-sm text-gray-400">第 7 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="flex justify-center">
+            <div class="w-3/4">
+                <!-- Architecture Diagram -->
+                <div class="relative h-[500px] flex flex-col justify-between" id="architecture-diagram">
+                    <!-- User Space Layer -->
+                    <div
+                        class="architecture-layer bg-gradient-to-r from-blue-900 to-blue-800 p-4 rounded-t-lg border-b-2 border-blue-500 shadow-lg">
+                        <div class="flex items-center">
+                            <div class="layer-icon bg-blue-700 mr-4">
+                                <i class="fas fa-desktop text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-blue-400">用户空间 (User Space)</h3>
+                                <p class="text-gray-300 mt-1">Ring 3 权限级别</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mt-4 pl-16">
+                            <div class="bg-blue-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-window-restore text-blue-400 mr-2"></i>
+                                <span>应用程序</span>
+                            </div>
+                            <div class="bg-blue-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-book text-blue-400 mr-2"></i>
+                                <span>系统库</span>
+                            </div>
+                            <div class="bg-blue-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-terminal text-blue-400 mr-2"></i>
+                                <span>Shell</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- System Call Interface -->
+                    <div
+                        class="architecture-layer bg-gradient-to-r from-orange-900 to-orange-800 p-4 border-y-2 border-orange-500 shadow-lg z-10">
+                        <div class="flex items-center">
+                            <div class="layer-icon bg-orange-700 mr-4">
+                                <i class="fas fa-exchange-alt text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-orange-400">系统调用接口 (System Call Interface)</h3>
+                                <p class="text-gray-300 mt-1">用户空间与内核空间的桥梁</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-around mt-4 pl-16">
+                            <div class="bg-orange-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-file text-orange-400 mr-2"></i>
+                                <span>文件操作</span>
+                            </div>
+                            <div class="bg-orange-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-tasks text-orange-400 mr-2"></i>
+                                <span>进程管理</span>
+                            </div>
+                            <div class="bg-orange-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-memory text-orange-400 mr-2"></i>
+                                <span>内存管理</span>
+                            </div>
+                            <div class="bg-orange-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-network-wired text-orange-400 mr-2"></i>
+                                <span>网络通信</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Kernel Space Layer -->
+                    <div
+                        class="architecture-layer bg-gradient-to-r from-green-900 to-green-800 p-4 border-b-2 border-green-500 shadow-lg">
+                        <div class="flex items-center">
+                            <div class="layer-icon bg-green-700 mr-4">
+                                <i class="fas fa-microchip text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-green-400">内核空间 (Kernel Space)</h3>
+                                <p class="text-gray-300 mt-1">Ring 0 权限级别</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mt-4 pl-16">
+                            <div class="bg-green-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-tasks text-green-400 mr-2"></i>
+                                <span>进程管理</span>
+                            </div>
+                            <div class="bg-green-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-memory text-green-400 mr-2"></i>
+                                <span>内存管理</span>
+                            </div>
+                            <div class="bg-green-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-folder-open text-green-400 mr-2"></i>
+                                <span>文件系统</span>
+                            </div>
+                            <div class="bg-green-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-network-wired text-green-400 mr-2"></i>
+                                <span>网络协议栈</span>
+                            </div>
+                            <div class="bg-green-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-hdd text-green-400 mr-2"></i>
+                                <span>设备驱动</span>
+                            </div>
+                            <div class="bg-green-800 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-shield-alt text-green-400 mr-2"></i>
+                                <span>安全机制</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hardware Layer -->
+                    <div
+                        class="architecture-layer bg-gradient-to-r from-gray-800 to-gray-700 p-4 rounded-b-lg shadow-lg">
+                        <div class="flex items-center">
+                            <div class="layer-icon bg-gray-600 mr-4">
+                                <i class="fas fa-server text-2xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-semibold text-gray-300">硬件层 (Hardware Layer)</h3>
+                                <p class="text-gray-400 mt-1">物理设备</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-around mt-4 pl-16">
+                            <div class="bg-gray-700 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-microchip text-gray-400 mr-2"></i>
+                                <span>CPU</span>
+                            </div>
+                            <div class="bg-gray-700 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-memory text-gray-400 mr-2"></i>
+                                <span>内存</span>
+                            </div>
+                            <div class="bg-gray-700 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-hdd text-gray-400 mr-2"></i>
+                                <span>磁盘</span>
+                            </div>
+                            <div class="bg-gray-700 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-network-wired text-gray-400 mr-2"></i>
+                                <span>网卡</span>
+                            </div>
+                            <div class="bg-gray-700 bg-opacity-50 p-3 rounded flex items-center">
+                                <i class="fas fa-plug text-gray-400 mr-2"></i>
+                                <span>其他设备</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Legend -->
+                <div class="flex justify-center mt-4 space-x-8">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-blue-500 rounded-full mr-2"></div>
+                        <span class="text-sm text-gray-300">用户应用</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-orange-500 rounded-full mr-2"></div>
+                        <span class="text-sm text-gray-300">系统调用</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-green-500 rounded-full mr-2"></div>
+                        <span class="text-sm text-gray-300">内核功能</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-gray-500 rounded-full mr-2"></div>
+                        <span class="text-sm text-gray-300">硬件资源</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="fixed bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+
+</body>
+
+</html>

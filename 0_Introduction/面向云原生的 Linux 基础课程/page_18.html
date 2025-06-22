@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>进程间通信(IPC)</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .ipc-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .ipc-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .ipc-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.3);
+            overflow-x: auto;
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">进程间通信(IPC)</h1>
+                <div class="text-sm text-gray-400">第 18 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-3 gap-4 mb-6">
+            <!-- 1. 管道 (Pipe) -->
+            <div class="ipc-card bg-slate-800 p-4 rounded-lg border-blue-500">
+                <div class="flex items-start">
+                    <div class="ipc-icon bg-blue-900 mr-4">
+                        <i class="fas fa-project-diagram text-2xl text-blue-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold mb-1">管道 (Pipe)</h3>
+                        <p class="text-gray-300 text-sm mb-2">单向数据流，先进先出（FIFO）</p>
+                        <ul class="text-gray-400 text-sm list-disc pl-4 mb-2">
+                            <li>匿名管道（只能在父子进程间使用）</li>
+                            <li>适用于简单的单向数据传输</li>
+                        </ul>
+                        <div class="code-block">
+                            <code class="text-green-400">ls | grep txt</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. 命名管道 (FIFO) -->
+            <div class="ipc-card bg-slate-800 p-4 rounded-lg border-purple-500">
+                <div class="flex items-start">
+                    <div class="ipc-icon bg-purple-900 mr-4">
+                        <i class="fas fa-file-alt text-2xl text-purple-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold mb-1">命名管道 (FIFO)</h3>
+                        <p class="text-gray-300 text-sm mb-2">有文件名的管道，可在无关进程间通信</p>
+                        <ul class="text-gray-400 text-sm list-disc pl-4 mb-2">
+                            <li>在文件系统中存在</li>
+                            <li>持久性通信</li>
+                        </ul>
+                        <div class="code-block">
+                            <code class="text-green-400">mkfifo mypipe</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 信号 (Signal) -->
+            <div class="ipc-card bg-slate-800 p-4 rounded-lg border-red-500">
+                <div class="flex items-start">
+                    <div class="ipc-icon bg-red-900 mr-4">
+                        <i class="fas fa-bell text-2xl text-red-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold mb-1">信号 (Signal)</h3>
+                        <p class="text-gray-300 text-sm mb-2">异步通知机制，用于进程间简单通信</p>
+                        <ul class="text-gray-400 text-sm list-disc pl-4 mb-2">
+                            <li>SIGTERM（终止）、SIGKILL（强制终止）</li>
+                            <li>SIGUSR1/2（用户定义）</li>
+                        </ul>
+                        <div class="code-block">
+                            <code class="text-green-400">kill -TERM 1234</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. 共享内存 -->
+            <div class="ipc-card bg-slate-800 p-4 rounded-lg border-yellow-500">
+                <div class="flex items-start">
+                    <div class="ipc-icon bg-yellow-900 mr-4">
+                        <i class="fas fa-memory text-2xl text-yellow-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold mb-1">共享内存</h3>
+                        <p class="text-gray-300 text-sm mb-2">最快的 IPC 方式，多个进程共享同一块内存</p>
+                        <ul class="text-gray-400 text-sm list-disc pl-4 mb-2">
+                            <li>需要信号量或互斥锁保证数据一致性</li>
+                            <li>高性能数据交换</li>
+                        </ul>
+                        <div class="code-block">
+                            <code class="text-green-400">shmget(), shmat()</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. 消息队列 -->
+            <div class="ipc-card bg-slate-800 p-4 rounded-lg border-green-500">
+                <div class="flex items-start">
+                    <div class="ipc-icon bg-green-900 mr-4">
+                        <i class="fas fa-list text-2xl text-green-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold mb-1">消息队列</h3>
+                        <p class="text-gray-300 text-sm mb-2">结构化消息传递，支持优先级</p>
+                        <ul class="text-gray-400 text-sm list-disc pl-4 mb-2">
+                            <li>消息可以在发送者退出后仍然存在</li>
+                            <li>支持消息优先级</li>
+                        </ul>
+                        <div class="code-block">
+                            <code class="text-green-400">msgget(), msgsnd()</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. 套接字 (Socket) -->
+            <div class="ipc-card bg-slate-800 p-4 rounded-lg border-orange-500">
+                <div class="flex items-start">
+                    <div class="ipc-icon bg-orange-900 mr-4">
+                        <i class="fas fa-network-wired text-2xl text-orange-500"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold mb-1">套接字 (Socket)</h3>
+                        <p class="text-gray-300 text-sm mb-2">支持网络通信，最灵活的 IPC 方式</p>
+                        <ul class="text-gray-400 text-sm list-disc pl-4 mb-2">
+                            <li>Unix 域套接字（本地）</li>
+                            <li>网络套接字（远程）</li>
+                        </ul>
+                        <div class="code-block">
+                            <code class="text-green-400">socket(), bind()</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="fixed bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

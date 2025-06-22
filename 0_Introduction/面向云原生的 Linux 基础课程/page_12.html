@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>终端和Shell基础</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 776px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .terminal-block {
+            background-color: rgba(15, 23, 42, 0.8);
+            border-radius: 6px;
+            border: 1px solid #4b5563;
+        }
+
+        .terminal-header {
+            border-bottom: 1px solid #4b5563;
+            padding: 8px 12px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
+
+        .terminal-content {
+            font-family: monospace;
+            padding: 12px;
+        }
+
+        .feature-card {
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .command-key {
+            background-color: #374151;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-family: monospace;
+            display: inline-block;
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">终端和Shell基础</h1>
+                <div class="text-sm text-gray-400">第 12 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-6">
+            <!-- Left Column -->
+            <div class="space-y-6">
+                <!-- Terminal Emulators -->
+                <div class="bg-slate-800 rounded-lg p-5 feature-card">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-500 rounded-full p-2 mr-3">
+                            <i class="fas fa-desktop text-white"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">终端模拟器</h2>
+                    </div>
+                    <ul class="ml-8 space-y-2">
+                        <li><i class="fab fa-ubuntu text-orange-500 mr-2"></i> GNOME Terminal (Ubuntu默认)</li>
+                        <li><i class="fab fa-linux text-blue-400 mr-2"></i> Konsole (KDE桌面环境)</li>
+                        <li><i class="fab fa-apple text-gray-300 mr-2"></i> iTerm2 (macOS)</li>
+                        <li><i class="fab fa-windows text-blue-300 mr-2"></i> Windows Terminal</li>
+                        <li><i class="fas fa-columns text-green-400 mr-2"></i> Terminator (支持分屏)</li>
+                    </ul>
+                </div>
+                <!-- Bash Shell Features -->
+                <div class="bg-slate-800 rounded-lg p-5 feature-card">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-orange-500 rounded-full p-2 mr-3">
+                            <i class="fas fa-terminal text-white"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">Bash Shell特性</h2>
+                    </div>
+                    <ul class="ml-8 space-y-2">
+                        <li><i class="fas fa-history text-blue-400 mr-2"></i> 命令历史：记录执行的命令</li>
+                        <li><i class="fas fa-indent text-blue-400 mr-2"></i> 命令补全：Tab键自动补全</li>
+                        <li><i class="fas fa-tag text-blue-400 mr-2"></i> 别名支持：创建命令别名</li>
+                        <li><i class="fas fa-tasks text-blue-400 mr-2"></i> 作业控制：前后台进程管理</li>
+                        <li><i class="fas fa-code text-blue-400 mr-2"></i> 脚本编程：支持复杂脚本逻辑</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right Column -->
+            <div class="space-y-6">
+                <!-- Command Line Prompt -->
+                <div class="bg-slate-800 rounded-lg p-5 feature-card">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-500 rounded-full p-2 mr-3">
+                            <i class="fas fa-dollar-sign text-white"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">命令行提示符解读</h2>
+                    </div>
+                    <div class="terminal-block mb-3">
+                        <div class="terminal-header">
+                            <span class="dot bg-red-500"></span>
+                            <span class="dot bg-yellow-500"></span>
+                            <span class="dot bg-green-500"></span>
+                            <span class="ml-2 text-gray-400 text-sm">bash</span>
+                        </div>
+                        <div class="terminal-content">
+                            <span class="text-green-400">student</span><span class="text-white">@</span><span
+                                class="text-blue-400">ubuntu</span><span class="text-white">:</span><span
+                                class="text-yellow-500">~/Documents</span><span class="text-white">$ _</span>
+                        </div>
+                    </div>
+                    <ul class="ml-8 space-y-1 text-sm">
+                        <li><span class="text-green-400">student</span>: 当前用户名</li>
+                        <li><span class="text-blue-400">ubuntu</span>: 主机名</li>
+                        <li><span class="text-yellow-500">~/Documents</span>: 当前目录 (~表示主目录)</li>
+                        <li><span class="text-white">$</span>: 普通用户提示符 (root用户为 #)</li>
+                    </ul>
+                </div>
+                <!-- Shortcuts and History -->
+                <div class="bg-slate-800 rounded-lg p-5 feature-card">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-orange-500 rounded-full p-2 mr-3">
+                            <i class="fas fa-keyboard text-white"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold">快捷键和命令历史</h2>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <h3 class="text-blue-400 font-medium mb-1">光标移动</h3>
+                            <div><span class="command-key">Ctrl+A</span> 移动到行首</div>
+                            <div><span class="command-key">Ctrl+E</span> 移动到行尾</div>
+                            <div><span class="command-key">Alt+F</span> 向前一个单词</div>
+                        </div>
+                        <div>
+                            <h3 class="text-blue-400 font-medium mb-1">文本编辑</h3>
+                            <div><span class="command-key">Ctrl+U</span> 删除至行首</div>
+                            <div><span class="command-key">Ctrl+K</span> 删除至行尾</div>
+                            <div><span class="command-key">Ctrl+W</span> 删除前一个单词</div>
+                        </div>
+                        <div>
+                            <h3 class="text-blue-400 font-medium mb-1">进程控制</h3>
+                            <div><span class="command-key">Ctrl+C</span> 终止当前进程</div>
+                            <div><span class="command-key">Ctrl+Z</span> 暂停当前进程</div>
+                            <div><span class="command-key">Ctrl+D</span> 发送EOF/退出</div>
+                        </div>
+                        <div>
+                            <h3 class="text-blue-400 font-medium mb-1">历史命令</h3>
+                            <div><span class="command-key">history</span> 查看历史</div>
+                            <div><span class="command-key">!!</span> 执行上一条命令</div>
+                            <div><span class="command-key">Ctrl+R</span> 搜索历史命令</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Footer -->
+        <footer class="absolute bottom-4 w-full text-center text-gray-500">
+            <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+        </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

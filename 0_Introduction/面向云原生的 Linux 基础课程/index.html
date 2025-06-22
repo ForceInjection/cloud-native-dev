@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Linux基础课程 - PPT模式</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }  .page-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .page-card:hover {
+            transform: translateY(-5px);
+            border-left-color: #3b82f6;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+        }
+        
+        .start-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            transition: all 0.3s ease;
+        }
+        
+        .start-btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+            transform: scale(1.05);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(249, 115, 22, 0.2));
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+    <div class="course-container mx-auto p-8">
+        <!-- 头部标题 -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-4 text-blue-500">Linux基础课程</h1>
+            <h2 class="text-3xl font-semibold mb-6 text-orange-500">系统架构、操作和容器技术入门</h2>
+            <p class="text-xl text-gray-400">PPT演示模式 - 交互式课程体验</p>
+        </div>
+
+        <!-- 课程大纲 -->
+        <div class="bg-slate-800 rounded-lg p-8">
+            <h3 class="text-2xl font-semibold mb-6 text-center text-blue-500">
+                <i class="fas fa-list-ul mr-3"></i>
+                课程大纲
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- 页面列表将通过JavaScript动态生成 -->
+                <div id="page-list" class="col-span-full">
+                    <!-- 页面卡片将在这里生成 -->
+                </div>
+            </div>
+        </div>
+        <!-- 快捷键说明 -->
+        <div class="mt-12 bg-slate-800 rounded-lg p-6">
+            <h3 class="text-xl font-semibold mb-4 text-orange-500">
+                <i class="fas fa-keyboard mr-2"></i>
+                快捷键说明
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                <div class="flex items-center">
+                    <kbd class="bg-slate-700 px-2 py-1 rounded mr-2">F5</kbd>
+                    <span>切换PPT模式</span>
+                </div>
+                <div class="flex items-center">
+                    <kbd class="bg-slate-700 px-2 py-1 rounded mr-2">← →</kbd>
+                    <span>上一页/下一页</span>
+                </div>
+                <div class="flex items-center">
+                    <kbd class="bg-slate-700 px-2 py-1 rounded mr-2">Space</kbd>
+                    <span>下一页</span>
+                </div>
+                <div class="flex items-center">
+                    <kbd class="bg-slate-700 px-2 py-1 rounded mr-2">F11</kbd>
+                    <span>全屏切换</span>
+                </div>
+                <div class="flex items-center">
+                    <kbd class="bg-slate-700 px-2 py-1 rounded mr-2">O</kbd>
+                    <span>页面概览</span>
+                </div>
+                <div class="flex items-center">
+                    <kbd class="bg-slate-700 px-2 py-1 rounded mr-2">ESC</kbd>
+                    <span>退出模式</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="text-center mt-8 text-gray-500">
+            <p>© 2025 星环科技 | 课程道师：Grissom</p>
+        </div>
+    </div>
+
+    <script>
+        // 页面信息配置
+        const pageInfo = [
+            // 模块一：课程导入 (1-6)
+            { num: 1, title: "课程介绍", desc: "Linux基础课程概述", category: "课程导入" },
+            { num: 2, title: "课程目标", desc: "学习目标和预期成果", category: "课程导入" },
+            { num: 3, title: "什么是Linux？", desc: "Linux操作系统基础介绍和发展历史", category: "课程导入" },
+            { num: 4, title: "Linux发行版介绍", desc: "主要Linux发行版特点和选择", category: "课程导入" },
+            { num: 5, title: "Linux 在云原生技术栈中的地位", desc: "Linux在云原生技术栈中的地位", category: "课程导入" },
+            { num: 6, title: "为什么容器技术选择Linux？", desc: "Linux系统的四大核心优势", category: "课程导入" },
+
+            // 模块二：系统架构基础 (7-11)
+            { num: 7, title: "Linux系统架构概览", desc: "Linux系统架构概览", category: "系统架构" },
+            { num: 8, title: "内核空间与用户空间", desc: "Linux系统的双空间架构", category: "系统架构" },
+            { num: 9, title: "处理器权限级别", desc: "Ring权限级别和保护机制", category: "系统架构" },
+            { num: 10, title: "系统调用接口", desc: "用户空间与内核空间的通信机制", category: "系统架构" },
+            { num: 11, title: "Shell的作用", desc: "Shell作为用户与系统的接口", category: "系统架构" },
+            
+            // 模块三：Shell与终端 (12-15)
+            { num: 12, title: "终端和Shell基础", desc: "终端模拟器和Shell环境", category: "Shell操作" },
+            { num: 13, title: "Shell脚本编程基础", desc: "Shell脚本编程基础", category: "Shell操作" },
+            { num: 14, title: "输入输出重定向", desc: "标准输入输出和管道操作", category: "Shell操作" },
+            { num: 15, title: "文件操作与文本处理", desc: "文件查看、编辑和文本处理工具", category: "Shell操作" },
+            
+            // 模块四：进程管理 (16-19)
+            { num: 16, title: "进程与线程概念", desc: "进程和线程的基本概念和区别", category: "进程管理" },
+            { num: 17, title: "进程状态转换", desc: "进程生命周期和状态变化", category: "进程管理" },
+            { num: 18, title: "进程间通信", desc: "IPC机制和通信方式", category: "进程管理" },
+            { num: 19, title: "进程管理", desc: "进程监控、控制和管理命令", category: "进程管理" },
+            
+            // 模块五：文件系统 (20-23)
+            { num: 20, title: "Linux目录结构", desc: "文件系统层次结构标准", category: "文件系统" },
+            { num: 21, title: "重要目录详解", desc: "系统关键目录的作用和内容", category: "文件系统" },
+            { num: 22, title: "文件权限和所有权", desc: "Linux权限系统和访问控制", category: "文件系统" },
+            { num: 23, title: "软件包管理", desc: "APT、YUM等包管理系统", category: "文件系统" },
+            
+            // 模块六：系统监控与网络 (24-26)
+            { num: 24, title: "系统监控", desc: "系统资源使用情况监控", category: "系统监控" },
+            { num: 25, title: "网络基础与配置", desc: "网络接口管理和配置", category: "系统监控" },
+            { num: 26, title: "SSH远程连接", desc: "安全远程访问和连接管理", category: "系统监控" },
+            
+            // 模块七：容器技术 (27-30)
+            { num: 27, title: "Linux容器相关概念", desc: "命名空间、控制组等容器技术基础", category: "容器技术" },
+            { num: 28, title: "容器与虚拟机对比", desc: "容器技术与传统虚拟化的区别", category: "容器技术" },
+            { num: 29, title: "Docker预备知识", desc: "Docker容器技术基础概念", category: "容器技术" },
+            { num: 30, title: "Kubernetes基础", desc: "容器编排和集群管理", category: "容器技术" },
+            
+            // 模块八：实践与总结 (31-32)
+            { num: 31, title: "实践项目与最佳实践", desc: "综合实践案例和经验总结", category: "实践总结" },
+            { num: 32, title: "学习资源与发展路径", desc: "进阶学习资源和职业发展", category: "实践总结" }
+        ];
+
+        // 生成页面列表
+        function generatePageList() {
+            const pageList = document.getElementById('page-list');
+            
+            // 按模块分组
+            const moduleGroups = {};
+            pageInfo.forEach(page => {
+                if (!moduleGroups[page.category]) {
+                    moduleGroups[page.category] = [];
+                }
+                moduleGroups[page.category].push(page);
+            });
+            
+            // 为每个模块创建分组
+            Object.keys(moduleGroups).forEach(category => {
+                // 创建模块标题
+                const moduleTitle = document.createElement('div');
+                moduleTitle.className = 'mb-4 mt-8 first:mt-0';
+                moduleTitle.innerHTML = `
+                    <h3 class="text-xl font-bold mb-2 border-b-2 border-blue-500 pb-2">
+                        ${category}
+                    </h3>
+                `;
+                pageList.appendChild(moduleTitle);
+                
+                // 创建该模块的页面网格
+                const gridContainer = document.createElement('div');
+                gridContainer.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6';
+                
+                moduleGroups[category].forEach(page => {
+                     const pageCard = document.createElement('div');
+                     pageCard.className = 'page-card bg-slate-700 p-4 rounded-lg cursor-pointer';
+                     pageCard.innerHTML = `
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-600 text-white px-2 py-1 rounded text-sm font-semibold mr-3">
+                                ${page.num}
+                            </span>
+                            <h4 class="font-semibold text-white">${page.title}</h4>
+                        </div>
+                        <p class="text-gray-400 text-sm">${page.desc}</p>
+                        <div class="mt-2">
+                            <span class="inline-block bg-gray-600 text-gray-300 px-2 py-1 rounded-full text-xs">
+                                ${page.category}
+                            </span>
+                        </div>
+                    `;
+                    pageCard.addEventListener('click', () => goToPage(page.num));
+                    gridContainer.appendChild(pageCard);
+                });
+                
+                pageList.appendChild(gridContainer);
+            });
+        }
+
+        // 跳转到指定页面
+        function goToPage(pageNum) {
+            window.location.href = `page_${pageNum}.html`;
+        }
+
+        // 开始演示
+        function startPresentation() {
+            window.location.href = 'page_1.html';
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            generatePageList();
+        });
+    </script>
+</body>
+</html>

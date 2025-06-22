@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>重要目录详解</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 808px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .directory-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .directory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .directory-card.regular {
+            border-left-color: #3b82f6;
+        }
+
+        .directory-card.virtual {
+            border-left-color: #f97316;
+        }
+
+        .directory-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .regular .directory-icon {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2));
+            color: #3b82f6;
+        }
+
+        .virtual .directory-icon {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.2), rgba(234, 88, 12, 0.2));
+            color: #f97316;
+        }
+
+        .directory-path {
+            font-family: monospace;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background-color: rgba(15, 23, 42, 0.7);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">重要目录详解</h1>
+                <div class="text-sm text-gray-400">第 21 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-2 gap-6">
+            <!-- Left Column: Regular Directories -->
+            <div class="space-y-4">
+                <h2 class="text-2xl font-semibold mb-4 text-blue-400">标准系统目录</h2>
+                <!-- /etc -->
+                <div class="directory-card regular bg-slate-800 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="directory-icon mr-4">
+                            <i class="fas fa-cogs text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="directory-path mr-2">/etc</span>
+                                <span class="text-xl font-semibold">系统配置文件目录</span>
+                            </div>
+                            <p class="text-gray-300 mb-2">存储系统级别的配置文件，是系统的&#34;控制中心&#34;</p>
+                            <div class="bg-slate-900 p-2 rounded text-sm font-mono">
+                                <div><span class="text-blue-400">├──</span> /etc/passwd <span class="text-gray-400">#
+                                        用户账户信息</span></div>
+                                <div><span class="text-blue-400">├──</span> /etc/shadow <span class="text-gray-400">$
+                                        用户密码哈希</span></div>
+                                <div><span class="text-blue-400">├──</span> /etc/hosts <span class="text-gray-400">#
+                                        主机名解析</span></div>
+                                <div><span class="text-blue-400">└──</span> /etc/systemd/ <span class="text-gray-400">#
+                                        服务配置</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /var -->
+                <div class="directory-card regular bg-slate-800 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="directory-icon mr-4">
+                            <i class="fas fa-exchange-alt text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="directory-path mr-2">/var</span>
+                                <span class="text-xl font-semibold">变量数据目录</span>
+                            </div>
+                            <p class="text-gray-300 mb-2">存储经常变化的数据，如日志、缓存、数据库等</p>
+                            <div class="bg-slate-900 p-2 rounded text-sm font-mono">
+                                <div><span class="text-blue-400">├──</span> /var/log/ <span class="text-gray-400">#
+                                        系统日志</span></div>
+                                <div><span class="text-blue-400">├──</span> /var/lib/ <span class="text-gray-400">#
+                                        应用程序状态数据</span></div>
+                                <div><span class="text-blue-400">├──</span> /var/www/ <span class="text-gray-400">#
+                                        Web服务器文件</span></div>
+                                <div><span class="text-blue-400">└──</span> /var/cache/ <span class="text-gray-400">#
+                                        应用缓存</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /usr -->
+                <div class="directory-card regular bg-slate-800 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="directory-icon mr-4">
+                            <i class="fas fa-desktop text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="directory-path mr-2">/usr</span>
+                                <span class="text-xl font-semibold">用户程序目录</span>
+                            </div>
+                            <p class="text-gray-300 mb-2">包含大部分用户程序和数据，系统的&#34;软件仓库&#34;</p>
+                            <div class="bg-slate-900 p-2 rounded text-sm font-mono">
+                                <div><span class="text-blue-400">├──</span> /usr/bin/ <span class="text-gray-400">#
+                                        用户命令</span></div>
+                                <div><span class="text-blue-400">├──</span> /usr/lib/ <span class="text-gray-400">#
+                                        共享库文件</span></div>
+                                <div><span class="text-blue-400">├──</span> /usr/share/ <span class="text-gray-400">#
+                                        共享数据</span></div>
+                                <div><span class="text-blue-400">└──</span> /usr/local/ <span class="text-gray-400">#
+                                        本地安装软件</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Virtual Filesystems -->
+            <div class="space-y-4">
+                <h2 class="text-2xl font-semibold mb-4 text-orange-400">特殊的虚拟文件系统</h2>
+                <!-- /proc -->
+                <div class="directory-card virtual bg-slate-800 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="directory-icon mr-4">
+                            <i class="fas fa-microchip text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="directory-path mr-2">/proc</span>
+                                <span class="text-xl font-semibold">进程和内核信息</span>
+                            </div>
+                            <p class="text-gray-300 mb-2">提供访问内核数据结构的接口，展示系统和进程信息</p>
+                            <div class="bg-slate-900 p-2 rounded text-sm font-mono">
+                                <div><span class="text-orange-400">├──</span> /proc/cpuinfo <span
+                                        class="text-gray-400"># CPU信息</span></div>
+                                <div><span class="text-orange-400">├──</span> /proc/meminfo <span
+                                        class="text-gray-400"># 内存使用情况</span></div>
+                                <div><span class="text-orange-400">├──</span> /proc/[pid]/ <span class="text-gray-400">#
+                                        进程信息</span></div>
+                                <div><span class="text-orange-400">└──</span> /proc/sys/ <span class="text-gray-400">#
+                                        内核参数</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /sys -->
+                <div class="directory-card virtual bg-slate-800 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="directory-icon mr-4">
+                            <i class="fas fa-hdd text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="directory-path mr-2">/sys</span>
+                                <span class="text-xl font-semibold">系统设备和内核信息</span>
+                            </div>
+                            <p class="text-gray-300 mb-2">提供设备驱动程序和内核子系统的信息接口</p>
+                            <div class="bg-slate-900 p-2 rounded text-sm font-mono">
+                                <div><span class="text-orange-400">├──</span> /sys/class/ <span class="text-gray-400">#
+                                        设备类别</span></div>
+                                <div><span class="text-orange-400">├──</span> /sys/devices/ <span
+                                        class="text-gray-400"># 设备层次结构</span></div>
+                                <div><span class="text-orange-400">├──</span> /sys/module/ <span class="text-gray-400">#
+                                        内核模块</span></div>
+                                <div><span class="text-orange-400">└──</span> /sys/fs/cgroup/ <span
+                                        class="text-gray-400"># 控制组</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /dev -->
+                <div class="directory-card virtual bg-slate-800 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <div class="directory-icon mr-4">
+                            <i class="fas fa-plug text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-2">
+                                <span class="directory-path mr-2">/dev</span>
+                                <span class="text-xl font-semibold">设备文件目录</span>
+                            </div>
+                            <p class="text-gray-300 mb-2">包含设备文件，代表系统中的硬件设备</p>
+                            <div class="bg-slate-900 p-2 rounded text-sm font-mono">
+                                <div><span class="text-orange-400">├──</span> /dev/sda <span class="text-gray-400">#
+                                        第一个SATA硬盘</span></div>
+                                <div><span class="text-orange-400">├──</span> /dev/null <span class="text-gray-400">#
+                                        空设备（数据黑洞）</span></div>
+                                <div><span class="text-orange-400">├──</span> /dev/tty <span class="text-gray-400">#
+                                        控制终端</span></div>
+                                <div><span class="text-orange-400">└──</span> /dev/random <span class="text-gray-400">#
+                                        随机数生成器</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500 -ml-8">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>处理器权限级别</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .ring-description {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ring-description:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">权限级别详解</h1>
+                <div class="text-sm text-gray-400">第 9 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="flex flex-row justify-between mt-6 h-[560px]">
+            <!-- Left Side: Ring Visualization -->
+            <div class="w-1/2 flex items-center justify-center">
+                <div class="relative" id="ring-visualization"></div>
+            </div>
+            <!-- Right Side: Ring Descriptions -->
+            <div class="w-1/2 flex flex-col justify-center space-y-4 pl-6">
+                <p class="text-lg mb-4">现代CPU采用<span class="text-orange-500 font-bold">环形保护机制</span>，将权限分为4个级别（Ring
+                    0-3），实现安全隔离：</p>
+                <div class="ring-description bg-slate-800 border-l-4 border-red-600 p-4 rounded-lg shadow-lg">
+                    <div class="flex items-center">
+                        <div class="mr-4 bg-red-600 bg-opacity-20 p-3 rounded-full">
+                            <i class="fas fa-shield-alt text-2xl text-red-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Ring 0（内核态）</h3>
+                            <p class="text-gray-300">最高权限级别，可以执行所有CPU指令，访问所有内存地址，直接操作硬件，修改系统关键数据结构</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ring-description bg-slate-800 border-l-4 border-yellow-600 p-4 rounded-lg shadow-lg">
+                    <div class="flex items-center">
+                        <div class="mr-4 bg-yellow-600 bg-opacity-20 p-3 rounded-full">
+                            <i class="fas fa-microchip text-2xl text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Ring 1（设备驱动）</h3>
+                            <p class="text-gray-300">通常不使用，设计用于设备驱动程序，具有部分硬件访问权限</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ring-description bg-slate-800 border-l-4 border-green-600 p-4 rounded-lg shadow-lg">
+                    <div class="flex items-center">
+                        <div class="mr-4 bg-green-600 bg-opacity-20 p-3 rounded-full">
+                            <i class="fas fa-cogs text-2xl text-green-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Ring 2（系统服务）</h3>
+                            <p class="text-gray-300">通常不使用，设计用于特权系统服务，具有有限的系统资源访问权限</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ring-description bg-slate-800 border-l-4 border-blue-500 p-4 rounded-lg shadow-lg">
+                    <div class="flex items-center">
+                        <div class="mr-4 bg-blue-500 bg-opacity-20 p-3 rounded-full">
+                            <i class="fas fa-user text-2xl text-blue-500"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Ring 3（用户态）</h3>
+                            <p class="text-gray-300">最低权限级别，只能执行非特权指令，只能访问分配给自己的内存，不能直接操作硬件，需要通过系统调用请求内核服务</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full pr-16 text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script>
+        // Set up D3.js visualization
+        const svg = d3.select("#ring-visualization")
+            .append("svg")
+            .attr("width", 480)
+            .attr("height", 480);
+
+        const g = svg.append("g")
+            .attr("transform", "translate(240, 240)");
+
+        // Define rings
+        const rings = [
+            { radius: 240, color: "#3b82f6", label: "Ring 3", innerText: "用户态", opacity: 0.2 },
+            { radius: 180, color: "#10b981", label: "Ring 2", innerText: "系统服务", opacity: 0.3 },
+            { radius: 120, color: "#f59e0b", label: "Ring 1", innerText: "设备驱动", opacity: 0.4 },
+            { radius: 60, color: "#ef4444", label: "Ring 0", innerText: "内核态", opacity: 0.6 }
+        ];
+
+        // Draw rings
+        rings.forEach(ring => {
+            g.append("circle")
+                .attr("r", ring.radius)
+                .attr("fill", ring.color)
+                .attr("fill-opacity", ring.opacity)
+                .attr("stroke", ring.color)
+                .attr("stroke-width", 2);
+
+            // Add ring label on top
+            g.append("text")
+                .attr("y", -ring.radius + 20)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-weight", "bold")
+                .attr("font-size", "16px")
+                .text(ring.label);
+
+            // Add descriptive text inside ring
+            g.append("text")
+                .attr("y", ring.radius > 100 ? -ring.radius + 40 : -20)
+                .attr("text-anchor", "middle")
+                .attr("fill", "white")
+                .attr("font-size", "12px")
+                .text(ring.innerText);
+        });
+
+        // Add central text
+        g.append("text")
+            .attr("text-anchor", "middle")
+            .attr("fill", "white")
+            .attr("font-weight", "bold")
+            .attr("font-size", "18px")
+            .text("CPU");
+
+        // Add arrows representing privilege boundaries
+        const arrowData = [
+            { x1: 0, y1: -60, x2: 0, y2: -90, color: "#ef4444" },
+            { x1: 0, y1: -110, x2: 0, y2: -140, color: "#f59e0b" },
+            { x1: 0, y1: -160, x2: 0, y2: -190, color: "#10b981" }
+        ];
+
+        arrowData.forEach(arrow => {
+            g.append("line")
+                .attr("x1", arrow.x1)
+                .attr("y1", arrow.y1)
+                .attr("x2", arrow.x2)
+                .attr("y2", arrow.y2)
+                .attr("stroke", arrow.color)
+                .attr("stroke-width", 2)
+                .attr("marker-end", "url(#arrowhead)");
+        });
+
+        // Define arrowhead marker
+        svg.append("defs").append("marker")
+            .attr("id", "arrowhead")
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 8)
+            .attr("refY", 0)
+            .attr("markerWidth", 6)
+            .attr("markerHeight", 6)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "white");
+    </script>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

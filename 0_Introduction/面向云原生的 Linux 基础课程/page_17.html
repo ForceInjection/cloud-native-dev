@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>进程状态转换</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 772px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .state-node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .state-node:hover {
+            filter: brightness(1.2);
+        }
+
+        .state-label {
+            font-weight: bold;
+            text-anchor: middle;
+            dominant-baseline: central;
+            pointer-events: none;
+        }
+
+        .transition-label {
+            font-size: 14px;
+            fill: #e2e8f0;
+            text-anchor: middle;
+        }
+
+        .arrow {
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .arrow-head {
+            fill: #e2e8f0;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">进程状态转换</h1>
+                <div class="text-sm text-gray-400">第 17 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="flex flex-col items-center">
+            <!-- Process State Diagram -->
+            <div class="w-full h-96" id="process-state-diagram"></div>
+            <!-- Legend and Explanation -->
+            <div class="grid grid-cols-2 gap-8 mt-4 w-full max-w-5xl">
+                <!-- State Descriptions -->
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-3 text-orange-500">进程状态详解</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="legend-item">
+                            <div class="legend-color bg-blue-600"></div>
+                            <span><strong>创建（New）</strong>: 进程正在被创建，分配资源</span>
+                        </li>
+                        <li class="legend-item">
+                            <div class="legend-color bg-green-600"></div>
+                            <span><strong>就绪（Ready）</strong>: 进程已准备好运行，等待 CPU 分配</span>
+                        </li>
+                        <li class="legend-item">
+                            <div class="legend-color bg-orange-500"></div>
+                            <span><strong>运行（Running）</strong>: 进程正在 CPU 上执行</span>
+                        </li>
+                        <li class="legend-item">
+                            <div class="legend-color bg-purple-600"></div>
+                            <span><strong>等待（Waiting）</strong>: 进程等待某个事件发生（如 I/O 完成）</span>
+                        </li>
+                        <li class="legend-item">
+                            <div class="legend-color bg-red-600"></div>
+                            <span><strong>终止（Terminated）</strong>: 进程执行完毕，释放资源</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Transition Explanations -->
+                <div class="bg-slate-800 p-4 rounded-lg">
+                    <h3 class="text-lg font-semibold mb-3 text-orange-500">状态转换条件</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
+                            <span><strong>创建→就绪</strong>: fork() 创建进程，exec() 执行程序</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
+                            <span><strong>就绪→运行</strong>: 调度器选择进程并分配 CPU 时间</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
+                            <span><strong>运行→就绪</strong>: 时间片用完或被更高优先级进程抢占</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
+                            <span><strong>运行→等待</strong>: 等待 I/O 完成或其他资源</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
+                            <span><strong>等待→就绪</strong>: 事件完成或资源可用</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-arrow-right text-blue-500 mt-1 mr-2"></i>
+                            <span><strong>运行→终止</strong>: 调用 exit() 或收到终止信号</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500 pr-16">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script>
+        // D3.js Process State Diagram
+        document.addEventListener('DOMContentLoaded', function () {
+            // SVG setup
+            const width = 1000;
+            const height = 380;
+
+            const svg = d3.select("#process-state-diagram")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height)
+                .append("g")
+                .attr("transform", "translate(0, 10)");
+
+            // Define the states
+            const states = [
+                { id: "created", name: "创建", x: 150, y: 180, color: "#2563eb", icon: "fa-plus-circle" },
+                { id: "ready", name: "就绪", x: 350, y: 100, color: "#16a34a", icon: "fa-clock" },
+                { id: "running", name: "运行", x: 650, y: 100, color: "#f97316", icon: "fa-play-circle" },
+                { id: "waiting", name: "等待", x: 650, y: 260, color: "#9333ea", icon: "fa-pause-circle" },
+                { id: "terminated", name: "终止", x: 850, y: 180, color: "#dc2626", icon: "fa-stop-circle" }
+            ];
+
+            // Define the transitions
+            const transitions = [
+                { source: "created", target: "ready", label: "fork(), exec()" },
+                { source: "ready", target: "running", label: "调度" },
+                { source: "running", target: "ready", label: "时间片用完或被抢占", curve: 0.4 },
+                { source: "running", target: "waiting", label: "等待I/O或资源" },
+                { source: "waiting", target: "ready", label: "事件完成或资源可用" },
+                { source: "running", target: "terminated", label: "exit()" }
+            ];
+
+            // Create arrow marker definition
+            svg.append("defs").append("marker")
+                .attr("id", "arrowhead")
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 8)
+                .attr("refY", 0)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("class", "arrow-head");
+
+            // Draw the transition paths
+            transitions.forEach(transition => {
+                const source = states.find(s => s.id === transition.source);
+                const target = states.find(s => s.id === transition.target);
+
+                // Calculate path
+                let path;
+                if (transition.curve) {
+                    // Curved path for feedback loops
+                    const midX = (source.x + target.x) / 2;
+                    const midY = (source.y + target.y) / 2 - 70 * transition.curve;
+                    path = `M${source.x},${source.y} Q${midX},${midY} ${target.x},${target.y}`;
+                } else {
+                    // Direct path
+                    path = `M${source.x},${source.y} L${target.x},${target.y}`;
+                }
+
+                // Draw path
+                svg.append("path")
+                    .attr("d", path)
+                    .attr("class", "arrow")
+                    .attr("stroke", "#e2e8f0")
+                    .attr("marker-end", "url(#arrowhead)");
+
+                // Add transition label
+                const midpoint = getPointAtLength(path, 0.5);
+                svg.append("text")
+                    .attr("x", midpoint.x)
+                    .attr("y", midpoint.y - 10)
+                    .attr("class", "transition-label")
+                    .text(transition.label);
+            });
+
+            // Draw the state nodes
+            const stateGroups = svg.selectAll(".state-node")
+                .data(states)
+                .enter()
+                .append("g")
+                .attr("class", "state-node")
+                .attr("transform", d => `translate(${d.x}, ${d.y})`);
+
+            // Add circle for each state
+            stateGroups.append("circle")
+                .attr("r", 50)
+                .attr("fill", d => d.color)
+                .attr("stroke", "#e2e8f0")
+                .attr("stroke-width", 2);
+
+            // Add icon for each state
+            stateGroups.append("text")
+                .attr("class", "fa-solid")
+                .attr("text-anchor", "middle")
+                .attr("dominant-baseline", "central")
+                .attr("y", -5)
+                .attr("font-size", "24px")
+                .attr("fill", "white")
+                .text(d => {
+                    const iconMap = {
+                        "fa-plus-circle": "\uf055",
+                        "fa-clock": "\uf017",
+                        "fa-play-circle": "\uf144",
+                        "fa-pause-circle": "\uf28b",
+                        "fa-stop-circle": "\uf28d"
+                    };
+                    return iconMap[d.icon];
+                });
+
+            // Add name for each state
+            stateGroups.append("text")
+                .attr("class", "state-label")
+                .attr("y", 20)
+                .attr("fill", "white")
+                .attr("font-size", "16px")
+                .text(d => d.name);
+
+            // Helper function to get point at a specific length percentage along a path
+            function getPointAtLength(pathString, percentage) {
+                const tempPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                tempPath.setAttribute("d", pathString);
+                const length = tempPath.getTotalLength();
+                const point = tempPath.getPointAtLength(length * percentage);
+                return point;
+            }
+        });
+    </script>
+
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

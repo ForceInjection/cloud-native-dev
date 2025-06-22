@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Shell的作用</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .shell-box {
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.1), rgba(249, 115, 22, 0.1));
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .shell-type {
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .shell-type:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-left-color: #3b82f6;
+            transform: translateX(5px);
+        }
+
+        .flow-arrow {
+            position: relative;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #f97316);
+        }
+
+        .flow-arrow::after {
+            content: "";
+            position: absolute;
+            right: -10px;
+            top: -8px;
+            width: 0;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-bottom: 9px solid transparent;
+            border-left: 15px solid #f97316;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-8">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">Shell的作用</h1>
+                <div class="text-sm text-gray-400">第 11 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Shell Diagram Section -->
+        <div class="flex justify-center items-center mb-8">
+            <div class="text-center p-4 bg-slate-800 rounded-lg">
+                <i class="fas fa-user text-3xl text-gray-300"></i>
+                <div class="mt-1">用户</div>
+            </div>
+            <div class="flow-arrow w-20 mx-4"></div>
+            <div class="shell-box p-5 text-center w-64">
+                <i class="fas fa-terminal text-4xl text-blue-500 mb-2"></i>
+                <h3 class="text-xl font-semibold">Shell</h3>
+                <p class="text-sm text-gray-300">命令行界面</p>
+            </div>
+            <div class="flow-arrow w-20 mx-4"></div>
+            <div class="text-center p-4 bg-slate-800 rounded-lg">
+                <i class="fas fa-microchip text-3xl text-orange-500"></i>
+                <div class="mt-1">内核</div>
+            </div>
+        </div>
+        <!-- Shell Functions Section -->
+        <div class="grid grid-cols-3 gap-6 mb-8">
+            <div class="feature-card bg-slate-800 p-5 rounded-lg">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                        <i class="fas fa-code-branch text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">命令解释器</h3>
+                </div>
+                <ul class="text-gray-300 space-y-2">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>解析用户输入的命令</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>调用相应的系统程序</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>返回执行结果</li>
+                </ul>
+            </div>
+            <div class="feature-card bg-slate-800 p-5 rounded-lg">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mr-3">
+                        <i class="fas fa-code text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">编程环境</h3>
+                </div>
+                <ul class="text-gray-300 space-y-2">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>支持变量和函数</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>提供控制结构（if、for、while）</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>支持脚本编程</li>
+                </ul>
+            </div>
+            <div class="feature-card bg-slate-800 p-5 rounded-lg">
+                <div class="flex items-center mb-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mr-3">
+                        <i class="fas fa-tasks text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">作业控制</h3>
+                </div>
+                <ul class="text-gray-300 space-y-2">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>前台和后台进程管理</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>进程组管理</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>信号处理</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Shell Types Section -->
+        <div class="bg-slate-800 p-5 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">常见 Shell 类型</h3>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="shell-type p-3 rounded">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-2">
+                            <i class="fab fa-linux text-white text-sm"></i>
+                        </div>
+                        <h4 class="font-semibold">Bash</h4>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-1">最常用的Shell，功能丰富</p>
+                </div>
+                <div class="shell-type p-3 rounded">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center mr-2">
+                            <i class="fas fa-bolt text-white text-sm"></i>
+                        </div>
+                        <h4 class="font-semibold">Zsh</h4>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-1">功能强大，支持插件</p>
+                </div>
+                <div class="shell-type p-3 rounded">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mr-2">
+                            <i class="fas fa-fish text-white text-sm"></i>
+                        </div>
+                        <h4 class="font-semibold">Fish</h4>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-1">用户友好，智能补全</p>
+                </div>
+                <div class="shell-type p-3 rounded">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center mr-2">
+                            <i class="fas fa-tachometer-alt text-white text-sm"></i>
+                        </div>
+                        <h4 class="font-semibold">Dash</h4>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-1">轻量级，POSIX兼容</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="absolute bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>

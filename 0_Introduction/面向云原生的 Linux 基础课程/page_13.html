@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Shell脚本编程基础</title>
+    <link href="https://picture-search.tiangong.cn/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://picture-search.tiangong.cn/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide-container {
+            max-width: 1280px;
+            width: 100%;
+            min-height: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .code-block {
+            font-family: 'Courier New', monospace;
+            border-radius: 0.375rem;
+            background-color: #1e293b;
+            border-left: 4px solid #3b82f6;
+            padding: 0.75rem 1rem;
+        }
+
+        .feature-card {
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white">
+    <div class="slide-container mx-auto p-8">
+        <!-- Header Section -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between">
+                <h1 class="text-4xl font-bold text-blue-500">Shell脚本编程基础</h1>
+                <div class="text-sm text-gray-400">第 13 页 / 共 32 页</div>
+            </div>
+            <div class="w-full h-1 bg-gradient-to-r from-blue-500 to-orange-500 mt-2"></div>
+        </header>
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 gap-6">
+            <!-- Shell 脚本基础概念 -->
+            <div class="feature-card bg-slate-800 p-6 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="icon-box bg-blue-500 bg-opacity-20 mr-4">
+                        <i class="fas fa-terminal text-2xl text-blue-500"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold">Shell 脚本基础</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-blue-400 mb-3">Shell 脚本优势</h3>
+                        <ul class="space-y-2 text-sm text-gray-300">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>自动化重复任务</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>批量处理文件</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>系统管理和监控</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>简化复杂操作</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>提高工作效率</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-orange-400 mb-3">常用 Shell 类型</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center">
+                                <span class="bg-blue-500 text-white px-2 py-1 rounded text-xs mr-2">bash</span>
+                                <span class="text-gray-300">Bourne Again Shell - 最常用</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-green-500 text-white px-2 py-1 rounded text-xs mr-2">zsh</span>
+                                <span class="text-gray-300">Z Shell - 功能丰富</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-purple-500 text-white px-2 py-1 rounded text-xs mr-2">fish</span>
+                                <span class="text-gray-300">Friendly Interactive Shell - 用户友好</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-yellow-500 text-white px-2 py-1 rounded text-xs mr-2">sh</span>
+                                <span class="text-gray-300">Bourne Shell - 传统 Shell</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="bg-red-500 text-white px-2 py-1 rounded text-xs mr-2">dash</span>
+                                <span class="text-gray-300">Debian Almquist Shell - 轻量级</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 脚本创建和执行 -->
+            <div class="grid grid-cols-2 gap-6">
+                <div class="feature-card bg-slate-800 p-5 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-box bg-blue-500 bg-opacity-20 mr-3">
+                            <i class="fas fa-file-code text-2xl text-blue-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">脚本创建和执行</h3>
+                    </div>
+                    <p class="text-gray-300 mb-3">创建带有执行权限的脚本文件，使用Shebang定义解释器</p>
+                    <div class="code-block text-sm">
+                        <code>
+<span class="text-green-400"># 创建脚本文件</span><br/>
+<span class="text-blue-400">echo</span> <span class="text-orange-300">'#!/usr/bin/env bash'</span> > script.sh<br/>
+<span class="text-blue-400">echo</span> <span class="text-orange-300">'echo "Hello World"'</span> >> script.sh<br/><br/>
+<span class="text-green-400"># 添加执行权限</span><br/>
+<span class="text-blue-400">chmod</span> +x script.sh<br/><br/>
+<span class="text-green-400"># 执行脚本</span><br/>
+./script.sh<br/>
+<span class="text-green-400"># 或者</span><br/>
+bash script.sh</code>
+                    </div>
+                </div>
+
+                <!-- 变量定义和使用 -->
+                <div class="feature-card bg-slate-800 p-5 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-box bg-green-500 bg-opacity-20 mr-3">
+                            <i class="fas fa-dollar-sign text-2xl text-green-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">变量定义和使用</h3>
+                    </div>
+                    <p class="text-gray-300 mb-3">定义变量时不加$符号，使用时需要加$符号</p>
+                    <div class="code-block text-sm">
+                        <code>
+<span class="text-green-400"># 变量定义（等号两边不能有空格）</span><br/>
+name="Linux"<br/>
+age=25<br/>
+version="2.0"<br/><br/>
+<span class="text-green-400"># 变量使用</span><br/>
+<span class="text-blue-400">echo</span> <span class="text-orange-300">"Hello $name"</span><br/>
+<span class="text-blue-400">echo</span> <span class="text-orange-300">"Age: ${age}"</span><br/>
+<span class="text-blue-400">echo</span> <span class="text-orange-300">"Version: $version"</span></code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 条件判断 -->
+            <div class="grid grid-cols-2 gap-6">
+                <div class="feature-card bg-slate-800 p-5 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-box bg-purple-500 bg-opacity-20 mr-3">
+                            <i class="fas fa-code-branch text-2xl text-purple-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">条件判断 if-then-else</h3>
+                    </div>
+                    <p class="text-gray-300 mb-3">使用 if 语句进行条件判断和分支控制</p>
+                    <div class="code-block text-sm">
+                        <code>
+<span class="text-green-400"># 基本 if 语句</span><br/>
+age=18<br/>
+<span class="text-purple-400">if</span> [ $age -ge 18 ]; <span class="text-purple-400">then</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"你已经成年了"</span><br/>
+<span class="text-purple-400">fi</span><br/><br/>
+<span class="text-green-400"># if-else 语句</span><br/>
+score=85<br/>
+<span class="text-purple-400">if</span> [ $score -ge 90 ]; <span class="text-purple-400">then</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"优秀"</span><br/>
+<span class="text-purple-400">else</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"良好"</span><br/>
+<span class="text-purple-400">fi</span></code>
+                    </div>
+                </div>
+
+                <!-- 测试条件 -->
+                <div class="feature-card bg-slate-800 p-5 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-box bg-yellow-500 bg-opacity-20 mr-3">
+                            <i class="fas fa-check-double text-2xl text-yellow-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">测试条件详解</h3>
+                    </div>
+                    <p class="text-gray-300 mb-3">数值比较、字符串比较、文件测试等条件</p>
+                    <div class="code-block text-sm">
+                        <code>
+<span class="text-green-400"># 数值比较</span><br/>
+[ $num1 -eq $num2 ]&nbsp;&nbsp;<span class="text-gray-400"># 等于</span><br/>
+[ $num1 -ne $num2 ]&nbsp;&nbsp;<span class="text-gray-400"># 不等于</span><br/>
+[ $num1 -lt $num2 ]&nbsp;&nbsp;<span class="text-gray-400"># 小于</span><br/>
+[ $num1 -gt $num2 ]&nbsp;&nbsp;<span class="text-gray-400"># 大于</span><br/><br/>
+<span class="text-green-400"># 字符串比较</span><br/>
+[ "$str1" = "$str2" ]&nbsp;&nbsp;<span class="text-gray-400"># 相等</span><br/>
+[ -z "$str" ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-400"># 字符串为空</span><br/>
+[ -n "$str" ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-400"># 字符串非空</span><br/><br/>
+<span class="text-green-400"># 文件测试</span><br/>
+[ -f "$file" ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-400"># 是普通文件</span><br/>
+[ -d "$file" ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-400"># 是目录</span><br/>
+[ -e "$file" ]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-400"># 文件存在</span></code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 循环结构 -->
+            <div class="grid grid-cols-2 gap-6">
+                <div class="feature-card bg-slate-800 p-5 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-box bg-red-500 bg-opacity-20 mr-3">
+                            <i class="fas fa-sync-alt text-2xl text-red-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">for 循环</h3>
+                    </div>
+                    <p class="text-gray-300 mb-3">遍历列表、数组或范围进行重复操作</p>
+                    <div class="code-block text-sm">
+                        <code>
+<span class="text-green-400"># 遍历列表</span><br/>
+<span class="text-red-400">for</span> item <span class="text-red-400">in</span> apple banana orange; <span class="text-red-400">do</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"Fruit: $item"</span><br/>
+<span class="text-red-400">done</span><br/><br/>
+<span class="text-green-400"># 遍历数字范围</span><br/>
+<span class="text-red-400">for</span> i <span class="text-red-400">in</span> {1..5}; <span class="text-red-400">do</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"Number: $i"</span><br/>
+<span class="text-red-400">done</span><br/><br/>
+<span class="text-green-400"># 遍历文件</span><br/>
+<span class="text-red-400">for</span> file <span class="text-red-400">in</span> *.txt; <span class="text-red-400">do</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"Processing $file"</span><br/>
+<span class="text-red-400">done</span></code>
+                    </div>
+                </div>
+
+                <!-- while 循环 -->
+                <div class="feature-card bg-slate-800 p-5 rounded-lg shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="icon-box bg-indigo-500 bg-opacity-20 mr-3">
+                            <i class="fas fa-redo text-2xl text-indigo-500"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">while 循环</h3>
+                    </div>
+                    <p class="text-gray-300 mb-3">当条件为真时持续执行循环体</p>
+                    <div class="code-block text-sm">
+                        <code>
+<span class="text-green-400"># 基本 while 循环</span><br/>
+counter=1<br/>
+<span class="text-indigo-400">while</span> [ $counter -le 5 ]; <span class="text-indigo-400">do</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"Count: $counter"</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;counter=$((counter + 1))<br/>
+<span class="text-indigo-400">done</span><br/><br/>
+<span class="text-green-400"># 读取文件内容</span><br/>
+<span class="text-indigo-400">while</span> <span class="text-blue-400">read</span> line; <span class="text-indigo-400">do</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"Line: $line"</span><br/>
+<span class="text-indigo-400">done</span> < file.txt</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 函数定义 -->
+            <div class="feature-card bg-slate-800 p-5 rounded-lg shadow-lg">
+                <div class="flex items-center mb-4">
+                    <div class="icon-box bg-teal-500 bg-opacity-20 mr-4">
+                        <i class="fas fa-function text-2xl text-teal-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold">函数定义和调用</h3>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold text-teal-400 mb-3">基本函数</h4>
+                        <div class="code-block text-sm">
+                            <code>
+<span class="text-green-400"># 函数定义</span><br/>
+<span class="text-teal-400">function</span> greet() {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"Hello, $1!"</span><br/>
+}<br/><br/>
+<span class="text-green-400"># 或者简化写法</span><br/>
+greet() {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> <span class="text-orange-300">"Hello, $1!"</span><br/>
+}<br/><br/>
+<span class="text-green-400"># 函数调用</span><br/>
+greet "World"<br/>
+greet "Linux"</code>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold text-orange-400 mb-3">带返回值的函数</h4>
+                        <div class="code-block text-sm">
+                            <code>
+<span class="text-green-400"># 计算函数</span><br/>
+add_numbers() {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">local</span> num1=$1<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">local</span> num2=$2<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">local</span> result=$((num1 + num2))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">echo</span> $result<br/>
+}<br/><br/>
+<span class="text-green-400"># 使用函数</span><br/>
+result=$(add_numbers 10 20)<br/>
+<span class="text-blue-400">echo</span> <span class="text-orange-300">"Sum: $result"</span></code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="bottom-4 w-full text-center text-gray-500">
+        <p>Linux基础课程 | 系统架构、操作和容器技术入门</p>
+    </footer>
+    <script src="ppt-mode.js"></script>
+</body>
+
+</html>
