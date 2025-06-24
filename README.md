@@ -10,6 +10,8 @@
 
 ## 2024 学期
 
+- 6月24日：[Docker 入门与实践](https://meeting.tencent.com/crm/2M44nqePe5)
+
 ### 2024 课程表
 
 [2024 -《使用云原生技术进行软件开发》课程安排](https://doc.weixin.qq.com/sheet/e3_AK4AcQYdAN0tee7DkczSt2b5VNNVq?scode=ABoAuwfGAAkNNGjK5OAK4AcQYdAN0&tab=BB08J2)
