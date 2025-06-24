@@ -5439,6 +5439,7 @@ rm check_container_support.sh
 - [OverTheWire](https://overthewire.org/wargames/) - Linux 安全挑战
 - [Explain Shell](https://explainshell.com/) - 命令解释工具
 - [Linux Command Library](https://linuxcommandlibrary.com/) - 命令参考大全
+- [Advanced Bash-Scripting Guide](https://tldp.org/LDP/abs/html/index.html) - 高级 Bash 脚本编写指南
 
 **社区资源：**
 
