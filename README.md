@@ -11,6 +11,7 @@
 ## 2024 学期
 
 - 6月24日：[Docker 入门与实践](https://meeting.tencent.com/crm/2M44nqePe5)
+- 6月25日：[Docker 原理](https://meeting.tencent.com/crm/KneWQOe93a)
 
 ### 2024 课程表
 
