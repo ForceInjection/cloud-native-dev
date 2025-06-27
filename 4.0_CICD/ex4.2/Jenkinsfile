@@ -1,0 +1,82 @@
+pipeline {
+    agent none
+    parameters {
+        string(name: 'NAMESPACE', defaultValue: 'default', description: 'Target namespace for deployment')
+        string(name: 'MONITOR_NAMESPACE', defaultValue: 'monitor', description: 'Monitor namespace for ServiceMonitor')
+    }
+    stages {
+        stage('Clone Code') {
+            agent {
+                label 'master'
+            }
+            steps {
+                echo "1.Git Clone Code"
+                git url: "https://gitee.com/grissom_sh/prometheus-test-demo.git"
+            }
+        }
+
+        stage ('Maven Build') {
+            agent {
+                docker {
+                    image 'maven:3.8.7-eclipse-temurin-8'
+                    args '-v /root/.m2:/root/.m2'
+                }
+            }
+            steps {
+                echo "2.Maven Build Stage"
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        
+        stage('Image Build') {
+            agent {
+                label 'master'
+            }
+            steps {
+            echo "3.Image Build Stage"
+            sh 'docker build -f Dockerfile --build-arg jar_name=target/prometheus-test-demo-0.0.1-SNAPSHOT.jar -t prometheus-test-demo:${BUILD_ID} . '
+            sh 'docker tag  prometheus-test-demo:${BUILD_ID}  172.22.83.19:30003/library/prometheus-test-demo:${BUILD_ID}'
+            }
+        }
+
+        stage('Push') {
+            agent {
+                label 'master'
+            }
+            steps {
+            echo "4.Push Docker Image Stage"
+            sh "docker login --username=admin 172.22.83.19:30003 -p Harbor12345"
+            sh "docker push 172.22.83.19:30003/library/prometheus-test-demo:${BUILD_ID}"
+            }
+        }
+    }
+}
+node('slave') {
+    container('jnlp-kubectl') {
+        stage('Clone YAML') {
+            echo "5. Git Clone YAML To Slave"
+            git url: "https://gitee.com/grissom_sh/prometheus-test-demo.git"
+        }
+        
+        stage('Config YAML') {
+            echo "6. Change YAML File Stage"
+            sh 'sed -i "s/{VERSION}/${BUILD_ID}/g" ./jenkins/scripts/prometheus-test-demo.yaml'
+            sh 'sed -i "s/{NAMESPACE}/${NAMESPACE}/g" ./jenkins/scripts/prometheus-test-demo.yaml'
+            sh 'sed -i "s/{MONITOR_NAMESPACE}/${MONITOR_NAMESPACE}/g" ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
+            sh 'sed -i "s/{NAMESPACE}/${NAMESPACE}/g" ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
+
+            sh 'cat ./jenkins/scripts/prometheus-test-demo.yaml'
+            sh 'cat ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
+        }
+        
+        stage('Deploy YAML') {
+            echo "7. Deploy To K8s Stage"
+            sh 'kubectl apply -f ./jenkins/scripts/prometheus-test-demo.yaml'
+        }
+        
+        stage('Deploy ServiceMonitor YAML') {
+            echo "8. Deploy ServiceMonitor To K8s Stage"
+            sh 'kubectl apply -f ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
+        }
+    }
+}

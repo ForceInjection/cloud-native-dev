@@ -14,6 +14,7 @@
 - 6月25日：[Docker 原理](https://meeting.tencent.com/crm/KneWQOe93a)
 - 6月26日：[Kubernetes 入门与实践](https://meeting.tencent.com/crm/l6b7n7nk21)
 - 6月27日：[Kubernetes 原理](https://meeting.tencent.com/crm/2k0DEWOPce)
+- 6月27日：[Spring Boot 及 Spring Cloud 在 Kubernetes 上 up and running](https://meeting.tencent.com/crm/NgYDWmOzb5)
 
 ## 2024 学期
 

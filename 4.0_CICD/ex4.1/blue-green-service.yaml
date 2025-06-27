@@ -1,0 +1,16 @@
+# blue-green-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-bg-service
+  labels:
+    app: python
+spec:
+  selector:
+    app: python
+    version: blue  # 初始指向蓝色环境
+  ports:
+    - port: 80
+      targetPort: 8000
+      protocol: TCP
+  type: ClusterIP
