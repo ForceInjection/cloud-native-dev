@@ -230,7 +230,7 @@ kubectl get endpoints -w
 
 ### 架构设计
 
-```
+```text
 ┌─────────────────┐    ┌──────────────────┐
 │   主容器        │    │  故障制造者容器   │
 │   (NGINX)       │    │  (Troublemaker)  │
