@@ -16,15 +16,15 @@ spec:
     spec:
       hostname: eureka
       containers:
-      - name: eureka
-        image: eureka-service:2025
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
-        resources:
-          requests:
-            cpu: 1
-            memory: 512Mi
-          limits:
-            cpu: 1
-            memory: 512Mi
+        - name: eureka
+          image: eureka-service:2025
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              cpu: 500m
+              memory: 1024Mi
