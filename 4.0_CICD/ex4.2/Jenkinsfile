@@ -1,5 +1,13 @@
 pipeline {
     agent none
+    
+    // 环境变量管理
+    environment {
+        HARBOR_REGISTRY = '172.22.83.19:30003'
+        IMAGE_NAME = 'library/prometheus-test-demo'
+        GIT_REPO = 'https://gitee.com/grissom_sh/prometheus-test-demo.git'
+    }
+    
     parameters {
         string(name: 'NAMESPACE', defaultValue: 'default', description: 'Target namespace for deployment')
         string(name: 'MONITOR_NAMESPACE', defaultValue: 'monitor', description: 'Monitor namespace for ServiceMonitor')
@@ -11,20 +19,13 @@ pipeline {
             }
             steps {
                 echo "1.Git Clone Code"
-                git url: "https://gitee.com/grissom_sh/prometheus-test-demo.git"
-            }
-        }
-
-        stage ('Maven Build') {
-            agent {
-                docker {
-                    image 'maven:3.8.7-eclipse-temurin-8'
-                    args '-v /root/.m2:/root/.m2'
+                script {
+                    try {
+                        git url: "${env.GIT_REPO}"
+                    } catch (Exception e) {
+                        error "Git clone failed: ${e.getMessage()}"
+                    }
                 }
-            }
-            steps {
-                echo "2.Maven Build Stage"
-                sh 'mvn -B -DskipTests clean package'
             }
         }
         
@@ -33,9 +34,15 @@ pipeline {
                 label 'master'
             }
             steps {
-            echo "3.Image Build Stage"
-            sh 'docker build -f Dockerfile --build-arg jar_name=target/prometheus-test-demo-0.0.1-SNAPSHOT.jar -t prometheus-test-demo:${BUILD_ID} . '
-            sh 'docker tag  prometheus-test-demo:${BUILD_ID}  172.22.83.19:30003/library/prometheus-test-demo:${BUILD_ID}'
+                echo "2.Image Build Stage (包含 Maven 构建)"
+                script {
+                    try {
+                        // 使用 Dockerfile 多阶段构建，包含 Maven 构建和镜像构建
+                        sh "docker build --cache-from ${env.HARBOR_REGISTRY}/${env.IMAGE_NAME}:latest -t ${env.HARBOR_REGISTRY}/${env.IMAGE_NAME}:${BUILD_NUMBER} ."
+                    } catch (Exception e) {
+                        error "Docker build failed: ${e.getMessage()}"
+                    }
+                }
             }
         }
 
@@ -44,23 +51,60 @@ pipeline {
                 label 'master'
             }
             steps {
-            echo "4.Push Docker Image Stage"
-            sh "docker login --username=admin 172.22.83.19:30003 -p Harbor12345"
-            sh "docker push 172.22.83.19:30003/library/prometheus-test-demo:${BUILD_ID}"
+                echo "3.Push Docker Image Stage"
+                script {
+                    try {
+                        // 替换硬编码密码
+                        withCredentials([usernamePassword(credentialsId: 'harbor-credentials', 
+                                                          usernameVariable: 'HARBOR_USER', 
+                                                          passwordVariable: 'HARBOR_PASS')]) {
+                            sh "docker login --username=${HARBOR_USER} ${env.HARBOR_REGISTRY} -p ${HARBOR_PASS}"
+                        }
+                        sh "docker push ${env.HARBOR_REGISTRY}/${env.IMAGE_NAME}:${BUILD_NUMBER}"
+                    } catch (Exception e) {
+                        error "Docker push failed: ${e.getMessage()}"
+                    }
+                }
             }
+        }
+    }
+    
+    // 通知机制
+    post {
+        success {
+            echo '🎉 Pipeline succeeded! Application deployed successfully.'
+            script {
+                echo "✅ Deployment Summary:"
+                echo "   - Image: ${env.HARBOR_REGISTRY}/${env.IMAGE_NAME}:${BUILD_NUMBER}"
+                echo "   - Namespace: ${NAMESPACE}"
+                echo "   - Monitor Namespace: ${MONITOR_NAMESPACE}"
+            }
+        }
+        failure {
+            echo '❌ Pipeline failed! Please check the logs for details.'
+        }
+        always {
+            echo '🔄 Pipeline execution completed.'
         }
     }
 }
 node('slave') {
     container('jnlp-kubectl') {
         stage('Clone YAML') {
-            echo "5. Git Clone YAML To Slave"
-            git url: "https://gitee.com/grissom_sh/prometheus-test-demo.git"
+            echo "4. Git Clone YAML To Slave"
+            script {
+                try {
+                    // 使用 checkout scm 获取当前流水线的源代码
+                    checkout scm
+                } catch (Exception e) {
+                    error "Git clone on slave failed: ${e.getMessage()}"
+                }
+            }
         }
         
         stage('Config YAML') {
-            echo "6. Change YAML File Stage"
-            sh 'sed -i "s/{VERSION}/${BUILD_ID}/g" ./jenkins/scripts/prometheus-test-demo.yaml'
+            echo "5. Change YAML File Stage"
+            sh 'sed -i "s/{VERSION}/${BUILD_NUMBER}/g" ./jenkins/scripts/prometheus-test-demo.yaml'
             sh 'sed -i "s/{NAMESPACE}/${NAMESPACE}/g" ./jenkins/scripts/prometheus-test-demo.yaml'
             sh 'sed -i "s/{MONITOR_NAMESPACE}/${MONITOR_NAMESPACE}/g" ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
             sh 'sed -i "s/{NAMESPACE}/${NAMESPACE}/g" ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
@@ -69,14 +113,34 @@ node('slave') {
             sh 'cat ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
         }
         
-        stage('Deploy YAML') {
-            echo "7. Deploy To K8s Stage"
+        stage('Deploy prometheus-test-demo') {
+            echo "6. Deploy To K8s Stage"
             sh 'kubectl apply -f ./jenkins/scripts/prometheus-test-demo.yaml'
         }
         
-        stage('Deploy ServiceMonitor YAML') {
-            echo "8. Deploy ServiceMonitor To K8s Stage"
-            sh 'kubectl apply -f ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
+        stage('Deploy prometheus-test-demo ServiceMonitor') {
+            echo "7. Deploy ServiceMonitor To K8s Stage"
+            script {
+                try {
+                    sh 'kubectl apply -f ./jenkins/scripts/prometheus-test-serviceMonitor.yaml'
+                } catch (Exception e) {
+                    error "ServiceMonitor deployment failed: ${e.getMessage()}"
+                }
+            }
+        }
+        
+        stage('Health Check') {
+            echo "8. Health Check Stage"
+            script {
+                try {
+                    timeout(time: 5, unit: 'MINUTES') {
+                        sh "kubectl wait --for=condition=ready pod -l app=prometheus-test-demo -n ${NAMESPACE} --timeout=300s"
+                        echo "Application is healthy and ready!"
+                    }
+                } catch (Exception e) {
+                    error "Health check failed: ${e.getMessage()}"
+                }
+            }
         }
     }
 }
