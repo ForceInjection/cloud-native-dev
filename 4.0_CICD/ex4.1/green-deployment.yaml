@@ -1,36 +1,35 @@
+# green-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python
+  name: python-green
   labels:
     app: python
+    version: green
 spec:
-  replicas: 5
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+  replicas: 3
   selector:
     matchLabels:
       app: python
+      version: green
   template:
     metadata:
       labels:
         app: python
+        version: green
     spec:
       containers:
         - name: python
-          image: python-server:v1
+          image: python-server:v2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
           resources:
             requests:
-              cpu: 200m
+              cpu: 500m
               memory: 100Mi
             limits:
-              cpu: 200m
+              cpu: 500m
               memory: 100Mi
           livenessProbe:
             httpGet:

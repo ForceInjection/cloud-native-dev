@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: prometheus-test-demo
+  name: prometheus-test-demo
+  namespace: {MONITOR_NAMESPACE}
+spec:
+  endpoints:
+  - interval: 30s
+    port: tcp
+    path: /actuator/prometheus
+    scheme: 'http'
+  selector:
+    matchLabels:
+      app: prometheus-test-demo
+  namespaceSelector:
+    matchNames:
+    - {NAMESPACE}

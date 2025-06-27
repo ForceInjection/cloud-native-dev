@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: prometheus-test-demo
+  name: prometheus-test-demo
+  namespace: {NAMESPACE}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus-test-demo
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /actuator/prometheus
+        prometheus.io/port: "8998"
+        prometheus.io/scheme: http
+        prometheus.io/scrape: "true"
+      labels:
+        app: prometheus-test-demo
+    spec:
+      containers:
+        - image: 172.22.83.19:30003/library/prometheus-test-demo:{VERSION}
+          name: prometheus-test-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-test-demo
+  labels:
+    app: prometheus-test-demo
+  namespace: {NAMESPACE}
+spec:
+  type: NodePort
+  selector:
+    app: prometheus-test-demo
+  ports:
+    - name: tcp
+      protocol: TCP
+      port: 8998
+      targetPort: 8998
