@@ -9,7 +9,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-type", "text/plain")
         self.end_headers()
-        message = "V1:Hello world, I'm host: " + socket.gethostname()
+        message = "V2:Hello world, I'm host: " + socket.gethostname()
         self.wfile.write(message.encode())
 
 
