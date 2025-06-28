@@ -1,5 +1,7 @@
 # 为什么同样使用2个vCPU的App在VM中比在容器中运行的快？
 
+> [为什么同样使用 2 个 vCPU 的 App 在 VM 中比在容器中运行的快？](https://mp.weixin.qq.com/s/hqjx-PgHEkUEoOnRbdiXTA)
+
 ## 引言
 
 随着 Kubernetes 和容器技术的兴起和流行，许多团队不仅直接开发和部署新应用到 Kubernetes，还需要将现有应用迁移到容器。这些遗留应用通常部署在裸机或虚拟机 (VM) 上。
