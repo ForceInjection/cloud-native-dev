@@ -108,7 +108,7 @@ Admin Service --[Feign]--> User Service --[JPA]--> MySQL
    ```bash
    # 构建 Eureka Server
    cd eureka-server
-   docker build -t eureka-server:2025 .
+   docker build -t eureka-service:2025 .
    
    # 构建 User Service
    cd ../user-service
