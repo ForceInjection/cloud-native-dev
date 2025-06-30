@@ -24,10 +24,11 @@
 
 ### 2.1 流水线架构
 
-本项目的Jenkins流水线分为两个主要部分：
+本项目采用统一的声明式Jenkins流水线架构，包含以下主要阶段：
 
 1. **Master节点执行阶段**：代码克隆、镜像构建和推送
-2. **Slave节点执行阶段**：Kubernetes部署
+2. **Slave节点执行阶段**：Kubernetes部署和健康检查
+3. **自动清理阶段**：镜像清理和资源回收
 
 ### 2.2 流水线阶段详解
 
@@ -58,31 +59,54 @@
 - 执行节点：master
 - 功能：推送镜像到Harbor仓库
 - Harbor地址：`172.22.83.19:30003`
-- 认证信息：username=admin, password=Harbor12345
+- 认证方式：使用Jenkins凭据管理（harbor-credentials）
+- 安全登录：采用stdin方式避免密码暴露
+- 双标签推送：同时推送BUILD_NUMBER和latest标签
 
-#### 第二部分：Slave节点流水线
+#### 第二部分：Kubernetes部署阶段
 
 **5. Clone YAML (部署文件克隆)：**
 
-- 执行节点：slave
-- 功能：克隆包含Kubernetes部署文件的代码仓库
+- 执行节点：slave (jnlp-kubectl容器)
+- 功能：使用checkout scm获取部署文件
 
 **6. Config YAML (配置文件更新)：**
 
-- 功能：使用sed命令替换YAML文件中的版本占位符
-- 替换规则：将`{VERSION}`替换为`${BUILD_ID}`
+- 功能：使用sed命令替换YAML文件中的占位符
+- 替换规则：
+  - `{VERSION}` → `${BUILD_NUMBER}`
+  - `{NAMESPACE}` → 参数化命名空间
+  - `{MONITOR_NAMESPACE}` → 监控命名空间
 
-**7. Deploy YAML (应用部署)：**
+**7. Deploy Application (应用部署)：**
 
 - 功能：部署应用到Kubernetes集群
 - 部署文件：`./jenkins/scripts/prometheus-test-demo.yaml`
 - 命令：`kubectl apply -f ./jenkins/scripts/prometheus-test-demo.yaml`
 
-**8. Deploy ServiceMonitor YAML (监控配置部署)：**
+**8. Deploy ServiceMonitor (监控配置部署)：**
 
 - 功能：部署Prometheus ServiceMonitor配置
 - 部署文件：`./jenkins/scripts/prometheus-test-serviceMonitor.yaml`
 - 命令：`kubectl apply -f ./jenkins/scripts/prometheus-test-serviceMonitor.yaml`
+
+**9. Health Check (健康检查)：**
+
+- 功能：验证应用部署状态
+- 检查方式：`kubectl wait --for=condition=ready`
+- 超时设置：300秒
+- 标签选择器：`app=prometheus-test-demo`
+
+#### 第三部分：清理和通知阶段
+
+**10. Image Cleanup (镜像清理)：**
+
+- 执行时机：流水线完成后（无论成功或失败）
+- 清理内容：
+  - 构建的镜像标签
+  - latest标签镜像
+  - 未使用的Docker资源
+- 清理命令：`docker rmi` 和 `docker system prune`
 
 ---
 
@@ -160,19 +184,75 @@ ex4.2/
 
 ---
 
-## 7. 注意事项
+## 7. 安全和最佳实践
+
+### 7.1 安全改进
+
+1. **凭据管理**: 使用Jenkins凭据存储替代硬编码密码
+2. **安全登录**: Docker登录采用stdin方式避免密码在进程列表中暴露
+3. **权限最小化**: 确保Jenkins节点只有必要的权限
+4. **网络隔离**: 合理配置网络策略和防火墙规则
+
+### 7.2 资源管理
+
+1. **镜像清理**: 自动清理构建镜像避免磁盘空间不足
+2. **资源监控**: 监控Maven构建过程中的内存和CPU使用
+3. **并发控制**: 合理设置并发构建数量
+
+### 7.3 运维注意事项
 
 1. **网络配置**: 确保Jenkins节点能够访问Git仓库、Harbor仓库和Kubernetes集群
 2. **权限配置**: 确保Jenkins有足够权限执行Docker和kubectl命令
-3. **资源限制**: 注意Maven构建过程中的内存使用
-4. **版本管理**: BUILD_ID会作为镜像版本标签，确保唯一性
-5. **安全考虑**: 生产环境中应使用更安全的认证方式替代明文密码
+3. **版本管理**: BUILD_NUMBER作为镜像版本标签，确保唯一性
+4. **参数化部署**: 支持不同命名空间的灵活部署
+5. **健康检查**: 自动验证部署状态，及时发现问题
 
 ---
 
 ## 8. 故障排查
 
-- **构建失败**: 检查Maven依赖和网络连接
-- **镜像推送失败**: 验证Harbor仓库连接和认证信息
-- **部署失败**: 检查Kubernetes集群状态和kubectl配置
-- **监控不可用**: 验证ServiceMonitor配置和Prometheus operator状态
+### 8.1 构建阶段问题
+
+- **代码克隆失败**: 检查Git仓库访问权限和网络连接
+- **Maven构建失败**: 验证依赖配置和settings.xml
+- **Docker构建失败**: 检查Dockerfile语法和基础镜像可用性
+
+### 8.2 推送阶段问题
+
+- **Harbor登录失败**: 验证凭据配置和网络连接
+- **镜像推送失败**: 检查Harbor存储空间和权限设置
+- **网络超时**: 调整网络配置和超时设置
+
+### 8.3 部署阶段问题
+
+- **kubectl连接失败**: 验证Kubernetes集群配置和认证
+- **YAML应用失败**: 检查资源配置和命名空间权限
+- **ServiceMonitor部署失败**: 确认Prometheus Operator安装状态
+- **健康检查超时**: 检查Pod启动日志和资源限制
+
+### 8.4 清理阶段问题
+
+- **镜像清理失败**: 检查Docker daemon状态和权限
+- **磁盘空间不足**: 手动清理或增加存储空间
+
+---
+
+## 9. 流水线优化建议
+
+### 9.1 性能优化
+
+1. **并行构建**: 考虑将测试和构建阶段并行化
+2. **缓存策略**: 优化Maven和Docker层缓存
+3. **资源分配**: 根据负载调整节点资源配置
+
+### 9.2 可靠性提升
+
+1. **重试机制**: 为网络相关操作添加重试逻辑
+2. **回滚策略**: 实现自动回滚机制
+3. **监控告警**: 集成流水线状态监控和告警
+
+### 9.3 扩展功能
+
+1. **多环境支持**: 扩展支持开发、测试、生产环境
+2. **自动化测试**: 集成单元测试和集成测试
+3. **代码质量检查**: 集成SonarQube等代码质量工具
