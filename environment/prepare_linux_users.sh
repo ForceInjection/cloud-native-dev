@@ -29,7 +29,39 @@ check_system() {
     exit 1
   fi
 
+  # 检查 Docker 安装状态
+  check_docker_installation
+
   print_green "✓ 系统检查通过"
+}
+
+# ==================== 检查 Docker 安装 ====================
+check_docker_installation() {
+  print_blue "检查 Docker 安装状态..."
+  
+  # 检查 docker 命令是否存在
+  if ! command -v docker >/dev/null 2>&1; then
+    print_yellow "⚠ Docker 命令未找到"
+    print_yellow "  建议: 请先安装 Docker"
+    return 1
+  fi
+  
+  # 检查 Docker 服务是否运行
+  if ! systemctl is-active --quiet docker 2>/dev/null; then
+    print_yellow "⚠ Docker 服务未运行"
+    print_yellow "  建议: sudo systemctl start docker"
+    return 1
+  fi
+  
+  # 检查 docker 组是否存在
+  if ! getent group docker >/dev/null 2>&1; then
+    print_yellow "⚠ docker 组不存在"
+    print_yellow "  建议: sudo groupadd docker"
+    return 1
+  fi
+  
+  print_green "✓ Docker 环境检查通过"
+  return 0
 }
 
 # ==================== 检查用户是否存在 ====================
@@ -50,6 +82,16 @@ create_user() {
     sudo chmod 700 "/home/$username"
     sudo chown "$username:$username" "/home/$username"
     echo "✓ 用户家目录权限设置完成 (700)"
+    
+    echo "添加用户到 docker 组..."
+    # 检查 docker 组是否存在
+    if getent group docker >/dev/null 2>&1; then
+        sudo usermod -aG docker "$username"
+        echo "✓ 用户已添加到 docker 组"
+    else
+        echo "⚠ docker 组不存在，跳过添加到 docker 组"
+        echo "  请确保 Docker 已正确安装并创建了 docker 组"
+    fi
     
     echo "设置密码..."
     echo "$username:dangerous" | sudo chpasswd
@@ -77,6 +119,12 @@ create_user() {
     echo "✓ 用户 $username 创建完成"
     echo "默认密码: dangerous"
     echo "请提醒用户登录后修改密码"
+    echo ""
+    echo "Docker 权限说明:"
+    echo "  - 用户已添加到 docker 组"
+    echo "  - 需要重新登录才能生效 Docker 权限"
+    echo "  - 登录后可以执行: docker build, docker run 等命令"
+    echo "  - 验证权限: docker --version && docker info"
     
     return 0
 }
@@ -132,6 +180,13 @@ verify_user() {
     print_green "  ✓ kubeconfig文件存在"
   else
     print_yellow "  ⚠ kubeconfig文件不存在"
+  fi
+
+  # 验证 Docker 权限
+  if groups "$username" | grep -q "\bdocker\b"; then
+    print_green "  ✓ 用户已加入 docker 组"
+  else
+    print_yellow "  ⚠ 用户未加入 docker 组"
   fi
 
   print_green "✓ 用户验证完成: $username"
@@ -241,8 +296,19 @@ Linux用户管理脚本 (简化版)
   -d, --delete <用户> 删除指定用户
   --cleanup          删除所有管理的用户
 
+功能说明:
+  - 自动创建用户并设置 Kubernetes 配置
+  - 自动添加用户到 docker 组，支持 Docker 操作
+  - 检查 Docker 环境并提供安装建议
+  - 验证用户的 Kubernetes 和 Docker 权限
+
 配置文件: $NAMESPACE_FILE
 默认密码: $DEFAULT_PASSWORD
+
+Docker 权限:
+  - 用户创建后自动加入 docker 组
+  - 支持 docker build, docker run 等操作
+  - 需要重新登录才能生效
 
 示例:
   sudo $0                    # 创建所有用户
