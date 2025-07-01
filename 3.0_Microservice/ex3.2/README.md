@@ -103,7 +103,14 @@ Admin Service --[Feign]--> User Service --[JPA]--> MySQL
    kubectl apply -f mysql-deployment.yaml
    ```
 
-2. **构建 Docker 镜像**
+2. **Maven Aliyun 镜像仓库准备**
+
+   ```bash
+   cd ex3.2
+   ./prepare-env.sh
+   ```
+
+3. **构建 Docker 镜像**
 
    ```bash
    # 构建 Eureka Server
