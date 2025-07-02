@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config
+  namespace: redis
+data:
+  redis.conf: |
+    # Redis 配置文件
+    maxmemory 256mb
+    maxmemory-policy allkeys-lru
+    save ""
+    appendonly no
+    tcp-keepalive 60
+    timeout 300
