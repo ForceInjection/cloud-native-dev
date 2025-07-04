@@ -1,0 +1,1641 @@
+[2025-07-04 11:23:37][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:23:37][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:23:37][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:23:37][INFO] 检查系统要求...
+[2025-07-04 11:23:37][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:23:40][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:23:40][INFO] 系统架构: apple_silicon
+[2025-07-04 11:23:40][SUCCESS] 系统要求检查通过
+[2025-07-04 11:23:40][INFO] 开始完整安装流程...
+[2025-07-04 11:23:40][INFO] 配置: 内存=4MB, CPU=2, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=禁用
+[2025-07-04 11:24:05][INFO] 使用 Colima 安装 Docker 环境
+[2025-07-04 11:24:05][SUCCESS] Colima 已安装
+[2025-07-04 11:24:05][INFO] 启动 Colima 虚拟机
+[2025-07-04 11:24:06][INFO] Colima 虚拟机已在运行
+[2025-07-04 11:24:06][INFO] 验证 Colima 环境
+[2025-07-04 11:24:07][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 11:24:07][SUCCESS] Docker 连接正常
+[2025-07-04 11:24:07][INFO] Docker 版本: 27.4.0
+[2025-07-04 11:24:07][INFO] 运行 Docker 容器测试
+[2025-07-04 11:24:07][SUCCESS] Docker 容器测试通过
+[2025-07-04 11:24:08][SUCCESS] Colima 环境验证通过
+[2025-07-04 11:24:08][SUCCESS] Docker 环境 (Colima) 安装完成
+[2025-07-04 11:24:08][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 11:24:08][INFO] 配置 Docker 镜像源...
+[2025-07-04 11:24:08][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 11:24:08][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 11:24:08][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 11:24:08][DEBUG] 开始检测代理配置冲突
+[2025-07-04 11:24:10][DEBUG] 未检测到代理配置冲突
+[2025-07-04 11:24:10][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 11:24:10][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:24:11][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_112410
+[2025-07-04 11:24:11][INFO] 已备份当前配置到: [2025-07-04 11:24:10][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:24:11][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_112410
+/tmp/daemon.json.backup.20250704_112410
+[2025-07-04 11:24:11][INFO] 更新虚拟机内的Docker daemon配置
+[2025-07-04 11:24:12][INFO] 重启Docker服务以应用镜像源配置
+[2025-07-04 11:24:42][ERROR] Docker服务重启超时或失败
+[2025-07-04 11:24:42][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 11:24:42][SUCCESS] 完整安装流程完成
+[2025-07-04 11:24:42][SUCCESS] 操作完成!
+[2025-07-04 11:25:29][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:25:29][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:25:29][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:25:29][INFO] 检查系统要求...
+[2025-07-04 11:25:29][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:25:30][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:25:30][INFO] 系统架构: apple_silicon
+[2025-07-04 11:25:30][SUCCESS] 系统要求检查通过
+[2025-07-04 11:25:30][INFO] 运行验证模式...
+[2025-07-04 11:26:01][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:26:01][SUCCESS] 操作完成!
+[2025-07-04 11:30:18][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:30:18][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:30:18][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:30:18][INFO] 检查系统要求...
+[2025-07-04 11:30:18][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:30:20][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:30:20][INFO] 系统架构: apple_silicon
+[2025-07-04 11:30:20][SUCCESS] 系统要求检查通过
+[2025-07-04 11:30:20][INFO] 运行验证模式...
+[2025-07-04 11:30:40][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:30:40][SUCCESS] 操作完成!
+[2025-07-04 11:31:53][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:31:53][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:31:53][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:31:53][INFO] 检查系统要求...
+[2025-07-04 11:31:53][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:31:54][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:31:54][INFO] 系统架构: apple_silicon
+[2025-07-04 11:31:54][SUCCESS] 系统要求检查通过
+[2025-07-04 11:31:54][INFO] 运行验证模式...
+[2025-07-04 11:32:28][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:32:28][SUCCESS] 操作完成!
+[2025-07-04 11:34:34][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:34:34][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:34:34][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:34:34][INFO] 检查系统要求...
+[2025-07-04 11:34:34][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:34:35][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:34:35][INFO] 系统架构: apple_silicon
+[2025-07-04 11:34:35][SUCCESS] 系统要求检查通过
+[2025-07-04 11:34:36][INFO] 运行验证模式...
+[2025-07-04 11:35:11][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:35:11][SUCCESS] 操作完成!
+[2025-07-04 11:36:18][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:36:18][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:36:18][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:36:18][INFO] 检查系统要求...
+[2025-07-04 11:36:18][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:36:22][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:36:22][INFO] 系统架构: apple_silicon
+[2025-07-04 11:36:22][SUCCESS] 系统要求检查通过
+[2025-07-04 11:36:22][INFO] 运行验证模式...
+[2025-07-04 11:36:38][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:36:38][SUCCESS] 操作完成!
+[2025-07-04 11:37:41][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:37:41][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:37:41][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:37:41][INFO] 检查系统要求...
+[2025-07-04 11:37:41][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:37:44][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:37:44][INFO] 系统架构: apple_silicon
+[2025-07-04 11:37:44][SUCCESS] 系统要求检查通过
+[2025-07-04 11:37:44][INFO] 运行验证模式...
+[2025-07-04 11:37:59][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:37:59][SUCCESS] 操作完成!
+[2025-07-04 11:38:07][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:38:07][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:38:07][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:38:07][INFO] 检查系统要求...
+[2025-07-04 11:38:08][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:38:10][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:38:10][INFO] 系统架构: apple_silicon
+[2025-07-04 11:38:10][SUCCESS] 系统要求检查通过
+[2025-07-04 11:38:10][INFO] 运行验证模式...
+[2025-07-04 11:38:32][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:38:32][SUCCESS] 操作完成!
+[2025-07-04 11:39:43][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:39:43][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:39:43][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:39:43][INFO] 检查系统要求...
+[2025-07-04 11:39:43][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:39:45][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:39:45][INFO] 系统架构: apple_silicon
+[2025-07-04 11:39:45][SUCCESS] 系统要求检查通过
+[2025-07-04 11:39:45][INFO] 运行验证模式...
+[2025-07-04 11:40:02][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:40:02][SUCCESS] 操作完成!
+[2025-07-04 11:40:15][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:40:15][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:40:15][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:40:15][INFO] 检查系统要求...
+[2025-07-04 11:40:15][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:40:16][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:40:16][INFO] 系统架构: apple_silicon
+[2025-07-04 11:40:16][SUCCESS] 系统要求检查通过
+[2025-07-04 11:40:16][INFO] 运行验证模式...
+[2025-07-04 11:40:27][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:40:28][SUCCESS] 操作完成!
+[2025-07-04 11:43:06][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:43:06][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:43:06][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:43:06][INFO] 检查系统要求...
+[2025-07-04 11:43:06][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:43:09][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:43:09][INFO] 系统架构: apple_silicon
+[2025-07-04 11:43:09][SUCCESS] 系统要求检查通过
+[2025-07-04 11:43:09][INFO] 运行验证模式...
+[2025-07-04 11:43:21][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:43:21][SUCCESS] 操作完成!
+[2025-07-04 11:45:46][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:45:46][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:45:46][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:45:46][INFO] 检查系统要求...
+[2025-07-04 11:45:46][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:45:49][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:45:49][INFO] 系统架构: apple_silicon
+[2025-07-04 11:45:49][SUCCESS] 系统要求检查通过
+[2025-07-04 11:45:49][INFO] 运行验证模式...
+[2025-07-04 11:46:29][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:46:29][SUCCESS] 操作完成!
+[2025-07-04 11:47:08][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:47:08][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:47:08][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:47:08][INFO] 检查系统要求...
+[2025-07-04 11:47:08][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:47:11][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:47:11][INFO] 系统架构: apple_silicon
+[2025-07-04 11:47:11][SUCCESS] 系统要求检查通过
+[2025-07-04 11:47:11][INFO] 运行验证模式...
+[2025-07-04 11:47:26][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:47:26][SUCCESS] 操作完成!
+[2025-07-04 11:48:42][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:48:42][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:48:42][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:48:42][INFO] 检查系统要求...
+[2025-07-04 11:48:42][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:48:43][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:48:43][INFO] 系统架构: apple_silicon
+[2025-07-04 11:48:43][SUCCESS] 系统要求检查通过
+[2025-07-04 11:48:43][INFO] 运行验证模式...
+[2025-07-04 11:48:58][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:48:58][SUCCESS] 操作完成!
+[2025-07-04 11:49:51][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:49:51][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:49:51][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:49:51][INFO] 检查系统要求...
+[2025-07-04 11:49:51][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:49:53][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:49:53][INFO] 系统架构: apple_silicon
+[2025-07-04 11:49:53][SUCCESS] 系统要求检查通过
+[2025-07-04 11:49:53][INFO] 运行验证模式...
+[2025-07-04 11:50:06][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:50:06][SUCCESS] 操作完成!
+[2025-07-04 11:50:26][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:50:26][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:50:26][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:50:26][INFO] 检查系统要求...
+[2025-07-04 11:50:26][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:50:28][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:50:28][INFO] 系统架构: apple_silicon
+[2025-07-04 11:50:28][SUCCESS] 系统要求检查通过
+[2025-07-04 11:50:28][INFO] 运行验证模式...
+[2025-07-04 11:50:37][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 11:50:37][SUCCESS] 操作完成!
+[2025-07-04 11:50:57][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:50:57][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:50:57][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:50:57][INFO] 检查系统要求...
+[2025-07-04 11:50:57][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:50:59][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:50:59][INFO] 系统架构: apple_silicon
+[2025-07-04 11:50:59][SUCCESS] 系统要求检查通过
+[2025-07-04 11:50:59][INFO] 运行系统检查模式...
+[2025-07-04 11:51:00][SUCCESS] 系统检查完成，环境满足要求
+[2025-07-04 11:51:00][SUCCESS] 操作完成!
+[2025-07-04 11:51:49][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:51:49][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:51:49][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:51:49][INFO] 检查系统要求...
+[2025-07-04 11:51:49][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:51:52][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:51:52][INFO] 系统架构: apple_silicon
+[2025-07-04 11:51:52][SUCCESS] 系统要求检查通过
+[2025-07-04 11:51:52][INFO] 开始完整安装流程...
+[2025-07-04 11:51:52][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 11:52:03][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 11:52:03][SUCCESS] Colima 已安装
+[2025-07-04 11:52:03][SUCCESS] kubectl 已安装
+[2025-07-04 11:52:03][INFO] 启动 Colima 虚拟机
+[2025-07-04 11:52:03][INFO] Colima 虚拟机已在运行
+[2025-07-04 11:52:03][INFO] 验证 Colima 环境
+[2025-07-04 11:52:04][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 11:52:04][SUCCESS] Docker 连接正常
+[2025-07-04 11:52:04][INFO] Docker 版本: 27.4.0
+[2025-07-04 11:52:04][INFO] 运行 Docker 容器测试
+[2025-07-04 11:52:04][SUCCESS] Docker 容器测试通过
+[2025-07-04 11:52:04][INFO] 验证 Kubernetes 环境
+[2025-07-04 11:52:04][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 11:52:04][INFO] kubectl 版本: 未知
+[2025-07-04 11:52:04][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 11:52:05][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 11:52:05][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 11:52:05][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 11:52:05][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 11:52:05][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 11:52:05][INFO] 虚拟机状态: default    Running    aarch64    4       4GiB      20GiB    docker+k3s    
+[2025-07-04 11:52:05][SUCCESS] Colima 环境验证通过
+[2025-07-04 11:52:05][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 11:52:05][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 11:52:05][INFO] 配置 Docker 镜像源...
+[2025-07-04 11:52:05][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 11:52:05][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 11:52:05][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 11:52:05][DEBUG] 开始检测代理配置冲突
+[2025-07-04 11:52:06][DEBUG] 未检测到代理配置冲突
+[2025-07-04 11:52:06][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 11:52:06][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:52:07][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_115206
+[2025-07-04 11:52:07][INFO] 已备份当前配置到: [2025-07-04 11:52:06][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:52:07][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_115206
+/tmp/daemon.json.backup.20250704_115206
+[2025-07-04 11:52:07][INFO] 更新虚拟机内的Docker daemon配置
+[2025-07-04 11:52:07][INFO] 重启Docker服务以应用镜像源配置
+[2025-07-04 11:52:37][ERROR] Docker服务重启超时或失败
+[2025-07-04 11:52:37][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 11:52:37][SUCCESS] 完整安装流程完成
+[2025-07-04 11:52:37][SUCCESS] 操作完成!
+[2025-07-04 11:55:14][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:55:14][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:55:14][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:55:14][INFO] 检查系统要求...
+[2025-07-04 11:55:14][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:55:15][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:55:15][INFO] 系统架构: apple_silicon
+[2025-07-04 11:55:15][SUCCESS] 系统要求检查通过
+[2025-07-04 11:55:15][INFO] 开始完整安装流程...
+[2025-07-04 11:55:15][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 11:55:24][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 11:55:24][SUCCESS] Colima 已安装
+[2025-07-04 11:55:24][SUCCESS] kubectl 已安装
+[2025-07-04 11:55:24][INFO] 启动 Colima 虚拟机
+[2025-07-04 11:55:24][INFO] Colima 虚拟机已在运行
+[2025-07-04 11:55:24][INFO] 验证 Colima 环境
+[2025-07-04 11:55:24][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 11:55:25][SUCCESS] Docker 连接正常
+[2025-07-04 11:55:25][INFO] Docker 版本: 27.4.0
+[2025-07-04 11:55:25][INFO] 运行 Docker 容器测试
+[2025-07-04 11:55:25][SUCCESS] Docker 容器测试通过
+[2025-07-04 11:55:25][INFO] 验证 Kubernetes 环境
+[2025-07-04 11:55:25][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 11:55:25][INFO] kubectl 版本: 未知
+[2025-07-04 11:55:25][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 11:55:25][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 11:55:25][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 11:55:25][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 11:55:25][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 11:55:25][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 11:55:26][INFO] 虚拟机状态: default    Running    aarch64    4       4GiB      20GiB    docker+k3s    
+[2025-07-04 11:55:26][SUCCESS] Colima 环境验证通过
+[2025-07-04 11:55:26][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 11:55:26][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 11:55:26][INFO] 配置 Docker 镜像源...
+[2025-07-04 11:55:26][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 11:55:26][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 11:55:26][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 11:55:26][DEBUG] 开始检测代理配置冲突
+[2025-07-04 11:55:27][DEBUG] 未检测到代理配置冲突
+[2025-07-04 11:55:27][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 11:55:27][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:55:28][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_115527
+[2025-07-04 11:55:28][INFO] 已备份当前配置到: [2025-07-04 11:55:27][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:55:28][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_115527
+/tmp/daemon.json.backup.20250704_115527
+[2025-07-04 11:55:28][INFO] 更新虚拟机内的Docker daemon配置
+[2025-07-04 11:55:28][INFO] 重启Docker服务以应用镜像源配置
+[2025-07-04 11:55:28][WARNING] 标准重启方式失败，尝试强制重启
+[2025-07-04 11:55:29][ERROR] Docker服务重启失败，请手动重启 Colima
+[2025-07-04 11:55:29][INFO] 建议执行: colima restart default
+[2025-07-04 11:55:29][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 11:55:29][SUCCESS] 完整安装流程完成
+[2025-07-04 11:55:29][SUCCESS] 操作完成!
+[2025-07-04 11:56:51][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 11:56:51][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 11:56:51][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 11:56:51][INFO] 检查系统要求...
+[2025-07-04 11:56:51][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 11:56:54][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 11:56:54][INFO] 系统架构: apple_silicon
+[2025-07-04 11:56:54][SUCCESS] 系统要求检查通过
+[2025-07-04 11:56:54][INFO] 开始完整安装流程...
+[2025-07-04 11:56:54][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 11:57:02][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 11:57:02][SUCCESS] Colima 已安装
+[2025-07-04 11:57:02][SUCCESS] kubectl 已安装
+[2025-07-04 11:57:02][INFO] 启动 Colima 虚拟机
+[2025-07-04 11:57:02][INFO] Colima 虚拟机已在运行
+[2025-07-04 11:57:02][INFO] 验证 Colima 环境
+[2025-07-04 11:57:02][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 11:57:03][SUCCESS] Docker 连接正常
+[2025-07-04 11:57:03][INFO] Docker 版本: 27.4.0
+[2025-07-04 11:57:03][INFO] 运行 Docker 容器测试
+[2025-07-04 11:57:03][SUCCESS] Docker 容器测试通过
+[2025-07-04 11:57:03][INFO] 验证 Kubernetes 环境
+[2025-07-04 11:57:03][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 11:57:03][INFO] kubectl 版本: 未知
+[2025-07-04 11:57:03][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 11:57:04][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 11:57:04][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 11:57:04][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 11:57:04][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 11:57:04][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 11:57:04][INFO] 虚拟机状态: default    Running    aarch64    4       4GiB      20GiB    docker+k3s    
+[2025-07-04 11:57:04][SUCCESS] Colima 环境验证通过
+[2025-07-04 11:57:04][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 11:57:04][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 11:57:04][INFO] 配置 Docker 镜像源...
+[2025-07-04 11:57:04][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 11:57:04][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 11:57:04][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 11:57:04][DEBUG] 开始检测代理配置冲突
+[2025-07-04 11:57:05][DEBUG] 未检测到代理配置冲突
+[2025-07-04 11:57:05][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 11:57:05][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:57:06][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_115705
+[2025-07-04 11:57:06][INFO] 已备份当前配置到: [2025-07-04 11:57:05][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:57:06][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_115705
+/tmp/daemon.json.backup.20250704_115705
+[2025-07-04 11:57:06][INFO] 更新虚拟机内的Docker daemon配置
+[2025-07-04 11:57:06][INFO] 重启Docker服务以应用镜像源配置
+[2025-07-04 11:57:06][INFO] 使用 Colima 重启机制应用配置
+[2025-07-04 11:57:36][SUCCESS] Colima 重启成功
+[2025-07-04 11:57:36][INFO] 等待Docker服务完全启动...
+[2025-07-04 11:57:36][SUCCESS] Docker服务已就绪
+[2025-07-04 11:57:36][DEBUG] 开始验证镜像源配置: https://docker.m.daocloud.io
+[2025-07-04 11:57:36][DEBUG] 当前镜像源配置: []
+[2025-07-04 11:57:36][ERROR] 镜像源配置未生效
+[2025-07-04 11:57:36][ERROR] 镜像源配置验证失败，尝试回滚
+[2025-07-04 11:57:36][DEBUG] 开始回滚Docker daemon配置
+[2025-07-04 11:57:37][ERROR] 备份文件不存在: [2025-07-04 11:57:05][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 11:57:06][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_115705
+/tmp/daemon.json.backup.20250704_115705
+[2025-07-04 11:57:37][INFO] 配置操作完成，耗时: 33秒
+[2025-07-04 11:57:37][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 11:57:37][SUCCESS] 完整安装流程完成
+[2025-07-04 11:57:37][SUCCESS] 操作完成!
+[2025-07-04 12:00:54][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:00:54][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:00:54][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:00:54][INFO] 检查系统要求...
+[2025-07-04 12:00:54][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:00:56][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:00:56][INFO] 系统架构: apple_silicon
+[2025-07-04 12:00:56][SUCCESS] 系统要求检查通过
+[2025-07-04 12:00:56][INFO] 开始完整安装流程...
+[2025-07-04 12:00:56][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 12:01:04][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 12:01:04][SUCCESS] Colima 已安装
+[2025-07-04 12:01:04][SUCCESS] kubectl 已安装
+[2025-07-04 12:01:04][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:01:04][INFO] Colima 虚拟机已在运行
+[2025-07-04 12:01:04][INFO] 验证 Colima 环境
+[2025-07-04 12:01:05][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:01:05][SUCCESS] Docker 连接正常
+[2025-07-04 12:01:05][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:01:05][INFO] 运行 Docker 容器测试
+[2025-07-04 12:01:05][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:01:05][INFO] 验证 Kubernetes 环境
+[2025-07-04 12:01:05][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 12:01:05][INFO] kubectl 版本: 未知
+[2025-07-04 12:01:05][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 12:01:05][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 12:01:05][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 12:01:05][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 12:01:05][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 12:01:05][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 12:01:06][INFO] 虚拟机状态: default    Running    aarch64    4       4GiB      20GiB    docker+k3s    
+[2025-07-04 12:01:06][SUCCESS] Colima 环境验证通过
+[2025-07-04 12:01:06][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 12:01:06][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 12:01:06][INFO] 配置 Docker 镜像源...
+[2025-07-04 12:01:06][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 12:01:06][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:01:06][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:01:06][DEBUG] 开始检测代理配置冲突
+[2025-07-04 12:01:07][WARNING] 检测到代理配置，可能与镜像源冲突
+[2025-07-04 12:01:07][INFO] 将移除代理配置以避免冲突
+[2025-07-04 12:01:07][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 12:01:07][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:01:09][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_120107
+[2025-07-04 12:01:09][INFO] 已备份当前配置到: [2025-07-04 12:01:07][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:01:09][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_120107
+/tmp/daemon.json.backup.20250704_120107
+[2025-07-04 12:01:09][INFO] 更新虚拟机内的Docker daemon配置
+[2025-07-04 12:01:09][INFO] 重启Docker服务以应用镜像源配置
+[2025-07-04 12:01:09][INFO] 使用 Colima 重启机制应用配置
+[2025-07-04 12:01:41][SUCCESS] Colima 重启成功
+[2025-07-04 12:01:41][INFO] 等待Docker服务完全启动...
+[2025-07-04 12:01:41][SUCCESS] Docker服务已就绪
+[2025-07-04 12:01:41][INFO] 等待配置完全生效...
+[2025-07-04 12:01:46][DEBUG] 开始验证镜像源配置: https://docker.m.daocloud.io
+[2025-07-04 12:01:46][DEBUG] 当前镜像源配置: []
+[2025-07-04 12:01:46][WARNING] docker info显示镜像源配置为空，检查配置文件
+[2025-07-04 12:01:47][DEBUG] daemon.json内容: {
+  "exec-opts": [
+    "native.cgroupdriver=cgroupfs"
+  ],
+  "features": {
+    "buildkit": true
+  },
+  "proxies": {
+    "http-proxy": "http://192.168.5.2:1087",
+    "https-proxy": "http://192.168.5.2:1087"
+  }
+}
+[2025-07-04 12:01:47][ERROR] 镜像源配置未生效
+[2025-07-04 12:01:47][ERROR] 镜像源配置验证失败，尝试回滚
+[2025-07-04 12:01:47][DEBUG] 开始回滚Docker daemon配置
+[2025-07-04 12:01:47][DEBUG] 处理后的备份文件路径: [2025-07-04 12:01:07][DEBUG] 开始备份Docker daemon配置
+/tmp/daemon.json.backup.20250704_120107
+/tmp/daemon.json.backup.20250704_120107
+[2025-07-04 12:01:47][ERROR] 备份文件不存在: [2025-07-04 12:01:07][DEBUG] 开始备份Docker daemon配置
+/tmp/daemon.json.backup.20250704_120107
+/tmp/daemon.json.backup.20250704_120107
+[2025-07-04 12:01:48][INFO] 配置操作完成，耗时: 42秒
+[2025-07-04 12:01:48][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 12:01:48][SUCCESS] 完整安装流程完成
+[2025-07-04 12:01:48][SUCCESS] 操作完成!
+[2025-07-04 12:05:56][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:05:56][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:05:56][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:05:56][INFO] 检查系统要求...
+[2025-07-04 12:05:56][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:05:58][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:05:58][INFO] 系统架构: apple_silicon
+[2025-07-04 12:05:58][SUCCESS] 系统要求检查通过
+[2025-07-04 12:05:58][INFO] 开始完整安装流程...
+[2025-07-04 12:05:58][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 12:06:16][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 12:06:16][SUCCESS] Colima 已安装
+[2025-07-04 12:06:16][SUCCESS] kubectl 已安装
+[2025-07-04 12:06:16][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:06:17][INFO] Colima 虚拟机已在运行
+[2025-07-04 12:06:17][INFO] 验证 Colima 环境
+[2025-07-04 12:06:17][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:06:18][SUCCESS] Docker 连接正常
+[2025-07-04 12:06:18][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:06:18][INFO] 运行 Docker 容器测试
+[2025-07-04 12:06:18][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:06:18][INFO] 验证 Kubernetes 环境
+[2025-07-04 12:06:18][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 12:06:18][INFO] kubectl 版本: 未知
+[2025-07-04 12:06:18][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 12:06:18][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 12:06:18][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 12:06:18][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 12:06:18][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 12:06:18][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 12:06:18][INFO] 虚拟机状态: default    Running    aarch64    4       4GiB      20GiB    docker+k3s    
+[2025-07-04 12:06:18][SUCCESS] Colima 环境验证通过
+[2025-07-04 12:06:18][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 12:06:18][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 12:06:18][INFO] 配置 Docker 镜像源...
+[2025-07-04 12:06:19][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 12:06:19][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:06:19][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:06:19][DEBUG] 开始检测代理配置冲突
+[2025-07-04 12:06:19][WARNING] 检测到代理配置，可能与镜像源冲突
+[2025-07-04 12:06:19][INFO] 将移除代理配置以避免冲突
+[2025-07-04 12:06:20][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 12:06:20][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:06:21][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_120620
+[2025-07-04 12:06:21][INFO] 已备份当前配置到: [2025-07-04 12:06:20][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:06:21][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_120620
+/tmp/daemon.json.backup.20250704_120620
+[2025-07-04 12:06:21][INFO] 更新 Colima 配置文件以设置镜像源
+[2025-07-04 12:06:21][DEBUG] 在现有 docker 配置中添加 registry-mirrors
+[2025-07-04 12:06:21][INFO] 重启 Colima 以应用镜像源配置...
+[2025-07-04 12:06:21][INFO] 注意：Colima 重启可能需要较长时间，请耐心等待
+[2025-07-04 12:06:28][WARNING] colima restart 失败，尝试停止后重新启动
+[2025-07-04 12:06:49][SUCCESS] Colima 重启成功
+[2025-07-04 12:06:49][INFO] 等待Docker服务完全启动...
+[2025-07-04 12:06:49][SUCCESS] Docker服务已就绪
+[2025-07-04 12:06:49][INFO] 等待配置完全生效...
+[2025-07-04 12:06:54][INFO] 验证 Colima 配置文件中的镜像源设置
+[2025-07-04 12:06:54][ERROR] Colima 配置文件验证失败
+[2025-07-04 12:06:54][INFO] 恢复 Colima 配置文件备份
+[2025-07-04 12:06:55][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 12:06:55][SUCCESS] 完整安装流程完成
+[2025-07-04 12:06:55][SUCCESS] 操作完成!
+[2025-07-04 12:10:33][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:10:33][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:10:33][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:10:33][INFO] 检查系统要求...
+[2025-07-04 12:10:33][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:10:35][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:10:35][INFO] 系统架构: apple_silicon
+[2025-07-04 12:10:35][SUCCESS] 系统要求检查通过
+[2025-07-04 12:10:35][INFO] 开始完整安装流程...
+[2025-07-04 12:10:35][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 12:10:43][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 12:10:43][SUCCESS] Colima 已安装
+[2025-07-04 12:10:43][SUCCESS] kubectl 已安装
+[2025-07-04 12:10:43][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:10:43][INFO] Colima 虚拟机已在运行
+[2025-07-04 12:10:43][INFO] 验证 Colima 环境
+[2025-07-04 12:10:43][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:10:44][SUCCESS] Docker 连接正常
+[2025-07-04 12:10:44][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:10:44][INFO] 运行 Docker 容器测试
+[2025-07-04 12:10:44][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:10:44][INFO] 验证 Kubernetes 环境
+[2025-07-04 12:10:44][ERROR] Kubernetes 集群连接失败
+[2025-07-04 12:10:44][ERROR] 无法获取 Kubernetes 节点信息
+[2025-07-04 12:10:44][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 12:10:44][WARNING] Kubernetes API 测试失败
+[2025-07-04 12:10:44][WARNING] Kubernetes 环境验证发现 2 个问题
+[2025-07-04 12:10:44][INFO] 虚拟机状态: default    Running    aarch64    2       2GiB      20GiB    docker     
+[2025-07-04 12:10:44][WARNING] Colima 环境验证发现 2 个问题
+[2025-07-04 12:10:44][ERROR] Docker安装失败
+[2025-07-04 12:11:22][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:11:22][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:11:22][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:11:22][INFO] 检查系统要求...
+[2025-07-04 12:11:22][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:11:23][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:11:23][INFO] 系统架构: apple_silicon
+[2025-07-04 12:11:23][SUCCESS] 系统要求检查通过
+[2025-07-04 12:11:23][INFO] 开始完整安装流程...
+[2025-07-04 12:11:23][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 12:11:31][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 12:11:31][SUCCESS] Colima 已安装
+[2025-07-04 12:11:31][SUCCESS] kubectl 已安装
+[2025-07-04 12:11:31][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:11:31][INFO] Colima 虚拟机已在运行
+[2025-07-04 12:11:31][INFO] 验证 Colima 环境
+[2025-07-04 12:11:31][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:11:32][SUCCESS] Docker 连接正常
+[2025-07-04 12:11:32][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:11:32][INFO] 运行 Docker 容器测试
+[2025-07-04 12:11:32][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:11:32][INFO] 验证 Kubernetes 环境
+[2025-07-04 12:11:32][ERROR] Kubernetes 集群连接失败
+[2025-07-04 12:11:32][ERROR] 无法获取 Kubernetes 节点信息
+[2025-07-04 12:11:32][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 12:11:32][WARNING] Kubernetes API 测试失败
+[2025-07-04 12:11:32][WARNING] Kubernetes 环境验证发现 2 个问题
+[2025-07-04 12:11:32][INFO] 虚拟机状态: default    Running    aarch64    2       2GiB      20GiB    docker     
+[2025-07-04 12:11:32][WARNING] Colima 环境验证发现 2 个问题
+[2025-07-04 12:11:32][ERROR] Docker安装失败
+[2025-07-04 12:13:40][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:13:40][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:13:40][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:13:40][INFO] 检查系统要求...
+[2025-07-04 12:13:40][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:13:42][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:13:42][INFO] 系统架构: apple_silicon
+[2025-07-04 12:13:42][SUCCESS] 系统要求检查通过
+[2025-07-04 12:13:42][INFO] 开始完整安装流程...
+[2025-07-04 12:13:42][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 12:14:00][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 12:14:00][SUCCESS] Colima 已安装
+[2025-07-04 12:14:00][SUCCESS] kubectl 已安装
+[2025-07-04 12:14:00][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:14:01][INFO] Colima 虚拟机已在运行
+[2025-07-04 12:14:01][INFO] 验证 Colima 环境
+[2025-07-04 12:14:01][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:14:01][SUCCESS] Docker 连接正常
+[2025-07-04 12:14:01][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:14:01][INFO] 运行 Docker 容器测试
+[2025-07-04 12:14:01][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:14:01][INFO] 验证 Kubernetes 环境
+[2025-07-04 12:14:01][ERROR] Kubernetes 集群连接失败
+[2025-07-04 12:14:01][ERROR] 无法获取 Kubernetes 节点信息
+[2025-07-04 12:14:01][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 12:14:01][WARNING] Kubernetes API 测试失败
+[2025-07-04 12:14:02][WARNING] Kubernetes 环境验证发现 2 个问题
+[2025-07-04 12:14:02][INFO] 虚拟机状态: default    Running    aarch64    2       2GiB      20GiB    docker     
+[2025-07-04 12:14:02][WARNING] Colima 环境验证发现 2 个问题
+[2025-07-04 12:14:02][ERROR] Docker安装失败
+[2025-07-04 12:18:32][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:18:32][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:18:32][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:18:32][INFO] 检查系统要求...
+[2025-07-04 12:18:32][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:18:35][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:18:35][INFO] 系统架构: apple_silicon
+[2025-07-04 12:18:35][SUCCESS] 系统要求检查通过
+[2025-07-04 12:18:35][INFO] 开始完整安装流程...
+[2025-07-04 12:18:35][INFO] 配置: 内存=4MB, CPU=4, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 12:18:53][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 12:18:53][SUCCESS] Colima 已安装
+[2025-07-04 12:18:53][SUCCESS] kubectl 已安装
+[2025-07-04 12:18:53][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:18:54][INFO] 当前 Colima 实例不支持 Kubernetes，需要重新启动以启用 Kubernetes
+[2025-07-04 12:18:54][INFO] 停止 Colima 虚拟机
+[2025-07-04 12:18:58][SUCCESS] Colima 虚拟机已停止
+[2025-07-04 12:19:01][INFO] 配置 Colima 虚拟机参数
+[2025-07-04 12:19:01][INFO] 内存: 4MB, CPU: 4核, 磁盘: 20000GB
+[2025-07-04 12:19:01][WARNING] 内存大小调整为最小值: 1GB
+[2025-07-04 12:19:01][INFO] 启用 Kubernetes 支持
+[2025-07-04 12:19:01][INFO] 执行命令: colima start --arch aarch64 --vm-type vz --memory 1 --cpu 4 --disk 20 --mount-type virtiofs --kubernetes
+[2025-07-04 12:19:26][SUCCESS] Colima 虚拟机启动成功
+[2025-07-04 12:19:26][INFO] 等待 Docker 守护进程就绪...
+[2025-07-04 12:19:27][SUCCESS] Docker 守护进程已就绪
+[2025-07-04 12:19:27][INFO] 等待 Kubernetes 集群就绪...
+[2025-07-04 12:19:27][SUCCESS] Kubernetes 集群已就绪
+[2025-07-04 12:19:27][SUCCESS] Kubernetes 节点已就绪
+[2025-07-04 12:19:27][INFO] 设置 DOCKER_HOST: unix:///Users/wangtianqing/.colima/default/docker.sock
+[2025-07-04 12:19:27][INFO] 验证 Colima 环境
+[2025-07-04 12:19:27][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:19:27][SUCCESS] Docker 连接正常
+[2025-07-04 12:19:27][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:19:27][INFO] 运行 Docker 容器测试
+[2025-07-04 12:19:28][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:19:28][INFO] 验证 Kubernetes 环境
+[2025-07-04 12:19:28][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 12:19:28][INFO] kubectl 版本: 未知
+[2025-07-04 12:19:28][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 12:19:28][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 12:19:28][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 12:19:28][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 12:19:28][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 12:19:28][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 12:19:28][INFO] 虚拟机状态: default    Running    aarch64    4       1GiB      100GiB    docker+k3s    
+[2025-07-04 12:19:28][SUCCESS] Colima 环境验证通过
+[2025-07-04 12:19:28][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 12:19:28][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 12:19:28][INFO] 配置 Docker 镜像源...
+[2025-07-04 12:19:28][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 12:19:28][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:19:28][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:19:28][DEBUG] 开始检测代理配置冲突
+[2025-07-04 12:19:29][WARNING] 检测到代理配置，可能与镜像源冲突
+[2025-07-04 12:19:29][INFO] 将移除代理配置以避免冲突
+[2025-07-04 12:19:29][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 12:19:29][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:19:31][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_121929
+[2025-07-04 12:19:31][INFO] 已备份当前配置到: [2025-07-04 12:19:29][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:19:31][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_121929
+/tmp/daemon.json.backup.20250704_121929
+[2025-07-04 12:19:31][INFO] 更新 Colima 配置文件以设置镜像源
+[2025-07-04 12:19:31][DEBUG] 分析现有配置文件结构
+[2025-07-04 12:19:31][DEBUG] 发现现有 docker 配置段
+[2025-07-04 12:19:31][DEBUG] 在现有 docker 配置中添加 registry-mirrors
+[2025-07-04 12:19:31][DEBUG] 配置文件更新成功
+[2025-07-04 12:19:31][INFO] 重启 Colima 以应用镜像源配置...
+[2025-07-04 12:19:31][INFO] 注意：Colima 重启可能需要较长时间，请耐心等待
+[2025-07-04 12:19:38][WARNING] colima restart 失败，尝试停止后重新启动
+[2025-07-04 12:19:47][ERROR] Colima 重启失败，请手动重启: colima restart -p default
+[2025-07-04 12:19:47][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 12:19:47][SUCCESS] 完整安装流程完成
+[2025-07-04 12:19:47][SUCCESS] 操作完成!
+[2025-07-04 12:20:27][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:20:27][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:20:27][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:20:27][INFO] 检查系统要求...
+[2025-07-04 12:20:27][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:20:32][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:20:32][INFO] 系统架构: apple_silicon
+[2025-07-04 12:20:32][SUCCESS] 系统要求检查通过
+[2025-07-04 12:20:32][INFO] 开始完整安装流程...
+[2025-07-04 12:20:32][INFO] 配置: 内存=4MB, CPU=2, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=禁用
+[2025-07-04 12:20:49][INFO] 使用 Colima 安装 Docker 环境
+[2025-07-04 12:20:49][SUCCESS] Colima 已安装
+[2025-07-04 12:20:49][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:20:50][INFO] 配置 Colima 虚拟机参数
+[2025-07-04 12:20:50][INFO] 内存: 4MB, CPU: 2核, 磁盘: 20000GB
+[2025-07-04 12:20:50][WARNING] 内存大小调整为最小值: 1GB
+[2025-07-04 12:20:50][INFO] 执行命令: colima start --arch aarch64 --vm-type vz --memory 1 --cpu 2 --disk 20 --mount-type virtiofs
+[2025-07-04 12:21:08][SUCCESS] Colima 虚拟机启动成功
+[2025-07-04 12:21:08][INFO] 等待 Docker 守护进程就绪...
+[2025-07-04 12:21:08][SUCCESS] Docker 守护进程已就绪
+[2025-07-04 12:21:08][INFO] 设置 DOCKER_HOST: unix:///Users/wangtianqing/.colima/default/docker.sock
+[2025-07-04 12:21:08][INFO] 验证 Colima 环境
+[2025-07-04 12:21:08][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:21:08][SUCCESS] Docker 连接正常
+[2025-07-04 12:21:08][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:21:08][INFO] 运行 Docker 容器测试
+[2025-07-04 12:21:17][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:21:18][INFO] 虚拟机状态: default    Running    aarch64    2       1GiB      20GiB    docker     
+[2025-07-04 12:21:18][SUCCESS] Colima 环境验证通过
+[2025-07-04 12:21:18][SUCCESS] Docker 环境 (Colima) 安装完成
+[2025-07-04 12:21:18][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 12:21:18][INFO] 配置 Docker 镜像源...
+[2025-07-04 12:21:18][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 12:21:18][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:21:18][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:21:18][DEBUG] 开始检测代理配置冲突
+[2025-07-04 12:21:19][WARNING] 检测到代理配置，可能与镜像源冲突
+[2025-07-04 12:21:19][INFO] 将移除代理配置以避免冲突
+[2025-07-04 12:21:19][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 12:21:19][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:21:20][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_122119
+[2025-07-04 12:21:20][INFO] 已备份当前配置到: [2025-07-04 12:21:19][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:21:20][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_122119
+/tmp/daemon.json.backup.20250704_122119
+[2025-07-04 12:21:20][INFO] 更新 Colima 配置文件以设置镜像源
+[2025-07-04 12:21:20][DEBUG] 分析现有配置文件结构
+[2025-07-04 12:21:20][DEBUG] 发现现有 docker 配置段
+[2025-07-04 12:21:20][DEBUG] 在现有 docker 配置中添加 registry-mirrors
+[2025-07-04 12:21:20][DEBUG] 配置文件更新成功
+[2025-07-04 12:21:20][INFO] 重启 Colima 以应用镜像源配置...
+[2025-07-04 12:21:20][INFO] 注意：Colima 重启可能需要较长时间，请耐心等待
+[2025-07-04 12:21:26][WARNING] colima restart 失败，尝试停止后重新启动
+[2025-07-04 12:21:48][SUCCESS] Colima 重启成功
+[2025-07-04 12:21:48][INFO] 等待Docker服务完全启动...
+[2025-07-04 12:21:48][SUCCESS] Docker服务已就绪
+[2025-07-04 12:21:48][INFO] 等待配置完全生效...
+[2025-07-04 12:21:53][INFO] 验证 Colima 配置文件中的镜像源设置
+[2025-07-04 12:21:53][DEBUG] 检查配置文件内容:
+[2025-07-04 12:21:53][DEBUG] # Number of CPUs to be allocated to the virtual machine.
+# Default: 2
+cpu: 2
+
+# Size of the disk in GiB to be allocated to the virtual machine.
+# NOTE: value can only be increased after virtual machine has been created.
+#
+# Default: 100
+disk: 100
+
+# Size of the memory in GiB to be allocated to the virtual machine.
+# Default: 2
+memory: 2
+
+# Architecture of the virtual machine (x86_64, aarch64, host).
+#
+# NOTE: value cannot be changed after virtual machine is created.
+# Default: host
+arch: aarch64
+
+# Container runtime to be used (docker, containerd).
+#
+# NOTE: value cannot be changed after virtual machine is created.
+# Default: docker
+runtime: docker
+
+# Set custom hostname for the virtual machine.
+# Default: colima
+#          colima-profile_name for other profiles
+hostname: ""
+
+# Kubernetes configuration for the virtual machine.
+kubernetes:
+  # Enable kubernetes.
+  # Default: false
+  enabled: false
+  
+  # Kubernetes version to use.
+  # This needs to exactly match a k3s version https://github.com/k3s-io/k3s/releases
+  # Default: latest stable release
+  version: v1.31.2+k3s1
+  
+  # Additional args to pass to k3s https://docs.k3s.io/cli/server
+  # Default: traefik is disabled
+  k3sArgs:
+    - --disable=traefik
+
+# Auto-activate on the Host for client access.
+# Setting to true does the following on startup
+#  - sets as active Docker context (for Docker runtime).
+#  - sets as active Kubernetes context (if Kubernetes is enabled).
+# Default: true
+autoActivate: true
+
+# Network configurations for the virtual machine.
+network:
+  # Assign reachable IP address to the virtual machine.
+  # NOTE: this is currently macOS only and ignored on Linux.
+  # Default: false
+  address: false
+  
+  # Custom DNS resolvers for the virtual machine.
+  #
+  # EXAMPLE
+  # dns: [8.8.8.8, 1.1.1.1]
+  #
+  # Default: []
+  dns: []
+  
+  # DNS hostnames to resolve to custom targets using the internal resolver.
+  # This setting has no effect if a custom DNS resolver list is supplied above.
+  # It does not configure the /etc/hosts files of any machine or container.
+  # The value can be an IP address or another host.
+  #
+  # EXAMPLE
+  # dnsHosts:
+  #   example.com: 1.2.3.4
+  dnsHosts: {}
+  
+  # Replicate host IP addresses in the VM. This enables port forwarding to specific
+  # host IP addresses.
+  #   e.g. `docker run --port 10.0.1.2:8080:8080 alpine` would only forward to the
+  #   specified IP address.
+  #
+  # Default: false
+  hostAddresses: false
+
+# ===================================================================== #
+# ADVANCED CONFIGURATION
+# ===================================================================== #
+
+# Forward the host's SSH agent to the virtual machine.
+# Default: false
+forwardAgent: false
+
+# Docker daemon configuration that maps directly to daemon.json.
+# https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file.
+# NOTE: some settings may affect Colima's ability to start docker. e.g. `hosts`.
+#
+# EXAMPLE - disable buildkit
+# docker:
+#   features:
+#     buildkit: false
+#
+# EXAMPLE - add insecure registries
+# docker:
+#   insecure-registries:
+#     - myregistry.com:5000
+#     - host.docker.internal:5000
+#
+# Colima default behaviour: buildkit enabled
+# Default: {}
+docker: {}
+
+# Virtual Machine type (qemu, vz)
+# NOTE: this is macOS 13 only. For Linux and macOS <13.0, qemu is always used.
+#
+# vz is macOS virtualization framework and requires macOS 13
+#
+# NOTE: value cannot be changed after virtual machine is created.
+# Default: qemu
+vmType: vz
+
+# Utilise rosetta for amd64 emulation (requires m1 mac and vmType `vz`)
+# Default: false
+rosetta: false
+
+# Enable nested virtualization for the virtual machine (requires m3 mac and vmType `vz`)
+# Default: false
+nestedVirtualization: false
+
+# Volume mount driver for the virtual machine (virtiofs, 9p, sshfs).
+#
+# virtiofs is limited to macOS and vmType `vz`. It is the fastest of the options.
+#
+# 9p is the recommended and the most stable option for vmType `qemu`.
+#
+# sshfs is faster than 9p but the least reliable of the options (when there are lots
+# of concurrent reads or writes).
+#
+# NOTE: value cannot be changed after virtual machine is created.
+# Default: virtiofs (for vz), sshfs (for qemu)
+mountType: sshfs
+
+# Propagate inotify file events to the VM.
+# NOTE: this is experimental.
+mountInotify: true
+
+# The CPU type for the virtual machine (requires vmType `qemu`).
+# Options available for host emulation can be checked with: `qemu-system-$(arch) -cpu help`.
+# Instructions are also supported by appending to the cpu type e.g. "qemu64,+ssse3".
+# Default: host
+cpuType: ""
+
+# Custom provision scripts for the virtual machine.
+# Provisioning scripts are executed on startup and therefore needs to be idempotent.
+#
+# EXAMPLE - script executed as root
+# provision:
+#   - mode: system
+#     script: apt-get install htop vim
+#
+# EXAMPLE - script executed as user
+# provision:
+#   - mode: user
+#     script: |
+#       [ -f ~/.provision ] && exit 0;
+#       echo provisioning as $USER...
+#       touch ~/.provision
+#
+# Default: []
+provision: []
+
+# Modify ~/.ssh/config automatically to include a SSH config for the virtual machine.
+# SSH config will still be generated in $COLIMA_HOME/ssh_config regardless.
+# Default: true
+sshConfig: true
+
+# The port number for the SSH server for the virtual machine.
+# When set to 0, a random available port is used.
+#
+# Default: 0
+sshPort: 0
+
+# Configure volume mounts for the virtual machine.
+# Colima mounts user's home directory by default to provide a familiar
+# user experience.
+#
+# EXAMPLE
+# mounts:
+#   - location: ~/secrets
+#     writable: false
+#   - location: ~/projects
+#     writable: true
+#
+# Colima default behaviour: $HOME and /tmp/colima are mounted as writable.
+# Default: []
+mounts: []
+
+# Specify a custom disk image for the virtual machine.
+# When not specified, Colima downloads an appropriate disk image from Github at
+# https://github.com/abiosoft/colima-core/releases.
+# The file path to a custom disk image can be specified to override the behaviour.
+#
+# Default: ""
+diskImage: ""
+
+# Environment variables for the virtual machine.
+#
+# EXAMPLE
+# env:
+#   KEY: value
+#   ANOTHER_KEY: another value
+#
+# Default: {}
+env: {}
+[2025-07-04 12:21:53][ERROR] Colima 配置文件中未找到 registry-mirrors 配置
+[2025-07-04 12:21:53][DEBUG] Docker 配置段内容:
+[2025-07-04 12:21:53][DEBUG] docker: {}
+
+# Virtual Machine type (qemu, vz)
+# NOTE: this is macOS 13 only. For Linux and macOS <13.0, qemu is always used.
+#
+# vz is macOS virtualization framework and requires macOS 13
+#
+# NOTE: value cannot be changed after virtual machine is created.
+# Default: qemu
+vmType: vz
+[2025-07-04 12:21:53][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 12:21:53][SUCCESS] 完整安装流程完成
+[2025-07-04 12:21:53][SUCCESS] 操作完成!
+[2025-07-04 12:33:57][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:33:57][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:33:57][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:33:57][INFO] 检查系统要求...
+[2025-07-04 12:33:57][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:34:00][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:34:00][INFO] 系统架构: apple_silicon
+[2025-07-04 12:34:00][SUCCESS] 系统要求检查通过
+[2025-07-04 12:34:00][INFO] 开始完整安装流程...
+[2025-07-04 12:34:00][INFO] 配置: 内存=4MB, CPU=2, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=禁用
+[2025-07-04 12:34:18][INFO] 使用 Colima 安装 Docker 环境
+[2025-07-04 12:34:18][SUCCESS] Colima 已安装
+[2025-07-04 12:34:18][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:34:18][INFO] Colima 虚拟机已在运行
+[2025-07-04 12:34:18][INFO] 验证 Colima 环境
+[2025-07-04 12:34:19][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:34:19][SUCCESS] Docker 连接正常
+[2025-07-04 12:34:19][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:34:19][INFO] 运行 Docker 容器测试
+[2025-07-04 12:34:19][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:34:19][INFO] 虚拟机状态: default    Running    aarch64    2       2GiB      20GiB    docker     
+[2025-07-04 12:34:19][SUCCESS] Colima 环境验证通过
+[2025-07-04 12:34:19][SUCCESS] Docker 环境 (Colima) 安装完成
+[2025-07-04 12:34:19][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 12:34:19][INFO] 配置 Docker 镜像源...
+[2025-07-04 12:34:20][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 12:34:20][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:34:20][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:34:20][DEBUG] 开始检测代理配置冲突
+[2025-07-04 12:34:20][WARNING] 检测到代理配置，可能与镜像源冲突
+[2025-07-04 12:34:20][INFO] 将移除代理配置以避免冲突
+[2025-07-04 12:34:21][INFO] 检测到Colima环境，配置镜像源
+[2025-07-04 12:34:21][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:34:22][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_123421
+[2025-07-04 12:34:22][INFO] 已备份当前配置到: [2025-07-04 12:34:21][DEBUG] 开始备份Docker daemon配置
+[2025-07-04 12:34:22][DEBUG] 配置已备份到: /tmp/daemon.json.backup.20250704_123421
+/tmp/daemon.json.backup.20250704_123421
+[2025-07-04 12:34:22][INFO] 更新 Colima 配置文件以设置镜像源
+[2025-07-04 12:34:22][DEBUG] 更新 Colima 配置文件中的镜像源设置
+[2025-07-04 12:34:22][WARNING] 配置文件语法验证失败，使用备用方法
+[2025-07-04 12:34:22][DEBUG] 更新现有 docker 配置段
+[2025-07-04 12:34:22][ERROR] 新配置文件语法验证失败
+[2025-07-04 12:34:22][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 12:34:22][SUCCESS] 完整安装流程完成
+[2025-07-04 12:34:22][SUCCESS] 操作完成!
+[2025-07-04 12:54:10][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:54:10][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:54:10][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:54:10][INFO] 检查系统要求...
+[2025-07-04 12:54:10][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:54:11][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:54:11][INFO] 系统架构: apple_silicon
+[2025-07-04 12:54:11][SUCCESS] 系统要求检查通过
+[2025-07-04 12:54:11][INFO] 开始完整安装流程...
+[2025-07-04 12:54:11][INFO] 配置: 内存=4MB, CPU=2, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=禁用
+[2025-07-04 12:54:33][INFO] 使用 Colima 安装 Docker 环境
+[2025-07-04 12:54:33][SUCCESS] Colima 已安装
+[2025-07-04 12:54:33][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:54:34][INFO] Colima 虚拟机已在运行
+[2025-07-04 12:54:34][INFO] 验证 Colima 环境
+[2025-07-04 12:54:34][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:54:35][SUCCESS] Docker 连接正常
+[2025-07-04 12:54:35][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:54:35][INFO] 运行 Docker 容器测试
+[2025-07-04 12:54:35][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:54:35][INFO] 虚拟机状态: default    Running    aarch64    2       2GiB      100GiB    docker     
+[2025-07-04 12:54:35][SUCCESS] Colima 环境验证通过
+[2025-07-04 12:54:35][SUCCESS] Docker 环境 (Colima) 安装完成
+[2025-07-04 12:54:35][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 12:54:35][INFO] 开始设置 Docker 镜像源
+[2025-07-04 12:54:35][SUCCESS] Colima 已安装
+[2025-07-04 12:54:36][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 12:54:36][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:54:36][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 12:54:36][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 12:54:36][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 12:54:36][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 12:54:36][SUCCESS] 完整安装流程完成
+[2025-07-04 12:54:36][SUCCESS] 操作完成!
+[2025-07-04 12:55:04][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:55:04][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:55:04][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:55:04][INFO] 检查系统要求...
+[2025-07-04 12:55:04][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:55:06][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:55:06][INFO] 系统架构: apple_silicon
+[2025-07-04 12:55:06][SUCCESS] 系统要求检查通过
+[2025-07-04 12:55:06][INFO] 开始完整安装流程...
+[2025-07-04 12:55:06][INFO] 配置: 内存=4MB, CPU=2, 磁盘=20000MB, 容器运行时=Colima, Kubernetes=禁用
+[2025-07-04 12:55:13][INFO] 使用 Colima 安装 Docker 环境
+[2025-07-04 12:55:13][SUCCESS] Colima 已安装
+[2025-07-04 12:55:13][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:55:14][INFO] 配置 Colima 虚拟机参数
+[2025-07-04 12:55:14][INFO] 内存: 4MB, CPU: 2核, 磁盘: 20000GB
+[2025-07-04 12:55:14][WARNING] 内存大小调整为最小值: 1GB
+[2025-07-04 12:55:14][INFO] 执行命令: colima start --arch aarch64 --vm-type vz --memory 1 --cpu 2 --disk 20 --mount-type virtiofs
+[2025-07-04 12:55:32][SUCCESS] Colima 虚拟机启动成功
+[2025-07-04 12:55:32][INFO] 等待 Docker 守护进程就绪...
+[2025-07-04 12:55:33][SUCCESS] Docker 守护进程已就绪
+[2025-07-04 12:55:33][INFO] 设置 DOCKER_HOST: unix:///Users/wangtianqing/.colima/default/docker.sock
+[2025-07-04 12:55:33][INFO] 验证 Colima 环境
+[2025-07-04 12:55:33][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:55:33][SUCCESS] Docker 连接正常
+[2025-07-04 12:55:33][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:55:33][INFO] 运行 Docker 容器测试
+[2025-07-04 12:55:42][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:55:43][INFO] 虚拟机状态: default    Running    aarch64    2       1GiB      20GiB    docker     
+[2025-07-04 12:55:43][SUCCESS] Colima 环境验证通过
+[2025-07-04 12:55:43][SUCCESS] Docker 环境 (Colima) 安装完成
+[2025-07-04 12:55:43][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 12:55:43][INFO] 开始设置 Docker 镜像源
+[2025-07-04 12:55:43][SUCCESS] Colima 已安装
+[2025-07-04 12:55:43][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 12:55:43][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:55:43][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 12:55:43][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 12:55:43][INFO] 添加镜像源配置到 Colima 配置文件
+[2025-07-04 12:55:43][SUCCESS] 镜像源配置已添加到配置文件
+[2025-07-04 12:55:43][INFO] 重启 Colima 以应用配置...
+[2025-07-04 12:55:43][INFO] 重启 Colima 虚拟机: default
+[2025-07-04 12:56:06][SUCCESS] Colima 重启成功
+[2025-07-04 12:56:06][SUCCESS] 镜像源配置完成: https://docker.m.daocloud.io
+[2025-07-04 12:56:06][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 12:56:06][SUCCESS] 完整安装流程完成
+[2025-07-04 12:56:06][SUCCESS] 操作完成!
+[2025-07-04 12:56:24][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:56:24][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:56:24][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:56:24][INFO] 检查系统要求...
+[2025-07-04 12:56:24][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:56:27][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:56:27][INFO] 系统架构: apple_silicon
+[2025-07-04 12:56:27][SUCCESS] 系统要求检查通过
+[2025-07-04 12:56:27][INFO] 运行验证模式...
+[2025-07-04 12:56:41][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 12:56:41][SUCCESS] 操作完成!
+[2025-07-04 12:57:46][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:57:46][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:57:46][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:57:46][INFO] 检查系统要求...
+[2025-07-04 12:57:46][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:57:48][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:57:48][INFO] 系统架构: apple_silicon
+[2025-07-04 12:57:48][SUCCESS] 系统要求检查通过
+[2025-07-04 12:57:48][INFO] 开始完整安装流程...
+[2025-07-04 12:57:48][INFO] 配置: 内存=0GB, CPU=4, 磁盘=20000GB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 12:57:57][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 12:57:57][SUCCESS] Colima 已安装
+[2025-07-04 12:57:57][SUCCESS] kubectl 已安装
+[2025-07-04 12:57:57][INFO] 启动 Colima 虚拟机
+[2025-07-04 12:57:58][INFO] 当前 Colima 实例不支持 Kubernetes，需要重新启动以启用 Kubernetes
+[2025-07-04 12:57:58][INFO] 停止 Colima 虚拟机
+[2025-07-04 12:58:02][SUCCESS] Colima 虚拟机已停止
+[2025-07-04 12:58:05][INFO] 配置 Colima 虚拟机参数
+[2025-07-04 12:58:05][INFO] 内存: 0GB, CPU: 4核, 磁盘: 20000GB
+[2025-07-04 12:58:05][WARNING] 内存大小调整为最小值: 1GB
+[2025-07-04 12:58:05][INFO] 启用 Kubernetes 支持
+[2025-07-04 12:58:05][INFO] 执行命令: colima start --arch aarch64 --vm-type vz --memory 1 --cpu 4 --disk 20 --mount-type virtiofs --kubernetes
+[2025-07-04 12:58:35][SUCCESS] Colima 虚拟机启动成功
+[2025-07-04 12:58:35][INFO] 等待 Docker 守护进程就绪...
+[2025-07-04 12:58:35][SUCCESS] Docker 守护进程已就绪
+[2025-07-04 12:58:35][INFO] 等待 Kubernetes 集群就绪...
+[2025-07-04 12:58:35][SUCCESS] Kubernetes 集群已就绪
+[2025-07-04 12:58:36][SUCCESS] Kubernetes 节点已就绪
+[2025-07-04 12:58:36][INFO] 设置 DOCKER_HOST: unix:///Users/wangtianqing/.colima/default/docker.sock
+[2025-07-04 12:58:36][INFO] 验证 Colima 环境
+[2025-07-04 12:58:36][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 12:58:36][SUCCESS] Docker 连接正常
+[2025-07-04 12:58:36][INFO] Docker 版本: 27.4.0
+[2025-07-04 12:58:36][INFO] 运行 Docker 容器测试
+[2025-07-04 12:58:36][SUCCESS] Docker 容器测试通过
+[2025-07-04 12:58:36][INFO] 验证 Kubernetes 环境
+[2025-07-04 12:58:36][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 12:58:36][INFO] kubectl 版本: 未知
+[2025-07-04 12:58:36][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 12:58:37][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 12:58:37][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 12:58:37][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 12:58:37][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 12:58:37][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 12:58:37][INFO] 虚拟机状态: default    Running    aarch64    4       1GiB      20GiB    docker+k3s    
+[2025-07-04 12:58:37][SUCCESS] Colima 环境验证通过
+[2025-07-04 12:58:37][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 12:58:37][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 12:58:37][INFO] 开始设置 Docker 镜像源
+[2025-07-04 12:58:37][SUCCESS] Colima 已安装
+[2025-07-04 12:58:37][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 12:58:37][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 12:58:37][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 12:58:37][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 12:58:37][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 12:58:37][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 12:58:37][SUCCESS] 完整安装流程完成
+[2025-07-04 12:58:37][SUCCESS] 操作完成!
+[2025-07-04 12:59:19][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 12:59:20][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 12:59:20][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 12:59:20][INFO] 检查系统要求...
+[2025-07-04 12:59:20][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 12:59:22][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 12:59:22][INFO] 系统架构: apple_silicon
+[2025-07-04 12:59:22][SUCCESS] 系统要求检查通过
+[2025-07-04 12:59:22][INFO] 运行验证模式...
+[2025-07-04 12:59:35][SUCCESS] 验证完成，Docker环境正常
+[2025-07-04 12:59:35][SUCCESS] 操作完成!
+[2025-07-04 13:00:43][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:00:43][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:00:43][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:00:43][INFO] 检查系统要求...
+[2025-07-04 13:00:43][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:00:47][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:00:47][INFO] 系统架构: apple_silicon
+[2025-07-04 13:00:47][SUCCESS] 系统要求检查通过
+[2025-07-04 13:00:47][INFO] 开始完整安装流程...
+[2025-07-04 13:00:47][INFO] 配置: 内存=0GB, CPU=4, 磁盘=20000GB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 13:00:59][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 13:00:59][SUCCESS] Colima 已安装
+[2025-07-04 13:00:59][SUCCESS] kubectl 已安装
+[2025-07-04 13:00:59][INFO] 启动 Colima 虚拟机
+[2025-07-04 13:01:00][INFO] 当前 Colima 实例不支持 Kubernetes，需要重新启动以启用 Kubernetes
+[2025-07-04 13:01:00][INFO] 停止 Colima 虚拟机
+[2025-07-04 13:01:05][SUCCESS] Colima 虚拟机已停止
+[2025-07-04 13:01:08][INFO] 配置 Colima 虚拟机参数
+[2025-07-04 13:01:08][INFO] 内存: 0GB, CPU: 4核, 磁盘: 20000GB
+[2025-07-04 13:01:08][WARNING] 内存大小调整为最小值: 1GB
+[2025-07-04 13:01:08][INFO] 启用 Kubernetes 支持
+[2025-07-04 13:01:08][INFO] 执行命令: colima start --arch aarch64 --vm-type vz --memory 1 --cpu 4 --disk 20 --mount-type virtiofs --kubernetes
+[2025-07-04 13:01:33][SUCCESS] Colima 虚拟机启动成功
+[2025-07-04 13:01:33][INFO] 等待 Docker 守护进程就绪...
+[2025-07-04 13:01:33][SUCCESS] Docker 守护进程已就绪
+[2025-07-04 13:01:33][INFO] 等待 Kubernetes 集群就绪...
+[2025-07-04 13:01:33][SUCCESS] Kubernetes 集群已就绪
+[2025-07-04 13:01:34][SUCCESS] Kubernetes 节点已就绪
+[2025-07-04 13:01:34][INFO] 设置 DOCKER_HOST: unix:///Users/wangtianqing/.colima/default/docker.sock
+[2025-07-04 13:01:34][INFO] 验证 Colima 环境
+[2025-07-04 13:01:34][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 13:01:34][SUCCESS] Docker 连接正常
+[2025-07-04 13:01:34][INFO] Docker 版本: 27.4.0
+[2025-07-04 13:01:34][INFO] 运行 Docker 容器测试
+[2025-07-04 13:01:34][SUCCESS] Docker 容器测试通过
+[2025-07-04 13:01:34][INFO] 验证 Kubernetes 环境
+[2025-07-04 13:01:34][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 13:01:34][INFO] kubectl 版本: 未知
+[2025-07-04 13:01:34][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 13:01:34][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 13:01:34][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 13:01:34][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 13:01:34][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 13:01:34][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 13:01:35][INFO] 虚拟机状态: default    Running    aarch64    4       1GiB      20GiB    docker+k3s    
+[2025-07-04 13:01:35][SUCCESS] Colima 环境验证通过
+[2025-07-04 13:01:35][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 13:01:35][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 13:01:35][INFO] 开始设置 Docker 镜像源
+[2025-07-04 13:01:35][SUCCESS] Colima 已安装
+[2025-07-04 13:01:35][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 13:01:35][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 13:01:35][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 13:01:35][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 13:01:35][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 13:01:35][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 13:01:35][SUCCESS] 完整安装流程完成
+[2025-07-04 13:01:35][SUCCESS] 操作完成!
+[2025-07-04 13:02:44][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:02:44][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:02:44][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:02:44][INFO] 检查系统要求...
+[2025-07-04 13:02:44][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:02:47][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:02:47][INFO] 系统架构: apple_silicon
+[2025-07-04 13:02:47][SUCCESS] 系统要求检查通过
+[2025-07-04 13:02:47][INFO] 运行系统检查模式...
+[2025-07-04 13:02:48][SUCCESS] 系统检查完成，环境满足要求
+[2025-07-04 13:02:48][SUCCESS] 操作完成!
+[2025-07-04 13:03:27][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:03:27][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:03:27][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:03:27][INFO] 检查系统要求...
+[2025-07-04 13:03:27][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:03:30][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:03:30][INFO] 系统架构: apple_silicon
+[2025-07-04 13:03:30][SUCCESS] 系统要求检查通过
+[2025-07-04 13:03:30][INFO] 开始完整安装流程...
+[2025-07-04 13:03:30][INFO] 配置: 内存=0GB, CPU=4, 磁盘=20000GB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 13:03:42][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 13:03:42][SUCCESS] Colima 已安装
+[2025-07-04 13:03:42][SUCCESS] kubectl 已安装
+[2025-07-04 13:03:42][INFO] 启动 Colima 虚拟机
+[2025-07-04 13:03:43][INFO] 当前 Colima 实例不支持 Kubernetes，需要重新启动以启用 Kubernetes
+[2025-07-04 13:03:43][INFO] 停止 Colima 虚拟机
+[2025-07-04 13:03:47][SUCCESS] Colima 虚拟机已停止
+[2025-07-04 13:03:50][INFO] 配置 Colima 虚拟机参数
+[2025-07-04 13:03:50][INFO] 内存: 0GB, CPU: 4核, 磁盘: 20000GB
+[2025-07-04 13:03:50][WARNING] 内存大小调整为最小值: 1GB
+[2025-07-04 13:03:50][INFO] 启用 Kubernetes 支持
+[2025-07-04 13:03:50][INFO] 执行命令: colima start --arch aarch64 --vm-type vz --memory 1 --cpu 4 --disk 20 --mount-type virtiofs --kubernetes
+[2025-07-04 13:04:15][SUCCESS] Colima 虚拟机启动成功
+[2025-07-04 13:04:15][INFO] 等待 Docker 守护进程就绪...
+[2025-07-04 13:04:15][SUCCESS] Docker 守护进程已就绪
+[2025-07-04 13:04:15][INFO] 等待 Kubernetes 集群就绪...
+[2025-07-04 13:04:16][SUCCESS] Kubernetes 集群已就绪
+[2025-07-04 13:04:16][SUCCESS] Kubernetes 节点已就绪
+[2025-07-04 13:04:16][INFO] 设置 DOCKER_HOST: unix:///Users/wangtianqing/.colima/default/docker.sock
+[2025-07-04 13:04:16][INFO] 验证 Colima 环境
+[2025-07-04 13:04:16][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 13:04:16][SUCCESS] Docker 连接正常
+[2025-07-04 13:04:16][INFO] Docker 版本: 27.4.0
+[2025-07-04 13:04:16][INFO] 运行 Docker 容器测试
+[2025-07-04 13:04:16][SUCCESS] Docker 容器测试通过
+[2025-07-04 13:04:16][INFO] 验证 Kubernetes 环境
+[2025-07-04 13:04:16][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 13:04:17][INFO] kubectl 版本: 未知
+[2025-07-04 13:04:17][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 13:04:17][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 13:04:17][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 13:04:17][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 13:04:17][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 13:04:17][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 13:04:17][INFO] 虚拟机状态: default    Running    aarch64    4       1GiB      20GiB    docker+k3s    
+[2025-07-04 13:04:17][SUCCESS] Colima 环境验证通过
+[2025-07-04 13:04:17][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 13:04:17][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 13:04:17][INFO] 开始设置 Docker 镜像源
+[2025-07-04 13:04:17][SUCCESS] Colima 已安装
+[2025-07-04 13:04:17][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 13:04:17][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 13:04:17][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 13:04:17][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 13:04:17][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 13:04:17][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 13:04:17][SUCCESS] 完整安装流程完成
+[2025-07-04 13:04:17][SUCCESS] 操作完成!
+[2025-07-04 13:05:18][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:05:18][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:05:18][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:05:18][INFO] 检查系统要求...
+[2025-07-04 13:05:18][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:05:20][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:05:20][INFO] 系统架构: apple_silicon
+[2025-07-04 13:05:20][SUCCESS] 系统要求检查通过
+[2025-07-04 13:05:20][INFO] 开始完整安装流程...
+[2025-07-04 13:05:20][INFO] 配置: 内存=0GB, CPU=4, 磁盘=20000GB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 13:05:37][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:05:37][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:05:37][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:05:37][INFO] 检查系统要求...
+[2025-07-04 13:05:37][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:05:39][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 13:05:39][SUCCESS] Colima 已安装
+[2025-07-04 13:05:39][SUCCESS] kubectl 已安装
+[2025-07-04 13:05:39][INFO] 启动 Colima 虚拟机
+[2025-07-04 13:05:40][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:05:40][INFO] 系统架构: apple_silicon
+[2025-07-04 13:05:40][SUCCESS] 系统要求检查通过
+[2025-07-04 13:05:40][INFO] 开始完整安装流程...
+[2025-07-04 13:05:40][INFO] Colima 虚拟机已在运行
+[2025-07-04 13:05:40][INFO] 验证 Colima 环境
+[2025-07-04 13:05:40][INFO] 配置: 内存=0GB, CPU=4, 磁盘=20000GB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 13:05:41][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 13:05:41][SUCCESS] Docker 连接正常
+[2025-07-04 13:05:41][INFO] Docker 版本: 27.4.0
+[2025-07-04 13:05:41][INFO] 运行 Docker 容器测试
+[2025-07-04 13:05:41][SUCCESS] Docker 容器测试通过
+[2025-07-04 13:05:41][INFO] 验证 Kubernetes 环境
+[2025-07-04 13:05:41][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 13:05:42][INFO] kubectl 版本: 未知
+[2025-07-04 13:05:42][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 13:05:42][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 13:05:42][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 13:05:42][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 13:05:42][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 13:05:42][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 13:05:42][INFO] 虚拟机状态: default    Running    aarch64    4       1GiB      20GiB    docker+k3s    
+[2025-07-04 13:05:42][SUCCESS] Colima 环境验证通过
+[2025-07-04 13:05:42][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 13:05:42][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 13:05:42][INFO] 开始设置 Docker 镜像源
+[2025-07-04 13:05:42][SUCCESS] Colima 已安装
+[2025-07-04 13:05:42][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 13:05:42][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 13:05:42][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 13:05:42][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 13:05:42][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 13:05:42][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 13:05:42][SUCCESS] 完整安装流程完成
+[2025-07-04 13:05:42][SUCCESS] 操作完成!
+[2025-07-04 13:05:49][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 13:05:49][SUCCESS] Colima 已安装
+[2025-07-04 13:05:49][SUCCESS] kubectl 已安装
+[2025-07-04 13:05:49][INFO] 启动 Colima 虚拟机
+[2025-07-04 13:05:49][INFO] Colima 虚拟机已在运行
+[2025-07-04 13:05:49][INFO] 验证 Colima 环境
+[2025-07-04 13:05:50][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 13:05:50][SUCCESS] Docker 连接正常
+[2025-07-04 13:05:50][INFO] Docker 版本: 27.4.0
+[2025-07-04 13:05:50][INFO] 运行 Docker 容器测试
+[2025-07-04 13:05:50][SUCCESS] Docker 容器测试通过
+[2025-07-04 13:05:50][INFO] 验证 Kubernetes 环境
+[2025-07-04 13:05:50][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 13:05:50][INFO] kubectl 版本: 未知
+[2025-07-04 13:05:50][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 13:05:50][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 13:05:50][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 13:05:50][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 13:05:50][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 13:05:50][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 13:05:50][INFO] 虚拟机状态: default    Running    aarch64    4       1GiB      20GiB    docker+k3s    
+[2025-07-04 13:05:50][SUCCESS] Colima 环境验证通过
+[2025-07-04 13:05:50][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 13:05:50][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 13:05:50][INFO] 开始设置 Docker 镜像源
+[2025-07-04 13:05:50][SUCCESS] Colima 已安装
+[2025-07-04 13:05:51][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 13:05:51][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 13:05:51][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 13:05:51][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 13:05:51][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 13:05:51][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 13:05:51][SUCCESS] 完整安装流程完成
+[2025-07-04 13:05:51][SUCCESS] 操作完成!
+[2025-07-04 13:08:25][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:08:25][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:08:25][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:08:25][INFO] 检查系统要求...
+[2025-07-04 13:08:25][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:08:27][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:08:27][INFO] 系统架构: apple_silicon
+[2025-07-04 13:08:27][SUCCESS] 系统要求检查通过
+[2025-07-04 13:08:27][INFO] 运行系统检查模式...
+[2025-07-04 13:08:27][SUCCESS] 系统检查完成，环境满足要求
+[2025-07-04 13:08:27][SUCCESS] 操作完成!
+[2025-07-04 13:08:34][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:08:34][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:08:34][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:08:34][INFO] 检查系统要求...
+[2025-07-04 13:08:34][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:08:36][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:08:36][INFO] 系统架构: apple_silicon
+[2025-07-04 13:08:36][SUCCESS] 系统要求检查通过
+[2025-07-04 13:08:36][INFO] 开始完整安装流程...
+[2025-07-04 13:08:36][INFO] 配置: 内存=4GB, CPU=4, 磁盘=20000GB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 13:08:46][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 13:08:46][SUCCESS] Colima 已安装
+[2025-07-04 13:08:46][SUCCESS] kubectl 已安装
+[2025-07-04 13:08:46][INFO] 启动 Colima 虚拟机
+[2025-07-04 13:08:47][INFO] Colima 虚拟机已在运行
+[2025-07-04 13:08:47][INFO] 验证 Colima 环境
+[2025-07-04 13:08:47][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 13:08:47][SUCCESS] Docker 连接正常
+[2025-07-04 13:08:47][INFO] Docker 版本: 27.4.0
+[2025-07-04 13:08:47][INFO] 运行 Docker 容器测试
+[2025-07-04 13:08:48][SUCCESS] Docker 容器测试通过
+[2025-07-04 13:08:48][INFO] 验证 Kubernetes 环境
+[2025-07-04 13:08:48][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 13:08:48][INFO] kubectl 版本: 未知
+[2025-07-04 13:08:48][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 13:08:48][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 13:08:48][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 13:08:48][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 13:08:48][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 13:08:48][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 13:08:48][INFO] 虚拟机状态: default    Running    aarch64    4       1GiB      20GiB    docker+k3s    
+[2025-07-04 13:08:48][SUCCESS] Colima 环境验证通过
+[2025-07-04 13:08:48][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 13:08:48][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 13:08:48][INFO] 开始设置 Docker 镜像源
+[2025-07-04 13:08:48][SUCCESS] Colima 已安装
+[2025-07-04 13:08:49][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 13:08:49][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 13:08:49][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 13:08:49][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 13:08:49][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 13:08:49][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 13:08:49][SUCCESS] 完整安装流程完成
+[2025-07-04 13:08:49][SUCCESS] 操作完成!
+[2025-07-04 13:09:10][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:09:10][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:09:10][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:09:10][INFO] 检查系统要求...
+[2025-07-04 13:09:10][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:09:12][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:09:12][INFO] 系统架构: apple_silicon
+[2025-07-04 13:09:12][SUCCESS] 系统要求检查通过
+[2025-07-04 13:09:12][INFO] 运行系统检查模式...
+[2025-07-04 13:09:14][SUCCESS] 系统检查完成，环境满足要求
+[2025-07-04 13:09:14][SUCCESS] 操作完成!
+[2025-07-04 13:10:55][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:10:55][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:10:55][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:10:55][INFO] 检查系统要求...
+[2025-07-04 13:10:55][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:10:57][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:10:57][INFO] 系统架构: apple_silicon
+[2025-07-04 13:10:57][SUCCESS] 系统要求检查通过
+[2025-07-04 13:10:57][INFO] 开始完整安装流程...
+[2025-07-04 13:10:57][INFO] 配置: 内存=4GB, CPU=4, 磁盘=20000GB, 容器运行时=Colima, Kubernetes=启用
+[2025-07-04 13:11:05][INFO] 使用 Colima 安装 Docker + Kubernetes 环境
+[2025-07-04 13:11:05][SUCCESS] Colima 已安装
+[2025-07-04 13:11:05][SUCCESS] kubectl 已安装
+[2025-07-04 13:11:05][INFO] 启动 Colima 虚拟机
+[2025-07-04 13:11:06][INFO] 配置 Colima 虚拟机参数
+[2025-07-04 13:11:06][INFO] 内存: 4GB, CPU: 4核, 磁盘: 20000GB
+[2025-07-04 13:11:06][INFO] 启用 Kubernetes 支持
+[2025-07-04 13:11:06][INFO] 执行命令: colima start --arch aarch64 --vm-type vz --memory 4 --cpu 4 --disk 20 --mount-type virtiofs --kubernetes
+[2025-07-04 13:11:41][SUCCESS] Colima 虚拟机启动成功
+[2025-07-04 13:11:41][INFO] 等待 Docker 守护进程就绪...
+[2025-07-04 13:11:42][SUCCESS] Docker 守护进程已就绪
+[2025-07-04 13:11:42][INFO] 等待 Kubernetes 集群就绪...
+[2025-07-04 13:11:42][SUCCESS] Kubernetes 集群已就绪
+[2025-07-04 13:11:42][SUCCESS] Kubernetes 节点已就绪
+[2025-07-04 13:11:42][INFO] 设置 DOCKER_HOST: unix:///Users/wangtianqing/.colima/default/docker.sock
+[2025-07-04 13:11:42][INFO] 验证 Colima 环境
+[2025-07-04 13:11:43][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 13:11:43][SUCCESS] Docker 连接正常
+[2025-07-04 13:11:43][INFO] Docker 版本: 27.4.0
+[2025-07-04 13:11:43][INFO] 运行 Docker 容器测试
+[2025-07-04 13:11:53][SUCCESS] Docker 容器测试通过
+[2025-07-04 13:11:53][INFO] 验证 Kubernetes 环境
+[2025-07-04 13:11:53][SUCCESS] Kubernetes 集群连接正常
+[2025-07-04 13:11:54][INFO] kubectl 版本: 未知
+[2025-07-04 13:11:54][INFO] Kubernetes 服务器版本: 未知
+[2025-07-04 13:11:54][INFO] Kubernetes 节点: 1/1 就绪
+[2025-07-04 13:11:54][SUCCESS] 所有 Kubernetes 节点就绪
+[2025-07-04 13:11:54][INFO] 运行 Kubernetes 连接测试
+[2025-07-04 13:11:54][SUCCESS] Kubernetes API 测试通过
+[2025-07-04 13:11:54][SUCCESS] Kubernetes 环境验证通过
+[2025-07-04 13:11:54][INFO] 虚拟机状态: default    Running    aarch64    4       4GiB      20GiB    docker+k3s    
+[2025-07-04 13:11:54][SUCCESS] Colima 环境验证通过
+[2025-07-04 13:11:54][SUCCESS] Docker + Kubernetes 环境 (Colima) 安装完成
+[2025-07-04 13:11:54][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 13:11:54][INFO] 开始设置 Docker 镜像源
+[2025-07-04 13:11:54][SUCCESS] Colima 已安装
+[2025-07-04 13:11:54][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 13:11:54][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 13:11:54][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 13:11:54][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 13:11:54][INFO] 添加镜像源配置到 Colima 配置文件
+[2025-07-04 13:11:54][SUCCESS] 镜像源配置已添加到配置文件
+[2025-07-04 13:11:54][INFO] 重启 Colima 以应用配置...
+[2025-07-04 13:11:54][INFO] 重启 Colima 虚拟机: default
+[2025-07-04 13:12:20][SUCCESS] Colima 重启成功
+[2025-07-04 13:12:20][SUCCESS] 镜像源配置完成: https://docker.m.daocloud.io
+[2025-07-04 13:12:20][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 13:12:20][SUCCESS] 完整安装流程完成
+[2025-07-04 13:12:20][SUCCESS] 操作完成!
+[2025-07-04 13:14:14][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:14:14][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:14:14][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:14:33][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:14:33][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:14:33][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:15:10][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:15:10][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:15:10][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:15:11][INFO] 检查系统要求...
+[2025-07-04 13:15:11][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:15:13][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:15:13][INFO] 系统架构: apple_silicon
+[2025-07-04 13:15:13][SUCCESS] 系统要求检查通过
+[2025-07-04 13:15:13][INFO] 运行系统检查模式...
+[2025-07-04 13:15:34][SUCCESS] 系统检查完成，环境满足要求
+[2025-07-04 13:15:34][SUCCESS] 操作完成!
+[2025-07-04 13:16:29][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:16:29][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:16:29][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:16:29][INFO] 检查系统要求...
+[2025-07-04 13:16:29][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:16:31][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:16:31][INFO] 系统架构: apple_silicon
+[2025-07-04 13:16:31][SUCCESS] 系统要求检查通过
+[2025-07-04 13:16:31][INFO] 运行系统检查模式...
+[2025-07-04 13:16:32][SUCCESS] 系统检查完成，环境满足要求
+[2025-07-04 13:16:32][SUCCESS] 操作完成!
+[2025-07-04 13:16:52][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:16:52][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:16:52][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:16:52][INFO] 检查系统要求...
+[2025-07-04 13:16:52][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:16:54][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:16:54][INFO] 系统架构: apple_silicon
+[2025-07-04 13:16:54][SUCCESS] 系统要求检查通过
+[2025-07-04 13:16:54][INFO] 开始完整安装流程...
+[2025-07-04 13:16:54][INFO] 配置: 内存=4GB, CPU=2, 磁盘=20000GB, 容器运行时=Colima, Kubernetes=禁用
+[2025-07-04 13:17:14][INFO] 使用 Colima 安装 Docker 环境
+[2025-07-04 13:17:14][SUCCESS] Colima 已安装
+[2025-07-04 13:17:14][INFO] 启动 Colima 虚拟机
+[2025-07-04 13:17:15][INFO] Colima 虚拟机已在运行
+[2025-07-04 13:17:15][INFO] 验证 Colima 环境
+[2025-07-04 13:17:16][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 13:17:16][SUCCESS] Docker 连接正常
+[2025-07-04 13:17:16][INFO] Docker 版本: 27.4.0
+[2025-07-04 13:17:16][INFO] 运行 Docker 容器测试
+[2025-07-04 13:17:16][SUCCESS] Docker 容器测试通过
+[2025-07-04 13:17:16][INFO] 虚拟机状态: default    Running    aarch64    4       4GiB      20GiB    docker+k3s    
+[2025-07-04 13:17:16][SUCCESS] Colima 环境验证通过
+[2025-07-04 13:17:16][SUCCESS] Docker 环境 (Colima) 安装完成
+[2025-07-04 13:17:16][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 13:17:16][INFO] 开始设置 Docker 镜像源
+[2025-07-04 13:17:16][SUCCESS] Colima 已安装
+[2025-07-04 13:17:17][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 13:17:17][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 13:17:17][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 13:17:17][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 13:17:17][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 13:17:17][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 13:17:17][SUCCESS] 完整安装流程完成
+[2025-07-04 13:17:17][SUCCESS] 操作完成!
+[2025-07-04 13:17:26][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:17:26][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:17:26][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:17:26][INFO] 检查系统要求...
+[2025-07-04 13:17:26][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:17:27][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:17:27][INFO] 系统架构: apple_silicon
+[2025-07-04 13:17:27][SUCCESS] 系统要求检查通过
+[2025-07-04 13:17:27][INFO] 开始完整安装流程...
+[2025-07-04 13:17:27][INFO] 配置: 内存=4GB, CPU=2, 磁盘=25000GB, 容器运行时=Colima, Kubernetes=禁用
+[2025-07-04 13:17:46][INFO] 使用 Colima 安装 Docker 环境
+[2025-07-04 13:17:46][SUCCESS] Colima 已安装
+[2025-07-04 13:17:46][INFO] 启动 Colima 虚拟机
+[2025-07-04 13:17:47][INFO] Colima 虚拟机已在运行
+[2025-07-04 13:17:47][INFO] 验证 Colima 环境
+[2025-07-04 13:17:47][SUCCESS] Colima 虚拟机运行正常
+[2025-07-04 13:17:48][SUCCESS] Docker 连接正常
+[2025-07-04 13:17:48][INFO] Docker 版本: 27.4.0
+[2025-07-04 13:17:48][INFO] 运行 Docker 容器测试
+[2025-07-04 13:17:48][SUCCESS] Docker 容器测试通过
+[2025-07-04 13:17:48][INFO] 虚拟机状态: default    Running    aarch64    4       4GiB      20GiB    docker+k3s    
+[2025-07-04 13:17:48][SUCCESS] Colima 环境验证通过
+[2025-07-04 13:17:48][SUCCESS] Docker 环境 (Colima) 安装完成
+[2025-07-04 13:17:48][INFO] 开始配置 Docker 镜像源...
+[2025-07-04 13:17:48][INFO] 开始设置 Docker 镜像源
+[2025-07-04 13:17:48][SUCCESS] Colima 已安装
+[2025-07-04 13:17:48][INFO] 检测到 Colima 环境，虚拟机: default
+[2025-07-04 13:17:48][INFO] 使用 DaoCloud 镜像源: https://docker.m.daocloud.io
+[2025-07-04 13:17:48][INFO] 配置 Docker daemon 镜像源: https://docker.m.daocloud.io (虚拟机: default)
+[2025-07-04 13:17:48][INFO] 检查配置文件中的镜像源设置
+[2025-07-04 13:17:48][INFO] 镜像源已存在于配置文件中: https://docker.m.daocloud.io
+[2025-07-04 13:17:48][SUCCESS] Docker 镜像源配置完成
+[2025-07-04 13:17:48][SUCCESS] 完整安装流程完成
+[2025-07-04 13:17:48][SUCCESS] 操作完成!
+[2025-07-04 13:20:52][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:20:52][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:20:52][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:39:09][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:39:09][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:39:09][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:39:26][INFO] Mac Docker + Colima 模块化安装脚本 v4.0 启动
+[2025-07-04 13:39:26][INFO] 日志文件: /Users/wangtianqing/Project/grissom/mac/logs/install.log
+[2025-07-04 13:39:26][INFO] 加载配置文件: /Users/wangtianqing/Project/grissom/mac/config/config.conf
+[2025-07-04 13:39:26][INFO] 检查系统要求...
+[2025-07-04 13:39:26][INFO] 当前系统版本: macOS 15.5
+[2025-07-04 13:39:29][WARNING] 网络连通性检查失败，可能影响安装
+[2025-07-04 13:39:29][INFO] 系统架构: apple_silicon
+[2025-07-04 13:39:29][SUCCESS] 系统要求检查通过
+[2025-07-04 13:39:29][INFO] 运行系统检查模式...
+[2025-07-04 13:39:31][SUCCESS] 系统检查完成，环境满足要求
+[2025-07-04 13:39:31][SUCCESS] 操作完成!
