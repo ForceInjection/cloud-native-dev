@@ -1,3 +1,6 @@
+# 本地 HPA 示例配置
+# 适用于 Kubernetes v1.23.17 本地环境
+
 # 示例应用部署
 apiVersion: apps/v1
 kind: Deployment
@@ -7,7 +10,7 @@ metadata:
   labels:
     app: nginx-hpa-demo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx-hpa-demo
@@ -18,7 +21,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.21
+        image: docker.m.daocloud.io/library/nginx:1.21
         ports:
         - containerPort: 80
         resources:
@@ -26,7 +29,7 @@ spec:
             cpu: 100m
             memory: 128Mi
           limits:
-            cpu: 500m
+            cpu: 200m
             memory: 256Mi
 ---
 # 服务配置
@@ -44,7 +47,7 @@ spec:
     targetPort: 80
   type: ClusterIP
 ---
-# HPA 配置
+# HPA 配置 - 本地环境优化
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -55,8 +58,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: nginx-hpa-demo
-  minReplicas: 2
-  maxReplicas: 10
+  minReplicas: 1
+  maxReplicas: 5
   metrics:
   - type: Resource
     resource:
@@ -64,26 +67,16 @@ spec:
       target:
         type: Utilization
         averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80
   behavior:
     scaleDown:
       stabilizationWindowSeconds: 300
       policies:
-      - type: Percent
-        value: 10
+      - type: Pods
+        value: 1
         periodSeconds: 60
     scaleUp:
-      stabilizationWindowSeconds: 0
+      stabilizationWindowSeconds: 60
       policies:
-      - type: Percent
-        value: 100
-        periodSeconds: 15
       - type: Pods
-        value: 4
-        periodSeconds: 15
-      selectPolicy: Max
+        value: 2
+        periodSeconds: 60
