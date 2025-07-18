@@ -1,0 +1,113 @@
+# 本地自定义指标 HPA 示例配置
+# 适用于 Kubernetes v1.23.17 本地环境
+# 注意：使用自定义指标前需要先部署 Prometheus Adapter
+
+# 示例应用部署（带有 Prometheus 指标暴露）
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-custom-metrics
+  namespace: default
+  labels:
+    app: web-app-custom-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app-custom-metrics
+  template:
+    metadata:
+      labels:
+        app: web-app-custom-metrics
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: web-app
+        image: docker.m.daocloud.io/library/nginx:1.21
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 8080
+          name: metrics
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+        env:
+        - name: ENABLE_METRICS
+          value: "true"
+---
+# 服务配置
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-custom-metrics-service
+  namespace: default
+  labels:
+    app: web-app-custom-metrics
+spec:
+  selector:
+    app: web-app-custom-metrics
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: metrics
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP
+---
+# 基于自定义指标的 HPA 配置 - 本地环境简化版
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web-app-custom-metrics-hpa
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-app-custom-metrics
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  # 1. 资源指标：CPU 使用率
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  
+  # 2. Pod 自定义指标：每秒 HTTP 请求数
+  # 需要应用暴露 http_requests_total 指标
+  - type: Pods
+    pods:
+      metric:
+        name: http_requests_per_second
+      target:
+        type: AverageValue
+        averageValue: "50"
+  
+  # 扩缩容行为配置 - 本地环境优化
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Pods
+        value: 1
+        periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Pods
+        value: 2
+        periodSeconds: 60
