@@ -1,0 +1,74 @@
+# Prometheus Adapter Helm Values
+# 用于 HPA 自定义指标的配置
+
+# Prometheus 连接配置
+prometheus:
+  url: http://monitor-kube-prometheus-st-prometheus.monitor.svc.cluster.local
+  port: 9090
+
+# 资源配置
+replicas: 1
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+# 自定义指标规则配置
+rules:
+  custom:
+    # 1. Pod 维度：用于 HPA 等
+    - seriesQuery: 'http_server_requests_seconds_count{namespace!="",pod!=""}'
+      resources:
+        overrides:
+          namespace:
+            resource: namespace
+          pod:
+            resource: pod
+      name:
+        matches: "^http_server_requests_seconds_count$"
+        as: "http_requests_per_second"
+      metricsQuery: |
+        sum(rate(http_server_requests_seconds_count{<<.LabelMatchers>>}[2m])) by (namespace, pod)
+
+    # 2. Application 聚合维度：用于观测与监控系统
+    - seriesQuery: 'http_server_requests_seconds_count{namespace!="",application!=""}'
+      resources:
+        overrides:
+          namespace:
+            resource: namespace
+      name:
+        matches: "^http_server_requests_seconds_count$"
+        as: "http_requests_per_second_by_app"
+      metricsQuery: |
+        sum(rate(http_server_requests_seconds_count{<<.LabelMatchers>>}[2m])) by (namespace, application)
+
+# 资源指标支持（用于 HPA）
+resourceRules:
+  cpu:
+    containerQuery: |
+      sum by (<<.GroupBy>>) (
+        rate(container_cpu_usage_seconds_total{container!="",pod!=""}[3m])
+      )
+    resources:
+      overrides:
+        namespace:
+          resource: namespace
+        pod:
+          resource: pod
+    containerLabel: container
+
+  memory:
+    containerQuery: |
+      sum by (<<.GroupBy>>) (
+        container_memory_working_set_bytes{container!="",pod!=""}
+      )
+    resources:
+      overrides:
+        namespace:
+          resource: namespace
+        pod:
+          resource: pod
+    containerLabel: container

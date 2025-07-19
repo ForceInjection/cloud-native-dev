@@ -66,6 +66,15 @@ else
     test_result "kubectl 命令可用" "FAIL"
 fi
 
+# 检查 helm (Prometheus Adapter 部署需要)
+if command -v helm &> /dev/null; then
+    HELM_VERSION=$(helm version --short 2>/dev/null || echo "Unknown")
+    test_result "helm 命令可用 ($HELM_VERSION)" "PASS"
+else
+    test_result "helm 命令可用" "FAIL"
+    log_warning "  Helm 是部署 Prometheus Adapter 的可选依赖"
+fi
+
 # 检查集群连接
 if kubectl cluster-info &> /dev/null; then
     CLUSTER_INFO=$(kubectl cluster-info | head -1)
@@ -79,11 +88,18 @@ fi
 # 检查集群版本
 if kubectl version --short &> /dev/null; then
     SERVER_VERSION=$(kubectl version --short 2>/dev/null | grep "Server Version" | awk '{print $3}' || echo "Unknown")
-    if [[ "$SERVER_VERSION" == *"v1.23"* ]]; then
-        test_result "Kubernetes 版本兼容 ($SERVER_VERSION)" "PASS"
+    # 提取版本号进行比较 (支持 v1.23+)
+    if [[ "$SERVER_VERSION" =~ v1\.([0-9]+) ]]; then
+        MINOR_VERSION=${BASH_REMATCH[1]}
+        if [ "$MINOR_VERSION" -ge 23 ]; then
+            test_result "Kubernetes 版本兼容 ($SERVER_VERSION)" "PASS"
+        else
+            test_result "Kubernetes 版本兼容 ($SERVER_VERSION)" "FAIL"
+            log_warning "  需要 Kubernetes v1.23+，当前版本可能存在兼容性问题"
+        fi
     else
         test_result "Kubernetes 版本兼容 ($SERVER_VERSION)" "FAIL"
-        log_warning "  推荐使用 Kubernetes v1.23.17，当前版本可能存在兼容性问题"
+        log_warning "  无法解析版本号，推荐使用 Kubernetes v1.23+"
     fi
 else
     test_result "Kubernetes 版本检查" "FAIL"
@@ -99,10 +115,11 @@ REQUIRED_FILES=(
     "README.md"
     "IMAGE_ACCELERATION.md"
     "metrics-server.yaml"
-    "hpa-example.yaml"
-    "hpa-custom-metrics-example.yaml"
+    "prometheus-adapter-springboot-config.yaml"
+    "hpa-basic-resource-metrics.yaml"
+    "hpa-pod-level-custom-metrics.yaml"
+    "hpa-namespace-level-custom-metrics.yaml"
     "deploy-hpa.sh"
-    "deploy-custom-metrics.sh"
     "load-test.sh"
     "hpa-tuning.sh"
 )
@@ -118,7 +135,6 @@ done
 # 检查脚本可执行权限
 SCRIPT_FILES=(
     "deploy-hpa.sh"
-    "deploy-custom-metrics.sh"
     "load-test.sh"
     "hpa-tuning.sh"
 )
@@ -141,8 +157,10 @@ log_info "3. 验证 YAML 配置文件..."
 
 YAML_FILES=(
     "metrics-server.yaml"
-    "hpa-example.yaml"
-    "hpa-custom-metrics-example.yaml"
+    "prometheus-adapter-springboot-config.yaml"
+    "hpa-basic-resource-metrics.yaml"
+    "hpa-pod-level-custom-metrics.yaml"
+    "hpa-namespace-level-custom-metrics.yaml"
 )
 
 for yaml_file in "${YAML_FILES[@]}"; do
@@ -160,10 +178,10 @@ done
 log_info "4. 检查镜像配置..."
 
 # 检查是否使用了镜像加速
-if grep -q "docker.m.daocloud.io" hpa-example.yaml 2>/dev/null; then
-    test_result "hpa-example.yaml 使用镜像加速" "PASS"
+if grep -q "docker.m.daocloud.io" hpa-basic-resource-metrics.yaml 2>/dev/null; then
+    test_result "hpa-basic-resource-metrics.yaml 使用镜像加速" "PASS"
 else
-    test_result "hpa-example.yaml 使用镜像加速" "FAIL"
+    test_result "hpa-basic-resource-metrics.yaml 使用镜像加速" "FAIL"
 fi
 
 if grep -q "k8s.m.daocloud.io" metrics-server.yaml 2>/dev/null; then
@@ -206,17 +224,24 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     fi
     
     # 测试示例应用部署
-    if kubectl apply --dry-run=server -f hpa-example.yaml &> /dev/null; then
+    if kubectl apply --dry-run=server -f hpa-basic-resource-metrics.yaml &> /dev/null; then
         test_result "HPA 示例配置可部署" "PASS"
     else
         test_result "HPA 示例配置可部署" "FAIL"
     fi
     
     # 测试自定义指标配置
-    if kubectl apply --dry-run=server -f hpa-custom-metrics-example.yaml &> /dev/null; then
-        test_result "自定义指标配置可部署" "PASS"
+    if kubectl apply --dry-run=server -f hpa-pod-level-custom-metrics.yaml &> /dev/null; then
+        test_result "Pod 级别自定义指标配置可部署" "PASS"
     else
-        test_result "自定义指标配置可部署" "FAIL"
+        test_result "Pod 级别自定义指标配置可部署" "FAIL"
+    fi
+    
+    # 测试 Namespace 级别自定义指标配置
+    if kubectl apply --dry-run=server -f hpa-namespace-level-custom-metrics.yaml &> /dev/null; then
+        test_result "Namespace 级别自定义指标配置可部署" "PASS"
+    else
+        test_result "Namespace 级别自定义指标配置可部署" "FAIL"
     fi
 else
     log_info "跳过模拟部署测试"
@@ -260,10 +285,12 @@ if [ $FAILED_TESTS -eq 0 ]; then
     log_info "您可以安全地使用这些脚本进行 HPA 部署"
     echo ""
     log_info "建议的部署顺序："
-    echo "  1. ./deploy-hpa.sh          # 部署 HPA 基础组件"
-    echo "  2. ./load-test.sh           # 验证 HPA 功能"
-    echo "  3. ./deploy-custom-metrics.sh # (可选) 部署自定义指标支持"
-    echo "  4. ./hpa-tuning.sh          # (可选) 性能调优"
+    echo "  1. ./deploy-hpa.sh          # HPA 环境准备脚本（包含 Metrics Server 和可选的 Prometheus Adapter）"
+    echo "  2. kubectl apply -f hpa-basic-resource-metrics.yaml  # 部署基础资源指标 HPA"
+    echo "  3. kubectl apply -f hpa-pod-level-custom-metrics.yaml  # (可选) 部署 Pod 级别自定义指标 HPA"
+    echo "  4. kubectl apply -f hpa-namespace-level-custom-metrics.yaml  # (可选) 部署 Namespace 级别自定义指标 HPA"
+    echo "  5. ./load-test.sh           # 验证 HPA 功能"
+    echo "  6. ./hpa-tuning.sh          # (可选) 性能调优"
 else
     log_warning "⚠️  发现 $FAILED_TESTS 个问题需要解决"
     log_info "请根据上述错误信息修复问题后重新运行验证"

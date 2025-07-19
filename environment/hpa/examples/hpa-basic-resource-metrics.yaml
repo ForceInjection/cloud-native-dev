@@ -1,0 +1,79 @@
+# 基础 HPA 示例配置
+# 适用于 prometheus-test-demo Spring Boot 应用
+# 基于 CPU 和内存资源指标的自动扩缩容
+#
+# 前置条件：
+# 1. prometheus-test-demo 应用已部署
+# 2. Metrics Server 已安装并运行
+# 3. 应用 Pod 已设置资源请求（requests）
+#
+# 触发扩容条件（满足任一条件即触发）：
+# 1. CPU 平均利用率 ≥ 30%（demo 环境设置较低便于触发）
+# 2. 内存平均利用率 ≥ 50%（demo 环境设置较低便于触发）
+#
+# 触发缩容条件（所有条件都低于阈值时触发）：
+# 1. CPU 平均利用率 < 30%
+# 2. 内存平均利用率 < 50%
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: prometheus-test-demo-basic-hpa
+  namespace: default  # 根据实际部署的命名空间调整
+  labels:
+    app: prometheus-test-demo
+    hpa-type: basic-metrics
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: prometheus-test-demo
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  # 1. 资源指标：CPU 使用率
+  # 作用：监控 Pod 的平均 CPU 利用率，防止 CPU 密集型任务导致性能下降
+  # 触发：当所有 Pod 的平均 CPU 利用率超过 30% 时触发扩容（demo 环境设置较低便于触发）
+  # 适用场景：计算密集型任务、数据处理、复杂业务逻辑等
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 30  # 30% CPU 利用率阈值（demo 环境设置较低便于触发）
+  
+  # 2. 资源指标：内存使用率
+  # 作用：监控 Pod 的平均内存利用率，防止内存不足导致 OOM
+  # 触发：当所有 Pod 的平均内存利用率超过 50% 时触发扩容（demo 环境设置较低便于触发）
+  # 适用场景：内存密集型应用、缓存服务、大数据处理等
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 50  # 50% 内存利用率阈值（demo 环境设置较低便于触发）
+  
+  # 扩缩容行为配置（生产环境优化）
+  behavior:
+    scaleDown:
+      # 缩容稳定窗口：5分钟
+      stabilizationWindowSeconds: 300
+      policies:
+      - type: Pods
+        value: 1
+        periodSeconds: 60  # 每分钟最多缩容1个Pod
+      - type: Percent
+        value: 10
+        periodSeconds: 60  # 每分钟最多缩容10%的Pod
+      selectPolicy: Min  # 选择更保守的策略
+    scaleUp:
+      # 扩容稳定窗口：1分钟
+      stabilizationWindowSeconds: 60
+      policies:
+      - type: Pods
+        value: 2
+        periodSeconds: 60  # 每分钟最多扩容2个Pod
+      - type: Percent
+        value: 50
+        periodSeconds: 60  # 每分钟最多扩容50%的Pod
+      selectPolicy: Max  # 选择更激进的策略

@@ -1,3 +1,12 @@
+# Metrics Server 配置文件 - 教学环境版本
+# 
+# 此配置专为教学环境设计，包含以下简化配置：
+# 1. 启用 --kubelet-insecure-tls 参数，避免 TLS 证书问题
+# 2. 设置 insecureSkipTLSVerify: true，简化 TLS 验证
+# 3. 使用镜像加速地址 k8s.m.daocloud.io
+# 
+# 注意：生产环境请使用更严格的安全配置
+#
 apiVersion: v1
 kind: ServiceAccount
 metadata:
