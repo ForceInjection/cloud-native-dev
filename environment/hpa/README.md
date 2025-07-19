@@ -43,10 +43,7 @@ hpa/
 
 **使用的加速镜像**：
 
-- **Nginx**: `docker.m.daocloud.io/library/nginx:1.21`
 - **Metrics Server**: `k8s.m.daocloud.io/metrics-server/metrics-server:v0.6.4`
-
-**如需自定义镜像配置或故障排除，请参考**: 📖 [镜像加速配置详细文档](IMAGE_ACCELERATION.md)
 
 ## 2. 快速开始
 

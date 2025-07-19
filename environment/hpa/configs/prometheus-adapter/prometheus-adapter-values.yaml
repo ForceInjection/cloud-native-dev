@@ -1,6 +1,12 @@
 # Prometheus Adapter Helm Values
 # 用于 HPA 自定义指标的配置
 
+# 镜像配置
+image:
+  repository: k8s.m.daocloud.io/prometheus-adapter/prometheus-adapter
+  tag: v0.12.0
+  pullPolicy: IfNotPresent
+
 # Prometheus 连接配置
 prometheus:
   url: http://monitor-kube-prometheus-st-prometheus.monitor.svc.cluster.local
