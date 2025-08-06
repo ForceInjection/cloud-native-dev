@@ -180,6 +180,21 @@ rules:
 - apiGroups: ["networking.k8s.io"]
   resources: ["ingresses", "networkpolicies"]
   verbs: ["get", "list", "create", "update", "patch", "delete", "watch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get", "list", "create", "update", "patch", "delete", "watch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers/status"]
+  verbs: ["get", "update", "patch"]
+- apiGroups: ["metrics.k8s.io"]
+  resources: ["pods", "nodes"]
+  verbs: ["get", "list"]
+- apiGroups: ["custom.metrics.k8s.io"]
+  resources: ["*"]
+  verbs: ["get", "list"]
+- apiGroups: ["external.metrics.k8s.io"]
+  resources: ["*"]
+  verbs: ["get", "list"]
 EOF
   
   # 创建RoleBinding
