@@ -1,304 +1,94 @@
 # Linux 入门课程演示脚本
 
-本目录包含了《Linux 入门》课程的所有演示脚本，这些脚本对应课程文档中的各个章节，可以独立运行来演示相关的 Linux 概念和命令。
+本目录包含课程所有演示脚本和配套文件，对应 `chapters/` 下的各个章节。所有 `.sh` 脚本均可独立运行。
 
-## 一、脚本列表
+## 脚本列表
 
-### 1. basic_commands.sh
+### 01 - Linux 系统概述（无脚本，概念章节）
 
-**对应章节**: 第二章 - Linux 基础操作
+### 02 - Linux 基础操作
 
-**功能**: 演示 Linux 基础命令的使用
+| 脚本                  | 说明                                                                             |
+| --------------------- | -------------------------------------------------------------------------------- |
+| `basic_commands.sh`   | 文件和目录操作 (mkdir, ls, touch)、文件查看 (cat, head, tail)、搜索 (find, grep) |
+| `file_permissions.sh` | 数字/符号权限、目录权限、特殊权限 (sticky bit)、umask                            |
 
-- 文件和目录操作 (mkdir, ls, touch, etc.)
-- 文件查看命令 (cat, head, tail)
-- 文件搜索 (find, grep)
-- 文件权限基础
+### 03 - 文件操作和文本处理
 
-**使用方法**:
+> 本章以命令行为主，对应 `shell_scripting.sh` 中的管道和文本处理演示。
 
-```bash
-chmod +x basic_commands.sh
-./basic_commands.sh
-```
+### 04 - 进程和系统管理
 
-### 2. file_permissions.sh
+| 脚本                    | 说明                                                      |
+| ----------------------- | --------------------------------------------------------- |
+| `process_management.sh` | 进程查看 (ps, jobs)、后台进程、系统资源监控、网络连接状态 |
+| `disk_monitor.sh`       | 磁盘使用监控与告警                                        |
 
-**对应章节**: 第三章 - 文件系统和权限管理
+### 05 - 网络和安全基础
 
-**功能**: 详细演示文件权限管理
+| 脚本                  | 说明                                                     |
+| --------------------- | -------------------------------------------------------- |
+| `network_security.sh` | 网络接口配置查看、DNS 测试、防火墙状态检查、SSH 配置查看 |
 
-- 数字权限和符号权限
-- 目录权限
-- 特殊权限 (sticky bit)
-- umask 概念
+### 06 - 软件包管理
 
-**使用方法**:
+| 脚本                    | 说明                                                       |
+| ----------------------- | ---------------------------------------------------------- |
+| `package_management.sh` | 自动检测系统类型，演示对应的包管理器命令、源码编译安装概念 |
 
-```bash
-chmod +x file_permissions.sh
-./file_permissions.sh
-```
+### 07 - Shell 脚本编程
 
-### 3. process_management.sh
+| 脚本                 | 说明                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| `shell_scripting.sh` | 变量和参数、条件判断、循环、数组、函数、字符串处理、管道操作 |
+| `system_monitor.sh`  | 完整系统监控脚本，支持 cpu/memory/disk/network 等模式        |
+| `log_analyzer.sh`    | Web 服务器日志分析工具，支持统计、状态码、IP 分析、实时监控  |
+| `auto_deploy.sh`     | 自动化部署脚本，支持 deploy/rollback/status/restart 等操作   |
 
-**对应章节**: 第四章 - 进程和系统管理
+### 08 - 为容器技术做准备
 
-**功能**: 演示进程管理和系统监控
+| 脚本                         | 说明                                                             |
+| ---------------------------- | ---------------------------------------------------------------- |
+| `container_demo.sh`          | 容器技术基础概念演示（namespace, cgroup, union FS, Docker, K8s） |
+| `check_container_support.sh` | 检查系统对容器的支持（内核特性、cgroup、Docker/K8s 状态）        |
+| `container_communication.sh` | 容器间通信概念与网络模型演示                                     |
+| `process_isolation_demo.sh`  | 进程隔离机制演示（namespace 对比）                               |
+| `image_layers_demo.sh`       | Docker 镜像分层构建演示                                          |
+| `layered_fs_demo.sh`         | OverlayFS 分层文件系统实验演示                                   |
+| `k8s_concepts_demo.sh`       | Kubernetes 集群架构与核心概念演示                                |
+| `k8s_storage_demo.sh`        | K8s 存储类型、PV/PVC/StorageClass 概念演示                       |
+| `service_discovery_demo.sh`  | 服务发现机制演示（DNS、负载均衡）                                |
 
-- 进程查看 (ps, jobs)
-- 后台进程管理
-- 系统资源监控
-- 网络连接状态
+### 其他辅助文件
 
-**使用方法**:
+| 文件                         | 说明                                             |
+| ---------------------------- | ------------------------------------------------ |
+| `optimize_for_containers.sh` | 容器环境内核参数建议（仅展示，不修改系统）       |
+| `performance_test.sh`        | CPU/内存/磁盘 I/O/网络延迟性能对比测试           |
+| `resource_monitor.sh`        | 系统资源使用监控（CPU/内存/磁盘/网络）           |
+| `hello.c`                    | C 语言 Hello World，用于源码编译安装演示（ch06） |
+| `memory_eater.py`            | 内存消耗脚本，用于 cgroup 内存限制实验（ch08）   |
+| `ssh_config`                 | SSH 客户端配置模板（ch05）                       |
+| `container_learning_path.md` | 容器技术学习路径清单                             |
 
-```bash
-chmod +x process_management.sh
-./process_management.sh
-```
+## 学习路径
 
-### 4. network_security.sh
+建议按以下顺序学习：
 
-**对应章节**: 第五章 - 网络配置和安全基础
+1. `basic_commands.sh` → 熟悉基础命令（ch02）
+2. `file_permissions.sh` → 理解权限管理（ch02）
+3. `process_management.sh` → 学习进程管理（ch04）
+4. `network_security.sh` → 了解网络配置（ch05）
+5. `package_management.sh` → 掌握软件包管理（ch06）
+6. `shell_scripting.sh` → 学习脚本编程基础（ch07）
+7. `system_monitor.sh` → 实践系统监控（ch07）
+8. `log_analyzer.sh` → 实践日志分析（ch07）
+9. `auto_deploy.sh` → 实践自动化部署（ch07）
+10. `container_demo.sh` → 了解容器技术基础（ch08）
 
-**功能**: 演示网络配置和安全检查
+## 故障排除
 
-- 网络接口配置查看
-- DNS 配置和测试
-- 网络连通性测试
-- 防火墙状态检查
-- SSH 配置查看
-
-**使用方法**:
-
-```bash
-chmod +x network_security.sh
-./network_security.sh
-```
-
-### 5. package_management.sh
-
-**对应章节**: 第六章 - 软件包管理
-
-**功能**: 演示不同系统的包管理
-
-- 自动检测系统类型
-- 演示对应的包管理器命令
-- 源码编译安装概念
-- 包管理最佳实践
-
-**使用方法**:
-
-```bash
-chmod +x package_management.sh
-./package_management.sh
-```
-
-### 6. shell_scripting.sh
-
-**对应章节**: 第七章 - Shell 脚本编程
-
-**功能**: 全面演示 Shell 脚本编程概念
-
-- 变量和参数
-- 条件判断和循环
-- 数组和函数
-- 字符串处理
-- 输入输出重定向
-- 管道操作
-
-**使用方法**:
-
-```bash
-chmod +x shell_scripting.sh
-./shell_scripting.sh [参数1] [参数2] [参数3]
-```
-
-### 7. system_monitor.sh
-
-**对应章节**: 第七章 - Shell 脚本编程 (实用脚本示例)
-
-**功能**: 完整的系统监控脚本
-
-- CPU、内存、磁盘监控
-- 网络状态检查
-- 进程分析
-- 生成监控报告
-- 支持多种监控模式
-
-**使用方法**:
-
-```bash
-chmod +x system_monitor.sh
-./system_monitor.sh [monitor|report|cpu|memory|disk|network|help]
-```
-
-**示例**:
-
-```bash
-./system_monitor.sh              # 完整监控
-./system_monitor.sh report       # 生成报告文件
-./system_monitor.sh cpu          # 仅监控 CPU
-./system_monitor.sh help         # 显示帮助
-```
-
-### 8. log_analyzer.sh
-
-**对应章节**: 第七章 - Shell 脚本编程 (实用脚本示例)
-
-**功能**: Web 服务器日志分析工具
-
-- 基本统计信息
-- HTTP 状态码分析
-- IP 地址分析
-- URL 访问统计
-- 安全威胁检测
-- 实时监控模式
-
-**使用方法**:
-
-```bash
-chmod +x log_analyzer.sh
-
-# 创建示例日志
-./log_analyzer.sh -s
-
-# 分析日志
-./log_analyzer.sh [选项] [日志文件]
-```
-
-**示例**:
-
-```bash
-./log_analyzer.sh -s                    # 创建示例日志
-./log_analyzer.sh                       # 分析示例日志
-./log_analyzer.sh -r /var/log/access.log # 生成详细报告
-./log_analyzer.sh -m /var/log/access.log # 实时监控
-```
-
-### 9. auto_deploy.sh
-
-**对应章节**: 第七章 - Shell 脚本编程 (实用脚本示例)
-
-**功能**: 自动化部署脚本
-
-- 完整的部署流程
-- 备份和回滚功能
-- 健康检查
-- 应用生命周期管理
-- 日志记录
-
-**使用方法**:
-
-```bash
-chmod +x auto_deploy.sh
-./auto_deploy.sh [deploy|rollback|status|start|stop|restart|health|cleanup|help]
-```
-
-**示例**:
-
-```bash
-./auto_deploy.sh deploy          # 执行部署
-./auto_deploy.sh status          # 查看状态
-./auto_deploy.sh rollback        # 回滚到上一版本
-./auto_deploy.sh restart         # 重启应用
-```
-
-### 10. container_demo.sh
-
-**对应章节**: 第八章 - 为容器技术做准备
-
-**功能**: 容器技术基础概念演示
-
-- Linux 命名空间
-- 控制组 (cgroups)
-- 联合文件系统
-- 容器与虚拟机对比
-- Docker 基础概念
-- Dockerfile 示例
-- 容器网络和存储
-- Kubernetes 预备知识
-
-**使用方法**:
-
-```bash
-chmod +x container_demo.sh
-./container_demo.sh [namespaces|cgroups|unionfs|comparison|docker|dockerfile|networking|storage|kubernetes|all|help]
-```
-
-**示例**:
-
-```bash
-./container_demo.sh              # 运行所有演示
-./container_demo.sh docker       # 仅演示 Docker 概念
-./container_demo.sh dockerfile   # 仅演示 Dockerfile
-```
-
-## 二、使用建议
-
-### 1. 权限设置
-
-在运行脚本之前，确保给脚本添加执行权限：
-
-```bash
-chmod +x *.sh
-```
-
-### 2. 系统兼容性
-
-- 脚本主要在 macOS 和 Linux 系统上测试
-- 某些功能可能需要特定的系统权限
-- 网络相关功能可能需要网络连接
-
-### 3. 安全注意事项
-
-- 脚本仅用于学习和演示目的
-- 在生产环境中使用前请仔细审查
-- 某些脚本会创建临时文件，运行后会自动清理
-
-### 4. 学习路径
-
-建议按照以下顺序学习和运行脚本：
-
-1. `basic_commands.sh` - 熟悉基础命令
-2. `file_permissions.sh` - 理解权限管理
-3. `process_management.sh` - 学习进程管理
-4. `network_security.sh` - 了解网络配置
-5. `package_management.sh` - 掌握软件包管理
-6. `shell_scripting.sh` - 学习脚本编程基础
-7. `system_monitor.sh` - 实践系统监控
-8. `log_analyzer.sh` - 实践日志分析
-9. `auto_deploy.sh` - 实践自动化部署
-10. `container_demo.sh` - 了解容器技术基础
-
-### 5. 故障排除
-
-如果脚本运行出现问题：
-
-1. 检查脚本是否有执行权限
-2. 确认系统是否支持相关命令
-3. 查看脚本输出的错误信息
-4. 某些功能可能需要管理员权限
-
-### 6. 扩展学习
-
-- 可以修改脚本参数来测试不同场景
-- 尝试组合使用多个脚本
-- 基于这些脚本创建自己的工具
-- 将脚本集成到实际的工作流程中
-
-## 三、输出文件说明
-
-脚本运行过程中可能会在以下位置创建文件：
-
-- `/tmp/` - 临时文件和演示文件
-- `/tmp/log_analysis/` - 日志分析报告
-- `/tmp/deploy/` - 部署相关文件
-- `/tmp/backup/` - 备份文件
-
-这些文件大多会在脚本运行结束后自动清理，或者可以手动删除。
-
----
-
-**注意**: 这些脚本是为了教学目的而创建的，主要用于演示概念和命令的使用。
+1. 确认脚本有执行权限：`chmod +x *.sh`
+2. 部分脚本需要 root 权限，会明确提示
+3. 脚本仅在 macOS 和 Linux 上测试
+4. 脚本会创建临时文件，运行后自动清理（部分交互式脚本会询问是否保留）

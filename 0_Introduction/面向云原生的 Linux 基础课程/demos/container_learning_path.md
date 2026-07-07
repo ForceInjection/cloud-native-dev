@@ -1,31 +1,36 @@
 # 容器技术学习路径
 
 ## 第一阶段：Linux 基础巩固
+
 - [ ] 熟练掌握 Linux 命令行操作
 - [ ] 理解进程、网络、文件系统概念
 - [ ] 掌握 Shell 脚本编程
 - [ ] 了解系统服务管理
 
 ## 第二阶段：容器基础
+
 - [ ] 理解容器与虚拟机的区别
 - [ ] 学习 Docker 基本操作
 - [ ] 掌握镜像构建和管理
 - [ ] 理解容器网络和存储
 
 ## 第三阶段：容器编排
+
 - [ ] 学习 Kubernetes 基本概念
 - [ ] 掌握 Pod、Service、Deployment
 - [ ] 理解集群网络和存储
 - [ ] 学习服务发现和负载均衡
 
 ## 第四阶段：实践项目
+
 - [ ] 容器化现有应用
 - [ ] 构建微服务架构
 - [ ] 实现 CI/CD 流水线
 - [ ] 监控和日志管理
 
 ## 推荐资源
+
 - 官方文档：Docker、Kubernetes
-- 在线实验：Play with Docker、Katacoda
+- 在线实验：Play with Docker、Killercoda
 - 书籍：《Docker 深入浅出》、《Kubernetes 权威指南》
 - 视频课程：各大在线教育平台

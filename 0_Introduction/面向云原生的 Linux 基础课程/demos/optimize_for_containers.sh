@@ -1,55 +1,40 @@
 #!/bin/bash
+# 容器环境内核参数优化演示脚本（仅展示，不修改系统）
+# 安全：本脚本仅打印建议的内核参数，不执行任何修改操作
 
-# 容器环境内核参数优化脚本
-# 注意：需要 root 权限
+echo "=========================================="
+echo "  容器环境内核参数优化建议（演示模式）"
+echo "  本脚本仅展示建议值，不会修改系统配置"
+echo "=========================================="
 
-if [ "$EUID" -ne 0 ]; then
-    echo "请使用 root 权限运行此脚本"
-    echo "使用方法: sudo $0"
-    exit 1
-fi
+echo ""
+echo "--- 当前关键内核参数 ---"
+echo "IP 转发:           $(sysctl -n net.ipv4.ip_forward 2>/dev/null || echo '无法读取')"
+echo "bridge 过滤:        $(sysctl -n net.bridge.bridge-nf-call-iptables 2>/dev/null || echo '无法读取')"
+echo "内存 overcommit:   $(sysctl -n vm.overcommit_memory 2>/dev/null || echo '无法读取')"
+echo "swap 倾向:         $(sysctl -n vm.swappiness 2>/dev/null || echo '无法读取')"
+echo "最大文件描述符:    $(sysctl -n fs.file-max 2>/dev/null || echo '无法读取')"
+echo "inotify 实例限制:  $(sysctl -n fs.inotify.max_user_instances 2>/dev/null || echo '无法读取')"
 
-echo "优化容器环境内核参数..."
-
-# 备份原始配置
-cp /etc/sysctl.conf /etc/sysctl.conf.backup.$(date +%Y%m%d_%H%M%S)
-echo "已备份原始 sysctl.conf"
-
-# 网络优化
-echo "\n# 容器网络优化" >> /etc/sysctl.conf
-echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
-echo "net.bridge.bridge-nf-call-iptables = 1" >> /etc/sysctl.conf
-echo "net.bridge.bridge-nf-call-ip6tables = 1" >> /etc/sysctl.conf
-echo "net.ipv4.conf.all.forwarding = 1" >> /etc/sysctl.conf
-
-# 内存优化
-echo "\n# 容器内存优化" >> /etc/sysctl.conf
-echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
-echo "vm.swappiness = 10" >> /etc/sysctl.conf
-echo "vm.max_map_count = 262144" >> /etc/sysctl.conf
-
-# 文件系统优化
-echo "\n# 容器文件系统优化" >> /etc/sysctl.conf
-echo "fs.file-max = 1048576" >> /etc/sysctl.conf
-echo "fs.inotify.max_user_instances = 8192" >> /etc/sysctl.conf
-echo "fs.inotify.max_user_watches = 524288" >> /etc/sysctl.conf
-
-# 网络连接优化
-echo "\n# 网络连接优化" >> /etc/sysctl.conf
-echo "net.core.somaxconn = 32768" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_max_syn_backlog = 8192" >> /etc/sysctl.conf
-echo "net.ipv4.tcp_tw_reuse = 1" >> /etc/sysctl.conf
-
-# 应用设置
-echo "\n应用新的内核参数..."
-sysctl -p
-
-echo "\n=== 优化完成 ==="
-echo "内核参数优化完成！"
-echo "当前关键参数值："
-echo "  IP转发: $(sysctl -n net.ipv4.ip_forward)"
-echo "  最大文件数: $(sysctl -n fs.file-max)"
-echo "  内存过量分配: $(sysctl -n vm.overcommit_memory)"
-echo "  交换倾向: $(sysctl -n vm.swappiness)"
-echo "\n建议重启系统以确保所有设置生效。"
-echo "如需恢复原始设置，请使用备份文件: /etc/sysctl.conf.backup.*"
+echo ""
+echo "--- 容器环境建议参数 ---"
+echo ""
+echo "# 网络优化"
+echo "net.ipv4.ip_forward = 1"
+echo "net.bridge.bridge-nf-call-iptables = 1"
+echo ""
+echo "# 内存优化"
+echo "vm.overcommit_memory = 1"
+echo "vm.swappiness = 10"
+echo "vm.max_map_count = 262144"
+echo ""
+echo "# 文件系统优化"
+echo "fs.file-max = 1048576"
+echo "fs.inotify.max_user_instances = 8192"
+echo "fs.inotify.max_user_watches = 524288"
+echo ""
+echo "=========================================="
+echo "  如需应用以上参数，请使用 root 权限执行："
+echo "  sudo sysctl -w <参数名>=<值>      # 临时生效"
+echo "  或编辑 /etc/sysctl.conf 添加上述行  # 永久生效"
+echo "=========================================="
